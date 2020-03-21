@@ -1,0 +1,2148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+  if(sessionStorage.getItem("login")==null){
+    window.location.href = "index.html";
+  }
+</script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#2196f3">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>My App</title>
+
+  <link rel="stylesheet" href="framework7/css/framework7.min.css">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/app.css">
+
+
+</head>
+<body class="color-theme-black">
+  <div id="app">
+    <div class="statusbar"></div>
+    <div class="panel panel-left panel-cover theme-dark">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Left Panel</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">Left panel content goes here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="views tabs ios-edges">
+      <div class="toolbar tabbar-labels toolbar-bottom-md">
+        <div class="toolbar-inner">
+          <a href="#view-pendapatan" class="tab-link tab-link-active">
+            <i class="icon f7-icons ios-only">library_books</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">library_books</i>
+            <i class="icon material-icons md-only">library_books</i>
+            <span class="tabbar-label">Laporan</span>
+          </a>
+
+          <a href="#view-penjualan" class="tab-link">
+            <i class="icon f7-icons ios-only">account_balance</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">account_balance</i>
+            <i class="icon material-icons md-only">account_balance</i>
+            <span class="tabbar-label">Outlet</span>
+          </a>
+		      <a href="#view-stok" class="tab-link">
+            <i class="icon f7-icons ios-only">shopping_cart</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">shopping_cart</i>
+            <i class="icon material-icons md-only">shopping_cart</i>
+            <span class="tabbar-label">Susu</span>
+          </a>
+          <a href="#view-produk-lain" class="tab-link">
+            <i class="icon f7-icons ios-only">shopping_basket</i>
+            <i class="icon f7-icons ios-only icon-ios-fill">shopping_basket</i>
+            <i class="icon material-icons md-only">shopping_basket</i>
+            <span class="tabbar-label">Produk Lain</span>
+          </a>
+          
+          <a href="#view-material" class="tab-link">
+              <i class="icon f7-icons ios-only">delete_sweep</i>
+              <i class="icon f7-icons ios-only icon-ios-fill">delete_sweep</i>
+              <i class="icon material-icons md-only">delete_sweep</i>
+              <span class="tabbar-label">Material</span>
+            </a>
+
+
+
+
+
+        </div>
+      </div>
+      <div id="view-pendapatan" class="view view-main tab tab-active">
+        <div class="page" data-name="home">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title sliding">
+              <img src="ico/halocode.png" height="40" width="50">
+               </div>
+               <div class="right">
+                <a href="index.html" class="external link icon-only " data-panel="right">
+                  <i class="icon f7-icons ios-only">exit_to_app</i>
+                  <i class="icon material-icons md-only">exit_to_app</i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="page-content">
+          <!----------------------------------LAPORAN--------------------------------------------->
+          <div  class="data-table data-table-init card">
+            <div class="card-header">
+              <div class="data-table-links">
+                  <table>
+                      <thead>
+                        <tr>
+                          <th class='numeric-cell'><input id="tanggal" style="text-align:center; border: 1px solid black; height:25px; width:150px;" placeholder="Atur Tanggal" onfocus="(this.type='date')" onblur="(this.type='text')" class="textbox-n" type="text"></th>
+                          <th class='numeric-cell'><button id="submitTanggal">go</button></th>
+                        </tr>
+                      </thead>
+                  </table>
+              </div>
+            </div>
+
+          <div  class="data-table data-table-init card">
+                <div class="card-content">
+                    <div class="data-table-links">
+                        <table>
+                            <tbody>
+                              <tr>
+                                <td style="background-color: rgb(208, 245, 237)"><b>Data Penjualan Susu</b</td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="record-penjualan-susu" class="data-table-links">
+                      </div>
+
+                
+                  </div>
+          </div>
+
+          <div class="data-table data-table-init card">
+            <div class="data-table-links">
+              <table>
+                  <tbody>
+                    <tr>
+                      <td style="background-color: rgb(208, 245, 237)"><b>Rincian Penjualan Susu</b</td>
+                    </tr>
+                  </tbody>
+              </table>
+          </div>
+
+          <div class="data-table data-table-init card">
+            <div id="record-rincian-penjualan" class="data-table-links"></div>
+          </div>
+          </div>
+
+          <div class="data-table data-table-init card">
+            <table>
+                <tbody>
+                  <tr>
+                    <td style="background-color: rgb(208, 245, 237); font-size: 15px" ><b>Stock Susu</b></td>
+                    <td style="background-color: rgb(208, 245, 237)"></td>
+                  </tr>
+                  <tr>
+                    <td><b>Total Susu Datang Semua Outlet</b></td>
+                    <td><input id="total_susu_datang" style="text-align:left; border: 1px solid white; height:25px; width:150px;" type="text"></td>
+                  </tr>
+                  <tr>
+                    <td><b>Total Sisa Kemarin Mentah Semua Outlet</b></td>
+                    <td><input id="total_sisa_kemarin_mentah" style="text-align:left; border: 1px solid white; height:25px; width:150px;" type="text"></td>
+                  </tr>
+                  <tr>
+                      <td><b>Total Sisa Kemarin Matang Semua Outlet</b></td>
+                      <td><input id="total_sisa_kemarin_matang" style="text-align:left; border: 1px solid white; height:25px; width:150px;" type="text"></td>
+                  </tr>
+                  <tr>
+                      <td><b>Total Sisa Matang Semua Outlet</b></td>
+                      <td><input id="total_sisa_matang" style="text-align:left; border: 1px solid white; height:25px; width:150px;" type="text"></td>
+                  </tr>
+                  <tr>
+                    <td><b>Total Sisa Mentah Semua Outlet</b></td>
+                    <td><input id="total_sisa_mentah" style="text-align:left; border: 1px solid white; height:25px; width:150px;" type="text"></td>
+                </tr>
+                <tr>
+                  <td><b>Susu Terjual Semua Outlet</b></td>
+                  <td><input id="susu_terjual" style="text-align:left; border: 1px solid white; height:25px; width:150px;" type="text"></td>
+              </tr>
+
+                </tbody>
+            </table>
+
+            <div id="record-rincian-stock" class="card-content">
+            </div>
+
+            </div>
+
+
+            <div class="data-table data-table-init card">
+              <table>
+                  <tbody>
+                    <tr>
+                      <td style="background-color: rgb(208, 245, 237); font-size: 15px" ><b>Stock Bumbu</b></td>
+                      <td style="background-color: rgb(208, 245, 237)"></td>
+                      <td style="background-color: rgb(208, 245, 237)"></td>
+                      <td style="background-color: rgb(208, 245, 237)"></td>
+
+                    </tr>
+
+                    <tr>
+                        <td><b>Bumbu</b></td>
+                        <td><b>Stock</b></td>
+                        <td><b>Terjual</b></td>
+                        <td><b>Sisa</b></td>
+                    </tr>
+
+                    <tr>
+                        <td>Original</td>
+                        <td id="stock0"></td>
+                        <td id="terjual0"></td>
+                        <td id="sisa0"></td>
+                    </tr>
+                    <tr>
+                        <td>Cappucino</td>
+                        <td id="stock1"></td>
+                        <td id="terjual1"></td>
+                        <td id="sisa1"></td>
+                    </tr>
+                    <tr>
+                        <td>Coklat</td>
+                        <td id="stock2"></td>
+                        <td id="terjual2"></td>
+                        <td id="sisa2"></td>
+                    </tr>
+                    <tr>
+                        <td>Oreo</td>
+                        <td id="stock3"></td>
+                        <td id="terjual3"></td>
+                        <td id="sisa3"></td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td id="total_stock"></td>
+                        <td id="total_terjual"></td>
+                        <td id="total_sisa"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                    </tr>
+                    <tr>
+                        <td><b>Rincian Bumbu Terjual</b></td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                    </tr>
+
+                  </tbody>
+              </table>
+
+              <div class="card-content">
+                  <div id="record-rincian-bumbu" class="card-content">
+                  </div>
+              </div>
+
+              </div>
+
+
+
+              <div class="data-table data-table-init card">
+                  <table>
+                      <tbody>
+                        <tr>
+                          <td style="background-color: rgb(208, 245, 237); font-size: 15px" ><b>Stock Cup</b></td>
+                          <td style="background-color: rgb(208, 245, 237)"></td>
+                          <td style="background-color: rgb(208, 245, 237)"></td>
+                          <td style="background-color: rgb(208, 245, 237)"></td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Produk</b></td>
+                            <td><b>Dingin</b></td>
+                            <td><b>Hangat</b></td>
+                            <td><b>Total</b></td>
+
+                        </tr>
+
+                        <tr>
+                            <td>Stock</td>
+                            <td id="cup_stock0"></td>
+                            <td id="cup_stock1"></td>
+                            <td id="cup_total_stock"></td>
+                        </tr>
+                        <tr>
+                            <td>Terjual</td>
+                            <td id="cup_terjual0"></td>
+                            <td id="cup_terjual1"></td>
+                            <td id="cup_total_terjual"></td>
+                        </tr>
+                        <tr>
+                            <td>Sisa</td>
+                            <td id="cup_sisa0"></td>
+                            <td id="cup_sisa1"></td>
+                            <td id="cup_total_sisa"></td>
+                        </tr>
+
+                      </tbody>
+                  </table>
+
+                  <div class="card-content">
+                      <div id="record-rincian-cup" class="card-content">
+                      </div>
+                  </div>
+
+                  </div>
+
+
+
+                <!-- </div> -->
+                <div class="data-table data-table-init card">
+                  <table>
+                      <tbody>
+                        <tr>
+                          <td style="background-color: rgb(208, 245, 237); font-size: 15px" ><b>Material</b></td>
+                          <td style="background-color: rgb(208, 245, 237)"></td>
+                          <td style="background-color: rgb(208, 245, 237)"></td>
+
+                        </tr>
+
+
+                      </tbody>
+                  </table>
+
+                  <div class="card-content">
+                      <div id="record-laporan-material" class="card-content">
+                      </div>
+                  </div>
+
+
+
+                  </div>
+
+
+
+                  <div class="data-table data-table-init card">
+                    <table>
+                        <tbody>
+                          <tr>
+                            <td style="background-color: rgb(208, 245, 237); font-size: 15px" ><b>Gudang</b></td>
+                            <td style="background-color: rgb(208, 245, 237)"></td>
+                            <td style="background-color: rgb(208, 245, 237)"></td>
+
+                          </tr>
+
+
+                        </tbody>
+                    </table>
+
+                    <div class="card-content">
+                        <div id="record-laporan-gudang" class="card-content">
+                        </div>
+                    </div>
+
+                    <button id="submitGudang" class="btn-submit-material col button button-raised button-round">Simpan</button>
+
+                  </div>
+
+                  <div class="data-table data-table-init card">
+                    <table>
+                        <tbody>
+                          <tr>
+                            <td style="background-color: rgb(208, 245, 237); font-size: 15px" ><b>Produk Lainnya</b></td>
+                            <td style="background-color: rgb(208, 245, 237)"></td>
+                            <td style="background-color: rgb(208, 245, 237)"></td>
+                          </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="card-content">
+                        <div id="record-laporan-produk-lain" class="card-content">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card-content">
+                  <div class="data-table data-table-init card">
+                      <table>
+                        <tbody>
+                            <tr>
+                              <td style="background-color: rgb(208, 245, 237); font-size: 15px" ><b>Rincian Produk Lain</b></td>
+
+                            </tr>
+                          </tbody>
+                      </table>
+                  </div>
+
+                      <div id="record-rincian-produk-lain" class="card-content">
+                      </div>
+                  </div>
+
+
+
+                  </div>
+          <!---------------------------------------------------------------------------------------->
+          </div>
+        </div>
+      </div>
+
+      <div id="view-penjualan" class="view view-main tab">
+        <div class="page" data-name="home">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title sliding">
+              <img src="ico/halocode.png" height="40" width="50">
+               </div>
+               <div class="right">
+                <a href="" class="external link icon-only " data-panel="right">
+                  <i class="icon f7-icons ios-only">exit_to_app</i>
+                  <i class="icon material-icons md-only">exit_to_app</i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="page-content">
+          <!----------------------------------OUTLET--------------------------------------------->
+          <div class="data-table data-table-init card">
+              <div class="card-header">
+                  <div class="data-table-links">
+                  <a id="btn-tambah-outlet" class="link icon-only popup-open" data-popup="#popup-tambah-outlet">
+                      <i class="icon f7-icons ios-only">add_circle_outline</i>
+                      <i class="icon material-icons md-only">add_circle_outline</i>
+                  </a>
+                  </div>
+                  <div class="data-table-actions">
+                  <a class="link icon-only">
+                      <i class="icon f7-icons ios-only">sort</i>
+                      <i class="icon material-icons md-only">sort</i>
+                  </a>
+                  <a class="link icon-only">
+                      <i class="icon f7-icons ios-only">more_vertical_round</i>
+                      <i class="icon material-icons md-only">more_vert</i>
+                  </a>
+                  </div>
+              </div>
+                  <div id="record-outlet-select" class="card-content">
+                  </div>
+            </div>
+
+
+        <div class="popup" id="popup-tambah-outlet">
+            <div class="view">
+              <div class="page">
+                <div class="navbar">
+                  <div class="navbar-inner">
+                    <div class="title">Tambah Outlet</div>
+                    <div class="right">
+                      <a id="popup-close" href="#" class="link popup-close">Close</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="page-content">
+              <form id="formOutlet">
+                <div class="data-table card">
+                  <table>
+                    <tbody>
+
+                    <tr>
+                      <td><b id="usernameError">Username</b></td>
+                      <td><input id="username" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><b id="passwordError">Password</b></td>
+                        <td><input id="password" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><b id="outletError">Outlet</b></td>
+                        <td><input id="outlet" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                    </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </form>
+                <button id="submitOutlet" class="btn-submit-material col button button-raised button-round">Simpan</button>
+              </div>
+            </div>
+          </div>
+          </div>
+          <!---------------------------------------------------------------------------------------->
+          </div>
+
+        </div>
+      </div>
+
+      <div id="view-stok" class="view view-main tab">
+        <div class="page" data-name="home">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title sliding">
+              <img src="ico/halocode.png" height="40" width="50">
+               </div>
+               <div class="right">
+                <a href="index.html" class="external link icon-only " data-panel="right">
+                  <i class="icon f7-icons ios-only">exit_to_app</i>
+                  <i class="icon material-icons md-only">exit_to_app</i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="page-content">
+          <!----------------------------------SUSU--------------------------------------------->
+          <div class="data-table data-table-init card">
+              <div class="card-header">
+                  <div class="data-table-links">
+                  <a id="btn-tambah-susu" class="link icon-only popup-open" data-popup="#popup-tambah-susu">
+                      <i class="icon f7-icons ios-only">add_circle_outline</i>
+                      <i class="icon material-icons md-only">add_circle_outline</i>
+                  </a>
+                  </div>
+                  <div class="data-table-actions">
+                  <a class="link icon-only">
+                      <i class="icon f7-icons ios-only">sort</i>
+                      <i class="icon material-icons md-only">sort</i>
+                  </a>
+                  <a class="link icon-only">
+                      <i class="icon f7-icons ios-only">more_vertical_round</i>
+                      <i class="icon material-icons md-only">more_vert</i>
+                  </a>
+                  </div>
+              </div>
+                  <div id="record-susu-select" class="card-content">
+                  </div>
+            </div>
+
+
+        <div class="popup" id="popup-tambah-susu">
+            <div class="view">
+              <div class="page">
+                <div class="navbar">
+                  <div class="navbar-inner">
+                    <div class="title">Tambah Produk Susu</div>
+                    <div class="right">
+                      <a id="popup-close" href="#" class="link popup-close">Close</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="page-content">
+                <form id="formSusu">
+                <div class="data-table card">
+                  <table>
+                    <tbody>
+                    <tr>
+                      <td><b id="rasaError">Rasa</b></td>
+                      <td><input id="rasaSusu" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                    </tr>
+                    <tr>
+                      <td><b id="hargaDinginError">Harga Dingin</b></td>
+                      <td><input id="hargaDingin" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="number"></td>
+                    </tr>
+                    <tr>
+                        <td><b id="hargaHangatError">Harga Hangat</b></td>
+                        <td><input id="hargaHangat" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="number"></td>
+                      </tr>
+
+
+                    </tbody>
+                  </table>
+                </div>
+              </form>
+                <button id="submitSusu" class="btn-submit-material col button button-raised button-round">Simpan</button>
+                <!-- page content--- -->
+              </div>
+            </div>
+          </div>
+          </div>
+
+
+          <!------------------------------------------------------------------------------------>
+              </div>
+          </div>
+      </div>
+
+
+      <div id="view-produk-lain" class="view view-main tab">
+          <div class="page" data-name="home">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="title sliding">
+                <img src="ico/halocode.png" height="40" width="50">
+                 </div>
+                 <div class="right">
+                  <a href="index.html" class="external link icon-only " data-panel="right">
+                    <i class="icon f7-icons ios-only">exit_to_app</i>
+                    <i class="icon material-icons md-only">exit_to_app</i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="page-content">
+            <!----------------------------------PRODUK LAIN--------------------------------------------->
+            <div class="data-table data-table-init card">
+                <div class="card-header">
+                    <div class="data-table-links">
+                    <a id="btn-tambah-lain" class="link icon-only popup-open" data-popup="#popup-tambah-lain">
+                        <i class="icon f7-icons ios-only">add_circle_outline</i>
+                        <i class="icon material-icons md-only">add_circle_outline</i>
+                    </a>
+                    </div>
+                    <div class="data-table-actions">
+                    <a class="link icon-only">
+                        <i class="icon f7-icons ios-only">sort</i>
+                        <i class="icon material-icons md-only">sort</i>
+                    </a>
+                    <a class="link icon-only">
+                        <i class="icon f7-icons ios-only">more_vertical_round</i>
+                        <i class="icon material-icons md-only">more_vert</i>
+                    </a>
+                    </div>
+                </div>
+                    <div id="record-lain-select" class="card-content">
+                    </div>
+              </div>
+
+
+          <div class="popup" id="popup-tambah-lain">
+              <div class="view">
+                <div class="page">
+                  <div class="navbar">
+                    <div class="navbar-inner">
+                      <div class="title">Tambah Produk Lain</div>
+                      <div class="right">
+                        <a id="popup-close" href="#" class="link popup-close">Close</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="page-content">
+                  <form id="formLain">
+                  <div class="data-table card">
+                    <table id="tbls-lain">
+                      <tbody>
+                      <tr>
+                        <td><b id="rasaError">Produk</b></td>
+                        <td><input id="produk" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                      </tr>
+                      <tr>
+                        <td><input id="rasa0" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="text" placeholder="Rasa"></td>
+                        <td><input id="harga0" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number" placeholder="Harga"></td>
+                      </tr>
+                      </tbody>
+                      <button type="button" id="add-row" class="col button color-black"><i class="icon material-icons md-only">add_circle_outline</i></button>
+
+                    </table>
+                  </div>
+                </form>
+                  <button id="submitLain" class="btn-submit-material col button button-raised button-round">Simpan</button>
+                  <!-- page content--- -->
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <!------------------------------------------------------------------------------------------>
+            </div>
+          </div>
+        </div>
+
+
+      <div id="view-material" class="view view-main tab">
+          <div class="page" data-name="home">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="title sliding">
+                <img src="ico/halocode.png" height="40" width="50">
+                 </div>
+                 <div class="right">
+                  <a href="index.html" class="external link icon-only " data-panel="right">
+                    <i class="icon f7-icons ios-only">exit_to_app</i>
+                    <i class="icon material-icons md-only">exit_to_app</i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="page-content">
+            <!----------------------------------MATERIAL--------------------------------------------->
+            <div class="data-table data-table-init card">
+              <div class="card-header">
+                  <div class="data-table-links">
+                  <a id="btn-tambah-material" class="link icon-only popup-open" data-popup="#popup-tambah-material">
+                      <i class="icon f7-icons ios-only">add_circle_outline</i>
+                      <i class="icon material-icons md-only">add_circle_outline</i>
+                  </a>
+                  </div>
+                  <div class="data-table-actions">
+                  <a class="link icon-only">
+                      <i class="icon f7-icons ios-only">sort</i>
+                      <i class="icon material-icons md-only">sort</i>
+                  </a>
+                  <a class="link icon-only popover-open" href="#" data-popover=".popover-links">
+                      <i class="icon f7-icons ios-only">more_vertical_round</i>
+                      <i class="icon material-icons md-only">more_vert</i>
+                  </a>
+                  </div>
+              </div>
+                  <div id="record-material-select" class="card-content">
+                  </div>
+            </div>
+
+
+        <div class="popup" id="popup-tambah-material">
+            <div class="view">
+              <div class="page">
+                <div class="navbar">
+                  <div class="navbar-inner">
+                    <div class="title">Tambah Material</div>
+                    <div class="right">
+                      <a id="popup-close" href="#" class="link popup-close">Close</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="page-content">
+                <form id="formMaterial">
+                <div class="data-table card">
+                  <table id="tbls">
+                    <tbody>
+                    <tr>
+                      <td><b id="materialError">Material</b></td>
+                      <td><input id="material" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                    </tr>
+
+                  </table>
+                </div>
+              </form>
+                <button id="submitMaterial" class="btn-submit-material col button button-raised button-round">Simpan</button>
+                <!-- page content--- -->
+              </div>
+            </div>
+          </div>
+          </div>
+
+
+
+
+
+          <div class="popup" id="popup-tambah-std">
+            <div class="view">
+              <div class="page">
+                <div class="navbar">
+                  <div class="navbar-inner">
+                    <div class="title">Atur Std</div>
+                    <div class="right">
+                      <a id="popup-close" href="#" class="link popup-close">Close</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="page-content">
+                <form id="formStd">
+                <div class="data-table card">
+                  <table id="tblsStd">
+                    <tbody>
+                    <tr>
+                      <td> Outlet </td>
+                      <td>
+
+                          <select id="outletStd" name="outletStd">
+                          </select>
+                          
+                      </td>
+                    
+
+                          
+                    </tr>
+
+                    <tr>
+                        <td> Tanggal </td>
+                        <td><input id="tanggalStd" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+  
+                      </tr>
+                      
+
+                  </table>
+                  <table>
+                    <tbody>
+                  <div id="showMaterialStd" class="data-table card">
+                        
+                    </div>
+                  </tbody>
+                  </table>
+                  
+                </div>
+              </form>
+                <button id="submitStd" class="btn-submit-material col button button-raised button-round">Simpan</button>
+                <!-- page content--- -->
+              </div>
+            </div>
+          </div>
+          </div>
+
+
+
+
+          <div class="popover popover-links">
+            <div class="popover-inner">
+              <div class="list">
+                <ul>
+                  <li><a class="list-button item-link popup-open"  data-popup="#popup-tambah-std">Atur Std Outlet</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+
+
+            <!------------------------------------------------------------------------------------------>
+            </div>
+          </div>
+        </div>
+
+
+  <script src="framework7/js/framework7.min.js"></script>
+  <script src="js/routes.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/jquery-latest.js"></script>
+
+  <script src="js/penjualan.js"></script>
+  <script type="text/javascript">
+
+  var api_admin = "http://susumaktam.com/maktam2/maktam/maktam/api/admin/";
+
+
+
+function getDate(){
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = yyyy + '-' + mm + '-' + dd;
+  var today2 = dd + '/' + mm + '/' + yyyy;
+  return [today,today2];
+}
+
+function formatRupiah(angka, prefix){
+      if(Number(angka)<0)   prefix = prefix + '-';
+			var number_string = angka.replace(/[^,\d]/g, '').toString(),
+			split   		= number_string.split(','),
+			sisa     		= split[0].length % 3,
+			rupiah     		= split[0].substr(0, sisa),
+			ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
+
+			// tambahkan titik jika yang di input sudah menjadi angka ribuan
+			if(ribuan){
+				separator = sisa ? '.' : '';
+				rupiah += separator + ribuan.join('.');
+			}
+
+			rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+			return prefix == undefined ? rupiah : (rupiah ? 'Rp.' + rupiah : '');
+}
+
+function getSum(total, num) {
+  return Number(total) + Number(num);
+}
+
+//===========================LAPORAN=======================================================
+
+
+var tgl = getDate();
+var tanggal=tgl[1];
+var id_pgd=0;
+var materialLength = 0;
+var material = [];
+
+$("#tanggalStd").val(tgl[1]);
+$("#tanggal").val(tgl[0]);
+$("#tanggal_show").html(tgl[1]);
+
+show_laporan();
+show_total_all();
+show_pengeluran_gudang();
+show_omset();
+show_rincian_penjualan();
+show_stock_susu();
+show_laporan_gudang();
+show_penjualan_susu();
+show_laporan_material();
+show_laporan_produk_lain();
+show_laporan_produk_lain2();
+
+$("#submitTanggal").click(function(){
+    var date = String($("#tanggal").val());
+    var dd = date.substring(8,10);
+    var mm = date.substring(5,7);
+    var yyyy = date.substring(0,4);
+
+    tanggal = String(dd) + '/' + String(mm) + '/' + String(yyyy);
+    $("#tanggal_show").html(tanggal);
+
+    id_pgd = 0;
+    show_total_all();
+    show_laporan();
+    show_pengeluran_gudang()
+    show_omset();
+    show_rincian_penjualan();
+    show_stock_susu();
+    show_laporan_gudang();
+    show_penjualan_susu();
+    show_laporan_material();
+    show_laporan_produk_lain();
+    show_laporan_produk_lain2();
+});
+
+
+
+function show_laporan(){
+    $.ajax({
+      type: "POST",
+      data: ({
+        tanggal:tanggal
+      }),
+      url: api_admin+"laporan_show.php",
+      cache: false,
+      success: function(data) {
+        var string = "<table border='1'> <thead> <tr> <th>Outlet</th> <th style='padding-left: 10px; padding-right: 10px'>Pendapatan Shift 1</th> <th style='padding-left: 10px; padding-right: 10px'>Pendapatan Shift 2</th> <th align='center' style='padding-left: 10px; padding-right: 10px'>Modal</th> <th style='padding-left: 10px; padding-right: 10px'>Pengeluaran</th> <th style='padding-left: 10px; padding-right: 10px'>Saldo Akhir</th> </tr> </thead> <tbody>";
+        var result = $.parseJSON(data);
+
+        $.each( result, function( key, value ) {
+        string += "<tr> <td><b>"+value['outlet']+"</b></td> <td>"+formatRupiah(String(value['pendapatan1']),'Rp.')+"</td> <td>"+formatRupiah(String(value['pendapatan2']),'Rp.')+"</td> <td>"+formatRupiah(String(value['modal']),'Rp.')+"</td> <td>"+formatRupiah(String(value['pengeluaran']),'Rp.')+"</td> <td>"+formatRupiah(String(value['saldo']),'Rp.')+"</td> </tr>";
+        });
+        string += "</tbody></table>";
+        $("#record-pendapatan-select-1").html(string);
+      }
+  });
+  }
+
+  function show_total_all(){
+    $.ajax({
+      type: "POST",
+      data: ({
+        tanggal:tanggal
+      }),
+      url: api_admin+"laporan_total.php",
+      cache: false,
+      success: function(data) {
+        hasil = JSON.parse(data);
+        $("#total_modal").html(formatRupiah(String(hasil['modal']),'Rp.'));
+        $("#total_pengeluaran").html(formatRupiah(String(hasil['pengeluaran']),'Rp.'));
+        $("#saldo").html(formatRupiah(String(hasil['saldo']),'Rp.'));
+        $("#pendapatan").html(formatRupiah(String(hasil['pendapatan']),'Rp.'));
+      }
+  });
+  }
+
+$("#add-pengeluaran-gudang").click(function() {
+    id_pgd++;
+    var markup = "<tr id='tr-delete-pgd"+id_pgd+"'> <td style='width:5px'><input id='keterangan"+id_pgd+"' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='text' placeholder='Keterangan "+id_pgd+"'</td> <td><input id='jumlah"+id_pgd+"' placeholder='Jumlah "+id_pgd+"' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='number'></td>  </tr>";
+    $("#tabel-pengeluaran-gudang tbody").append(markup);
+});
+
+$('#tabel-pengeluaran-gudang tbody').on('click','.btn-delete',function(){
+  var id = $(this).attr("id");
+  $("#tr-delete-pgd" + id).fadeOut('slow');
+});
+
+
+
+$("#submitPengeluaranGudang").click(function(){
+  var c=0;
+  var ktr = [];
+  var jml = [];
+  for(var i=1; i<=id_pgd; i++){
+    if($("#keterangan"+i).val()!="" || $("#jumlah"+i).val()!=""){
+        ktr[c]= $("#keterangan"+i).val();
+        jml[c]= $("#jumlah"+i).val();
+      c++;
+    }
+  }
+
+  var data = [tanggal,ktr.length];
+  data = data.concat(ktr);
+  data = data.concat(jml);
+
+  var datas = {};
+  for(var j=0; j<data.length; j++){
+    datas["dt"+j]=data[j];
+  }
+  $.ajax({
+      type: "POST",
+      data: datas,
+      url: api_admin+"laporan_update_pgd.php",
+      cache: false,
+      success: function(data) {
+        show_omset();
+       if(data=="200")        app.dialog.alert('Berhasil Ditambah','');
+       else if(data=="201")   app.dialog.alert('Berhasil Diupdate','');
+       else                   app.dialog.alert('Error!','');
+       show_pengeluran_gudang();
+      }
+  });
+});
+
+function show_pengeluran_gudang(){
+  for(var i=0; i<=50; i++){
+    $("#tr-delete-pgd"+i).remove();
+  }
+  $.ajax({
+      type: "POST",
+      data: ({
+        tanggal:tanggal
+      }),
+      url: api_admin+"laporan_pengeluaran_gudang.php",
+      cache: false,
+      success: function(data) {
+	  console.log(data);
+        var result = $.parseJSON(data);
+        $.each( result, function( key, value ) {
+          var keterangan = JSON.parse(value['keterangan']);
+          var pengeluaran = JSON.parse(value['pengeluaran']);
+		  try{
+		  var lgt = keterangan.length;
+		  }catch(asas){
+		  var lgt = 0;
+		  }
+          for(var i=0; i<lgt; i++){
+            var markup = "<tr id='tr-delete-pgd"+Number(i+1)+"'> <td style='width:5px'><input value='"+keterangan[i]+"' id='keterangan"+Number(i+1)+"' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='text' placeholder='Keterangan "+Number(i+1)+"'</td> <td><input value='"+pengeluaran[i]+"' id='jumlah"+Number(i+1)+"' placeholder='Jumlah "+Number(i+1)+"' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='number'></td> </tr>";
+            $("#tabel-pengeluaran-gudang tbody").append(markup);
+            id_pgd = i+1;
+          }
+
+        });
+      }
+  });
+}
+
+function show_omset(){
+  $.ajax({
+      type: "POST",
+      data: ({
+        tanggal:tanggal
+      }),
+      url: api_admin+"laporan_omset.php",
+      cache: false,
+      success: function(data) {
+        var dt = JSON.parse(data);
+        var saldo = dt['saldo'];
+
+        try{
+          var pengeluaran = JSON.parse(dt['pengeluaran']);
+          var totalPengeluaran = pengeluaran.reduce(getSum);
+        }catch{
+         var totalPengeluaran = 0;
+        }
+
+        var omset = Number(saldo) - Number(totalPengeluaran);
+        $("#omset").html(formatRupiah(String(omset),'Rp.'));
+      }
+  });
+}
+
+
+
+function show_penjualan_susu(){
+    $.ajax({
+      type: "POST",
+      data: ({
+        tanggal:tanggal
+      }),
+      url: api_admin+"laporan_penjualan.php",
+      cache: false,
+      success: function(data) {
+         var dt = JSON.parse(data);
+         var rasa = JSON.parse(dt['rasa']);
+         var dingin =JSON.parse(dt['dingin']);
+         var hangat =JSON.parse(dt['hangat']);
+
+         var string = " <table> <thead> <tr> <td><b>Produk</b></td> <td><b>Dingin</b></td> <td><b>Hangat</b></td> </tr> </thead> <tbody> ";
+
+        for(var i=0; i<rasa.length; i++) {
+         if(typeof dingin[i]=='undefined')  dingin[i]=0;
+         if(typeof hangat[i]=='undefined')  hangat[i]=0;
+         
+         string += " <tr> <td><b>"+rasa[i]+"</b></td> <td>"+dingin[i]+"</td> <td>"+hangat[i]+"</td> </tr>";
+        }
+         string += "</tbody></table>";
+         $("#record-penjualan-susu").html(string);
+      }
+  });
+  }
+
+
+  function show_rincian_penjualan(){
+    $.ajax({
+      type: "POST",
+      data: ({
+        tanggal:tanggal
+      }),
+      url: api_admin+"laporan_rincian_penjualan.php",
+      cache: false,
+      success: function(data) {
+        var result = $.parseJSON(data);
+        var p = 0;
+        var outlet=[];
+        var dingin=[];
+        var hangat=[];
+        var bonus=[];
+        var semua=[];
+        var rasa;
+
+        $.each( result, function( key, value ) {
+          outlet[p]=value['outlet'];
+          dingin[p]=JSON.parse(value['dingin']);
+          hangat[p]=JSON.parse(value['hangat']);
+          bonus[p]=JSON.parse(value['bonus']);
+          rasa = JSON.parse(value['rasa']);
+
+          p++;
+        });
+
+
+        var string = "<table border='1px'> <thead> <tr> <td rowspan='2'></td>";
+
+        for(var i=0; i<rasa.length; i++){
+          string += "<td colspan='3' align='center'>"+rasa[i]+"</td>";
+        }
+        string += "<td rowspan='2' align='center'>Total Penjualan</td>";
+        string += "</tr><tr>";
+        for(var i=0; i<rasa.length; i++){
+          string += " <td>Dingin</td> <td>Hangat</td> <td>Bonus</td>";
+        }
+        string += "</tr></thead> <tbody>";
+
+
+        for(var j=0; j<outlet.length; j++){
+          string += "<tr> <td>"+outlet[j]+"</td>";
+          for(var k=0; k<rasa.length; k++){
+            if (typeof dingin[j][k] == 'undefined') dingin[j][k] = 0;
+            if (typeof hangat[j][k] == 'undefined') hangat[j][k] = 0;
+            if (typeof bonus[j][k] == 'undefined') bonus[j][k] = 0;
+            string += "<td>"+dingin[j][k]+"</td> <td>"+hangat[j][k]+"</td> <td>"+bonus[j][k]+"</td>";
+          }
+          string += "<td>"+Number(dingin[j].reduce(getSum)+hangat[j].reduce(getSum)) +"</td>";
+          string += "<tr>";
+        }
+
+        string += "</tbody></table>";
+        $("#record-rincian-penjualan").html(string);
+
+      }
+  });
+  }
+
+function show_stock_susu(){
+  $.ajax({
+      type: "POST",
+      data: ({
+        tanggal:tanggal
+      }),
+      url: api_admin+"laporan_stock.php",
+      cache: false,
+      success: function(data) {
+        var result = $.parseJSON(data);
+        var hasil = [];
+        var d = 0;
+        var totalSusuDatang = 0;
+        var sisaKemarinMentah = 0;
+        var sisaKemarinMatang = 0;
+        var sisaMatang = 0;
+        var sisaMentah = 0;
+        var totalTerjual = 0;
+        var string = "<br><table > <thead> <tr> <th>Outlet</th> <th style='padding-left: 10px; padding-right: 10px'>Susu Datang</th> <th style='padding-left: 10px; padding-right: 10px'>Sisa Kemarin Mentah</th> <th style='padding-left: 10px; padding-right: 10px'>Sisa Kemarin Matang</th> <th style='padding-left: 10px; padding-right: 10px'>Sisa Matang</th> <th style='padding-left: 10px; padding-right: 10px'>Sisa Mentah</th> <th style='padding-left: 10px; padding-right: 10px'>Total Terjual</th> </tr> </thead> <tbody>";
+        var string2 = "<table> <thead> <tr> <th>Outlet</th> <th style='padding-left: 10px; padding-right: 10px'>Original</th> <th style='padding-left: 10px; padding-right: 10px'>Cappucino</th> <th style='padding-left: 10px; padding-right: 10px'>Coklat</th> <th style='padding-left: 10px; padding-right: 10px'>Oreo</th> <th style='padding-left: 10px; padding-right: 10px'>Total</th> </tr> </thead> <tbody>";
+        var string3 = "<table> <thead> <tr> <th>Outlet</th> <th style='padding-left: 10px; padding-right: 10px'>Stock</th> <th style='padding-left: 10px; padding-right: 10px'>Terjual</th> <th style='padding-left: 10px; padding-right: 10px'>Sisa</th> </tr> </thead> <tbody>";
+
+        var tj1=[]; 
+        var tj2=[];
+        var tj3=[];
+        var tj4=[];
+        var l1 = [];
+        var l2 = [];
+        var stock1=stock2=stock3=stock4=terjual1=terjual2=terjual3=terjual4=sisa1=sisa2=sisa3=sisa4=0;
+        var total_stock = total_terjual = total_sisa = 0;
+       // var tj1 = tj2 = tj3 = tj4 =  [];
+
+        var stock_cup = [];
+        var terjual_cup = [];
+        var sisa_cup = [];
+        var total_bumbu = total_cup = 0;
+        var cup_stock0 = cup_stock1 = cup_terjual0 = cup_terjual1 = cup_sisa0 = cup_sisa1 = cup_total_stock = cup_total_terjual = cup_total_sisa = 0;
+
+        $.each( result, function( key, value ) {
+            hasil[d] = JSON.parse(value['data']);
+
+            hasil[d][2] = hasil[d][2] || 0;
+            hasil[d][3] = hasil[d][3] || 0;
+            hasil[d][4] = hasil[d][4] || 0;
+            hasil[d][5] = hasil[d][5] || 0;
+            hasil[d][6] = hasil[d][6] || 0;
+            hasil[d][7] = hasil[d][7] || 0;
+            hasil[d][8] = hasil[d][8] || 0;
+            hasil[d][9] = hasil[d][9] || 0;
+            hasil[d][10] = hasil[d][10] || 0;
+            hasil[d][11] = hasil[d][11] || 0;
+            hasil[d][12] = hasil[d][12] || 0;
+            hasil[d][13] = hasil[d][13] || 0;
+            hasil[d][14] = hasil[d][14] || 0;
+            hasil[d][15] = hasil[d][15] || 0;
+            hasil[d][16] = hasil[d][16] || 0;
+            hasil[d][17] = hasil[d][17] || 0;
+            hasil[d][18] = hasil[d][18] || 0;
+            hasil[d][19] = hasil[d][19] || 0;
+            hasil[d][20] = hasil[d][20] || 0;
+            hasil[d][21] = hasil[d][21] || 0;
+            hasil[d][22] = hasil[d][22] || 0;
+            hasil[d][23] = hasil[d][23] || 0;
+            hasil[d][24] = hasil[d][24] || 0;
+            hasil[d][25] = hasil[d][25] || 0;
+            hasil[d][26] = hasil[d][26] || 0;
+            hasil[d][27] = hasil[d][27] || 0;
+            hasil[d][28] = hasil[d][28] || 0;
+            hasil[d][29] = hasil[d][29] || 0;
+            hasil[d][30] = hasil[d][30] || 0;
+            hasil[d][31] = hasil[d][31] || 0;
+            hasil[d][32] = hasil[d][32] || 0;
+            hasil[d][33] = hasil[d][33] || 0;
+            hasil[d][34] = hasil[d][34] || 0;
+            hasil[d][35] = hasil[d][35] || 0;
+            hasil[d][36] = hasil[d][36] || 0;
+            hasil[d][37] = hasil[d][37] || 0;
+
+            totalSusuDatang = totalSusuDatang + Number(hasil[d][2]);
+            sisaKemarinMentah = sisaKemarinMentah + Number(hasil[d][3]);
+            sisaKemarinMatang = sisaKemarinMatang + Number(hasil[d][4]);
+            sisaMatang = sisaMatang + Number(hasil[d][5]);
+            sisaMentah = sisaMentah + Number(hasil[d][6]);
+            totalTerjual = totalTerjual + Number(hasil[d][7]);
+
+            stock1 = stock1 + Number(hasil[d][8])+Number(hasil[d][9]);
+            stock2 = stock2 + Number(hasil[d][14])+Number(hasil[d][15]);
+            stock3 = stock3 + Number(hasil[d][20])+Number(hasil[d][21]);
+            stock4 = stock4 + Number(hasil[d][26])+Number(hasil[d][27]);
+            terjual1 = terjual1 + Number(hasil[d][10])+Number(hasil[d][11]);
+            terjual2 = terjual2 + Number(hasil[d][16])+Number(hasil[d][17]);
+            terjual3 = terjual3 + Number(hasil[d][22])+Number(hasil[d][23]);
+            terjual4 = terjual4 + Number(hasil[d][28])+Number(hasil[d][29]);
+            sisa1 = sisa1 + Number(hasil[d][12])+Number(hasil[d][13]);
+            sisa2 = sisa2 + Number(hasil[d][18])+Number(hasil[d][19]);
+            sisa3 = sisa3 + Number(hasil[d][24])+Number(hasil[d][25]);
+            sisa4 = sisa4 + Number(hasil[d][30])+Number(hasil[d][31]);
+
+
+            tj1[d]=Number(hasil[d][10])+Number(hasil[d][11]);
+            tj2[d] = Number(hasil[d][16])+Number(hasil[d][17]);
+            tj3[d] = Number(hasil[d][22])+Number(hasil[d][23]);
+            tj4[d] = Number(hasil[d][28])+Number(hasil[d][29]);
+
+            
+
+            total_bumbu = tj1[d]+tj2[d]+tj3[d]+tj4[d];
+
+            cup_stock0 = cup_stock0 + Number(hasil[d][32]);
+            cup_stock1 = cup_stock1 + Number(hasil[d][33]);
+            cup_terjual0 = cup_terjual0 + Number(hasil[d][34]);
+            cup_terjual1 = cup_terjual1 + Number(hasil[d][35]);
+            cup_sisa0 = cup_sisa0 + Number(hasil[d][36]);
+            cup_sisa1 = cup_sisa1 + Number(hasil[d][37]);
+
+            cup_total_stock = cup_stock0 + cup_stock1;
+            cup_total_terjual = cup_terjual0 + cup_terjual1;
+            cup_total_sisa = cup_sisa0 + cup_sisa1;
+
+            stock_cup[d] = Number(hasil[d][32]) + Number(hasil[d][33]);
+            terjual_cup[d] = Number(hasil[d][34]) + Number(hasil[d][35]);
+            sisa_cup[d] = Number(hasil[d][36]) + Number(hasil[d][37]);
+
+
+            
+
+            string += "<tr> <td><b>"+value['outlet']+"</b></td> <td>"+Number(hasil[d][2])+"</td> <td>"+hasil[d][3]+"</td> <td>"+hasil[d][4]+"</td> <td>"+hasil[d][5]+"</td> <td>"+hasil[d][6]+"</td><td>"+hasil[d][7]+"</td> </tr>";
+            string2 += "<tr> <td><b>"+value['outlet']+"</b></td> <td>"+tj1[d]+"</td> <td>"+tj2[d]+"</td> <td>"+tj3[d]+"</td> <td>"+tj4[d]+"</td> <td>"+total_bumbu+"</td> </tr>";
+            string3 += "<tr> <td><b>"+value['outlet']+"</b></td> <td>"+stock_cup[d]+"</td> <td>"+terjual_cup[d]+"</td> <td>"+sisa_cup[d]+"</td></tr>";
+            d++;
+        });
+
+
+
+        total_stock = stock1+stock2+stock3+stock4;
+        total_terjual = terjual1+terjual2+terjual3+terjual4;
+        total_sisa = sisa1+sisa2+sisa3+sisa4;
+
+        $("#stock0").html(stock1);
+        $("#stock1").html(stock2);
+        $("#stock2").html(stock3);
+        $("#stock3").html(stock4);
+        $("#terjual0").html(terjual1);
+        $("#terjual1").html(terjual2);
+        $("#terjual2").html(terjual3);
+        $("#terjual3").html(terjual4);
+        $("#sisa0").html(sisa1);
+        $("#sisa1").html(sisa2);
+        $("#sisa2").html(sisa3);
+        $("#sisa3").html(sisa4);
+
+        $("#cup_stock0").html(cup_stock0);
+        $("#cup_stock1").html(cup_stock1);
+        $("#cup_terjual0").html(cup_terjual0);
+        $("#cup_terjual1").html(cup_terjual1);
+        $("#cup_sisa0").html(cup_sisa0);
+        $("#cup_sisa1").html(cup_sisa1);
+        $("#cup_total_terjual").html(cup_total_terjual);
+        $("#cup_total_sisa").html(cup_total_sisa);
+        $("#cup_total_stock").html(cup_total_stock);
+
+
+
+        /*
+        for(var i=0; i<4; i++){
+          $("#stock"+i).html(stock);
+          $("#terjual"+i).html(terjual[i]);
+          $("#sisa"+i).html(sisa[i]);
+        }
+        */
+        $("#total_stock").html(total_stock);
+        $("#total_terjual").html(total_terjual);
+        $("#total_sisa").html(total_sisa);
+
+
+
+        string += "</tbody></table>";
+        string2 += "</tbody></table>";
+        string3 += "</tbody></table>";
+        $("#record-rincian-stock").html(string);
+        $("#record-rincian-bumbu").html(string2);
+        $("#record-rincian-cup").html(string3);
+
+
+        $("#total_susu_datang").val(totalSusuDatang.toFixed(1));
+        $("#total_sisa_kemarin_mentah").val(sisaKemarinMentah.toFixed(1));
+        $("#total_sisa_kemarin_matang").val(sisaKemarinMatang.toFixed(1));
+        $("#total_sisa_matang").val(sisaMatang.toFixed(1));
+        $("#total_sisa_mentah").val(sisaMentah.toFixed(1));
+        $("#susu_terjual").val(totalTerjual.toFixed(1));
+
+
+      }
+  });
+}
+
+
+function show_laporan_gudang(){
+    $.ajax({
+      type: "POST",
+      data: ({
+        tanggal:tanggal
+      }),
+      url: api_admin+"laporan_gudang.php",
+      cache: false,
+      success: function(data) {
+        var stock = [];
+        var string = "<table border='1'> <thead> <tr> <th>Material</th> <th style='padding-left: 10px; padding-right: 10px'>Input Barang</th><th style='padding-left: 10px; padding-right: 10px'>Stock Gudang</th> <th style='padding-left: 10px; padding-right: 10px'>Diambil Outlet</th><th style='padding-left: 10px; padding-right: 10px'>Sisa Barang</th> </tr> </thead> <tbody>";
+        var dts = JSON.parse(data);
+        material = JSON.parse(dts['material']);
+        var value = JSON.parse(dts['data']);
+        try{
+         var stock = JSON.parse(dts['stock']);
+        }catch(err){
+          stock = [];
+        }
+        var diambilOutlet = [];
+        var sisaBarang = [];
+        materialLength = material.length;
+        for(var i=0; i<material.length; i++){
+          diambilOutlet[i] = 0;
+          if(typeof stock[i]=='undefined') stock[i]=0;
+          for(var j=0; j<value.length; j++){
+            diambilOutlet[i] = diambilOutlet[i] + Number(value[j][7+materialLength+i]);
+          }
+          sisaBarang[i] = Number(stock[i])-Number(diambilOutlet[i]);
+          string += "<tr> <td><b>"+material[i]+"</b></td> <td><input value='' id='inputGudang"+i+"' style='text-align:center; border: 1px solid black; height:25px; width:50px;' type='text'></td> <td id='stockGudang"+i+"'>"+stock[i]+"</td> <td id='diambilOutlet"+i+"'>"+diambilOutlet[i]+"</td> <td id='sisaGudang"+i+"'>"+sisaBarang[i]+"</td>  </tr>";
+        }
+
+        $("#record-laporan-gudang").html(string);
+      }
+  });
+}
+
+$("#submitGudang").click(function(){
+  var inputGudang = [];
+  var stockGudang = [];
+  var sisaGudang = [];
+
+  var stockGudangBaru = [];
+  for(var i=0; i<materialLength; i++){
+    stockGudangBaru[i]=0;
+    inputGudang[i]=$("#inputGudang"+i).val();
+    stockGudang[i]=$("#stockGudang"+i).html();
+    sisaGudang[i]=$("#sisaGudang"+i).html();
+    stockGudangBaru[i]=Number(inputGudang[i])+Number(stockGudang[i]);
+  }
+
+  var data = [tanggal,materialLength];
+  data = data.concat(stockGudangBaru);
+  data = data.concat(sisaGudang);
+
+  var datas = {};
+  for(var j=0; j<data.length; j++){
+    datas["dt"+j]=data[j];
+  }
+
+
+  $.ajax({
+          type: "POST",
+          url: api_admin+"laporan_submit.php",
+          data: datas,
+          cache: false,
+          success: function(html) {
+            if(html=="200" || html=="201"){
+              console.log("success");
+              show_laporan_gudang();
+              }
+            else
+              app.dialog.alert("Error!","");
+          }
+      });
+});
+
+
+function show_laporan_material(){
+  $.ajax({
+      type: "POST",
+      data: ({
+        tanggal:tanggal
+      }),
+      url: api_admin+"laporan_material.php",
+      cache: false,
+      success: function(data) {
+
+         var result = $.parseJSON(data);
+         var string = " <table> <thead> <tr> <td><b>Material</b></td> <td><b>Jumlah</b></td> <td><b>Tambah</b></td> </tr> </thead> <tbody> ";
+         var jumlah = [];
+         var tambah = [];
+
+         for(var i=0; i<materialLength; i++){
+              jumlah[i] = 0;
+              tambah[i] = 0;
+         }
+
+          $.each( result, function( key, value ) {
+            datas = JSON.parse(value['total']);
+
+            for(var i=0; i<datas[4]; i++){
+              jumlah[i] = jumlah[i] + Number(datas[7+i]);
+              tambah[i] = tambah[i] + Number(datas[7+Number(datas[4])+i]);
+            }
+          });
+
+          for(var i=0; i<materialLength; i++){
+            if(typeof jumlah[i]=='undefined') jumlah[i]=0;
+            if(typeof tambah[i]=='undefined') tambah[i]=0;
+            string += " <tr> <td><b>"+material[i]+"</b></td> <td>"+jumlah[i]+"</td> <td>"+tambah[i]+"</td> </tr>";
+          }
+
+         string += "</tbody></table>";
+         $("#record-laporan-material").html(string);
+      }
+  });
+}
+
+
+function show_laporan_produk_lain(){
+  $.ajax({
+      type: "POST",
+      data: ({
+        tanggal:tanggal
+      }),
+      url: api_admin+"laporan_produk_lain.php",
+      cache: false,
+      success: function(data) {
+        var string = " <table> <thead> <tr> <td><b>Produk</b></td>  <td><b>Stock</b></td><td><b>Terjual</b></td> <td><b>Sisa</b></td> </tr> </thead> <tbody> ";
+
+        var result = JSON.parse(data);
+        var produk = JSON.parse(result['produk']);
+        var rasa = JSON.parse(result['rasa']);
+
+
+        var datas = JSON.parse(result['data']);
+        var stock = [];
+        var terjual = [];
+        var sisa = [];
+
+        for(var i=0; i<produk.length; i++){
+            stock[i]=0;
+            terjual[i]=0;
+            sisa[i]=0;
+            for(var j = 0; j<datas.length; j++){
+              if(datas[j][3]=="1")              stock[i] = stock[i] + Number(datas[j][11 + Number(datas[j][9].reduce(getSum)+1) * 3 + produk.length + i]);
+              terjual[i] = terjual[i] + Number(datas[j][11 + Number(datas[j][9].reduce(getSum)+1) * 3 + produk.length*2 + i]);
+              if(datas[j][3]=="2")              sisa[i] = sisa[i] + Number(datas[j][11 + Number(datas[j][9].reduce(getSum)+1) * 3 + produk.length*3 + i]);
+            }
+        }
+
+        for(var i=0; i<produk.length; i++){
+          string += " <tr> <td><b>"+produk[i]+"</b></td> <td>"+stock[i]+"</td> <td>"+terjual[i]+"</td> <td>"+sisa[i]+"</></tr>";
+        }
+
+
+         string += "</tbody></table>";
+         $("#record-laporan-produk-lain").html(string);
+      }
+  });
+}
+
+
+function show_laporan_produk_lain2(){
+    $.ajax({
+      type: "POST",
+      data: ({
+        tanggal:tanggal
+      }),
+      url: api_admin+"laporan_rincian_produk.php",
+      cache: false,
+      success: function(data) {   
+        var produk = [];
+        var rasa = [];
+        var pendapatan=0;
+        var result = $.parseJSON(data);
+        var rasaLength = 0;
+        $.each( result, function( key, value ) {
+         try{
+          produk = JSON.parse(value['produk']);
+          rasa = JSON.parse(value['rasa']);
+          pendapatan = JSON.parse(value['pendapatan']);
+         }catch{
+
+         }       
+        });
+
+        for(var i=0; i<rasa.length; i++){
+          rasaLength = rasaLength + rasa[i].length;
+        }
+
+        var string = " <table border='1'> <thead> <tr> <th rowspan='3'><b>Outlet</b></th>";
+        for(var i=0; i<produk.length; i++){
+          string+=  "<th align='center' colspan='"+2*(rasa[i].length)+"'><b>"+produk[i]+"</b></th>";
+        }
+        string+=  "</tr><tr>";
+        for(var i=0; i<produk.length; i++){
+          for(var j=0; j<rasa[i].length; j++){
+            string+= "<th align='center' colspan='2'><b>"+rasa[i][j]+"</b></th>";
+          }
+        }
+        string +="</tr><tr>";
+        for(var i=0; i<produk.length; i++){
+          for(var j=0; j<rasa[i].length; j++){
+            string+= "<th><b>Terjual</b></th><th><b>Sisa</b></th>";
+          }
+        }
+        string +="</tr>";
+        
+        
+
+        string+=  "</thead> <tbody>";
+        var p = 0;
+        $.each( result, function( key, value ) {
+          var datas = JSON.parse(value['data']);
+          var terjual = JSON.parse(value['terjual']);
+          var sisa = JSON.parse(value['sisa']);
+          
+          string += "<tr><td>"+value['outlet']+"</td>";
+          
+          var t=0;
+          for(var i=0; i<produk.length; i++){
+            for(var j=0; j<rasa[i].length; j++){
+              if(typeof terjual[t]=='undefined') terjual[t]=0;
+              if(typeof sisa[t]=='undefined') sisa[t]=0;
+              string+= "<td><b>"+terjual[t]+"</b></td><td><b>"+sisa[t]+"</b></td>";
+              t++;
+            }
+          }
+
+          
+         // console.log(terjual[0]);
+          
+
+          string+= "</tr>";
+        });
+        string += "</tbody></table>";
+         $("#record-rincian-produk-lain").html(string);
+         $("#pendapatan-produk-lain").html(formatRupiah(String(pendapatan),"Rp."));
+         
+      }
+    });
+}
+
+
+  //================================================OUTLET===================================================
+  var mode1 = 0;
+  var id1 = 0;
+
+  show_outlet();
+
+  $("#submitOutlet").click(function(){
+    var username = $("#username").val();
+    var password = $("#password").val();
+    var outlet = $("#outlet").val();
+    $.ajax({
+          type: "POST",
+          url: api_admin+"outlet_submit.php",
+          data: ({
+            username: username,
+            password:password,
+            outlet:outlet,
+            mode:mode1,
+            id:id1
+          }),
+          cache: false,
+          success: function(html) {
+            if(html=="200"){
+              $("#formOutlet").trigger("reset");
+              show_outlet();
+              app.popup.close();
+            }else{
+              app.dialog.alert("Data sudah ada!","")
+            }
+          }
+      });
+  });
+
+  function show_outlet(){
+    $.ajax({
+      type: "POST",
+      url: api_admin+"outlet_show.php",
+      cache: false,
+      success: function(data) {
+        var string = "<table> <thead> <tr> <th class='numeric-cell'><b>Username</b></th> <th class='numeric-cell'><b>Password</b></th> <th class='numeric-cell'><b>Outlet</b></th> <th></th> </tr> </thead> <tbody>";
+        var result = $.parseJSON(data);
+        var dataProduk = [];
+          var t = 0;
+
+        $.each( result, function( key, value ) {
+        string += "<tr class='delete_outlet"+value['id']+"'> <td width='20%' class='numeric-cell'>"+value['username']+"</td> <td class='numeric-cell'>"+value['password']+"</td> <td class='numeric-cell'>"+value['outlet']+"</td> <td class='actions-cell'> <a id='"+value['id']+"' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='"+value['id']+"' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
+        $('#outletStd').append($("<option></option>").attr("value",key).text(value['outlet'])); 
+        t++;
+        });
+        string+="</tbody></table>";
+        $("#record-outlet-select").html(string);
+      }
+  });
+  }
+
+  $('#record-outlet-select').on('click','.btn-delete',function(){
+  var id = $(this).attr("id");
+  app.dialog.confirm("Anda yakin ingin menghapus?","",function() {
+      $.ajax({
+          type: "POST",
+          url: api_admin+"outlet_delete.php",
+          data: ({
+              id: id
+          }),
+          cache: false,
+          success: function(html) {
+            $(".delete_outlet" + id).fadeOut('slow');
+          }
+      });
+  });
+});
+
+$('#record-outlet-select').on('click','.btn-edit',function() {
+  mode1 = 1;
+  var id = $(this).attr("id");
+  var id1 = id;
+  $.ajax({
+    type: "POST",
+    url: api_admin+"outlet_edit.php",
+    data: ({
+          id: id
+    }),
+    cache: false,
+    success: function(data) {
+      var result = $.parseJSON(data);
+      $.each( result, function( key, value ) {
+        $("#username").val(value['username']);
+        $("#password").val(value['password']);
+        $("#outlet").val(value['outlet']);
+      });
+    }
+});
+app.popup.open("#popup-tambah-outlet",true);
+});
+
+$('#popup-tambah-outlet').on('popup:close', function (e, popup) {
+  id1 = 0;
+  mode1 = 0;
+  $("#username").val("");
+  $("#password").val("");
+  $("#outlet").val("");
+});
+
+//=======================================SUSU========================================================
+  var mode2 = 0;
+  var id2 = 0;
+
+  show_susu();
+
+  $("#submitSusu").click(function(){
+    var rasaSusu = $("#rasaSusu").val();
+    var hargaDingin = $("#hargaDingin").val();
+    var hargaHangat = $("#hargaHangat").val();
+
+    $.ajax({
+          type: "POST",
+          url: api_admin+"susu_submit.php",
+          data: ({
+            rasa: rasaSusu,
+            hargaDingin:hargaDingin,
+            hargaHangat:hargaHangat,
+            mode:mode2,
+            id:id2
+          }),
+          cache: false,
+          success: function(html) {
+            if(html=="200"){
+              $("#formSusu").trigger("reset");
+              show_susu();
+              app.popup.close();
+            }else{
+              app.dialog.alert("Data sudah ada!","")
+            }
+          }
+      });
+  });
+
+  function show_susu(){
+    $.ajax({
+      type: "POST",
+      url: api_admin+"susu_show.php",
+      cache: false,
+      success: function(data) {
+        var string = "<table> <thead> <tr> <th class='numeric-cell'><b>Rasa</b></th> <th class='numeric-cell'><b>Harga Dingin</b></th> <th class='numeric-cell'><b>Harga Hangat</b></th> <th></th> </tr> </thead> <tbody>";
+        var result = $.parseJSON(data);
+        var dataProduk = [];
+
+        $.each( result, function( key, value ) {
+        string += "<tr class='delete_susu"+value['id']+"'> <td width='20%' class='numeric-cell'>"+value['rasa']+"</td> <td class='numeric-cell'>"+value['harga_dingin']+"</td> <td class='numeric-cell'>"+value['harga_dingin']+"</td> <td class='actions-cell'> <a id='"+value['id']+"' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='"+value['id']+"' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
+        });
+        string+="</tbody></table>";
+        $("#record-susu-select").html(string);
+      }
+  });
+
+  }
+
+  $('#record-susu-select').on('click','.btn-delete',function(){
+  var id = $(this).attr("id");
+  app.dialog.confirm("Anda yakin ingin menghapus?","",function() {
+      $.ajax({
+          type: "POST",
+          url: api_admin+"susu_delete.php",
+          data: ({
+              id: id
+          }),
+          cache: false,
+          success: function(html) {
+            $(".delete_susu" + id).fadeOut('slow');
+          }
+      });
+  });
+});
+
+$('#record-susu-select').on('click','.btn-edit',function() {
+  mode2 = 1;
+  var id = $(this).attr("id");
+  id2 = id;
+  $.ajax({
+    type: "POST",
+    url: api_admin+"susu_edit.php",
+    data: ({
+          id: id
+    }),
+    cache: false,
+    success: function(data) {
+      var result = $.parseJSON(data);
+      $.each( result, function( key, value ) {
+        $("#rasaSusu").val(value['rasa']);
+        $("#hargaDingin").val(value['harga_dingin']);
+        $("#hargaHangat").val(value['harga_hangat']);
+      });
+    }
+});
+app.popup.open("#popup-tambah-susu",true);
+});
+
+$('#popup-tambah-susu').on('popup:close', function (e, popup) {
+  id2 = 0;
+  mode2 = 0;
+  $("#rasaSusu").val("");
+  $("#hargaDingin").val("");
+  $("#hargaHangat").val("");
+});
+
+//=======================================LAIN================================================
+var idk = 0;
+var id3 = 0;
+var mode3 = 0;
+var delete_tr = 0;
+var rasa = [];
+var harga = [];
+
+show_lain();
+
+$("#add-row").click(function() {
+    idk++;
+    var markup = "<tr id='tr-delete-other"+idk+"'> <td style='width:5px'><input id='rasa"+idk+"' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='text' placeholder='Rasa "+idk+"'</td> <td><input id='harga"+idk+"' placeholder='Harga "+idk+"' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='number'></td> <td class='actions-cell'><a id='"+idk+"' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a></td> </tr>";
+    $("#tbls-lain tbody").append(markup);
+});
+
+$('#tbls-lain tbody').on('click','.btn-delete',function(){
+  var id = $(this).attr("id");
+  $("#tr-delete" + id).fadeOut('slow');
+});
+
+$("#btn-tambah-lain").click(function(){
+  for(var i=1; i<30; i++)   {
+    $("#tr-delete-other"+i).remove();
+  }
+});
+
+$("#submitLain").click(function(){
+    var produk = $("#produk").val();
+    rasa = [];
+    harga = [];
+    var c = 0;
+    for(var i=0; i<=idk; i++){
+      if($("#rasa"+i).val()!="" || $("#harga"+i).val()!=""){
+      rasa[c]=$("#rasa"+i).val();
+      harga[c]=$("#harga"+i).val();
+      c++;
+      }
+    }
+
+    var data = [produk,c,id3,mode3];
+    data = data.concat(rasa);
+    data = data.concat(harga);
+
+    var datas = {};
+    for(var j=0; j<data.length; j++){
+      datas["dt"+j]=data[j];
+    }
+
+
+
+    $.ajax({
+          type: "POST",
+          url: api_admin+"lain_submit.php",
+          data: datas,
+          cache: false,
+          success: function(html) {
+            if(html=="200"){
+              $("#formLain").trigger("reset");
+              show_lain();
+              app.popup.close();
+            }else{
+              app.dialog.alert("Data sudah ada!","")
+            }
+          }
+      });
+  });
+
+
+function show_lain(){
+    $.ajax({
+      type: "POST",
+      url: api_admin+"lain_show.php",
+      cache: false,
+      success: function(data) {
+        var string = "<table> <thead> <tr> <th class='numeric-cell'><b>Produk</b></th> <th></th> </tr> </thead> <tbody>";
+        var result = $.parseJSON(data);
+        $.each( result, function( key, value ) {
+        string += "<tr class='delete_lain"+value['id']+"'> <td width='20%' class='numeric-cell'>"+value['produk']+"</td>  <td class='actions-cell'> <a id='"+value['id']+"' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='"+value['id']+"' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
+        });
+        string+="</tbody></table>";
+        $("#record-lain-select").html(string);
+      }
+	});
+}
+
+$('#record-lain-select').on('click','.btn-delete',function(){
+  var id = $(this).attr("id");
+  app.dialog.confirm("Apakah anda yakin ingin menghapus?","",function() {
+      $.ajax({
+          type: "POST",
+          url: api_admin+"lain_delete.php",
+          data: ({
+              id: id
+          }),
+          cache: false,
+          success: function(html) {
+            $(".delete_lain" + id).fadeOut('slow');
+          }
+      });
+  });
+});
+
+$('#record-lain-select').on('click','.btn-edit',function() {
+  mode3 = 1;
+  var id = $(this).attr("id");
+  id3 = id;
+
+  $.ajax({
+    type: "POST",
+    url: api_admin+"lain_edit.php",
+    data: ({
+          id: id
+    }),
+    cache: false,
+    success: function(data) {
+      var result = $.parseJSON(data);
+      var rasa = [];
+      var harga = [];
+
+      $.each( result, function( key, value ) {
+        $("#produk").val(value['produk']);
+        rasa = JSON.parse(value['rasa1']);
+        harga = JSON.parse(value['harga1']);
+        $("#rasa0").val(rasa[0]);
+        $("#harga0").val(harga[0]);
+
+        for(var i = 1; i < rasa.length; i++){
+          idk++;
+          var markup = "<tr id='tr-delete-other"+idk+"'> <td style='width:5px'><input value='"+rasa[idk]+"' id='rasa"+idk+"' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='text' placeholder='Rasa "+idk+"'</td> <td><input value='"+harga[idk]+"' id='harga"+idk+"' placeholder='Harga "+idk+"' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='number'></td> <td class='actions-cell'><a id='"+idk+"' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a></td> </tr>";
+          $("#tbls-lain tbody").append(markup);
+        }
+
+      });
+      delete_tr = idk;
+    }
+});
+app.popup.open("#popup-tambah-lain",true);
+});
+
+$$('#popup-tambah-lain').on('popup:close', function (e, popup) { 
+  for(var i=1; i<30; i++)   {
+    $("#tr-delete-other"+i).remove();
+  } 
+  id3 = 0;
+  mode3 = 0;
+  idk = 0;
+  $("#formLain").trigger("reset");
+
+});
+
+
+//========================================MATERIAL=====================================================
+var mode4= 0;
+var id4 = 0;
+var panjangMaterial = 0;
+  show_material();
+
+  $("#submitMaterial").click(function(){
+    var material = $("#material").val();
+    $.ajax({
+          type: "POST",
+          url: api_admin+"material_submit.php",
+          data: ({
+            material: material,
+            mode:mode4,
+            id:id4
+          }),
+          cache: false,
+          success: function(html) {
+            if(html=="200"){
+              $("#formMaterial").trigger("reset");
+              show_material();
+              app.popup.close();
+            }else{
+              app.dialog.alert("Data sudah ada!","")
+            }
+          }
+      });
+  });
+
+
+function show_material(){
+    $.ajax({
+      type: "POST",
+      url: api_admin+"material_show.php",
+      cache: false,
+      success: function(data) {
+        var string = "<table> <thead> <tr> <th class='numeric-cell'><b>Material</b></th> </tr> </thead> <tbody>";
+        var string2 = "<table> <tbody>";
+        var result = $.parseJSON(data);
+        var dataProduk = [];
+        $.each( result, function( key, value ) {
+        string += "<tr class='delete_material"+value['id']+"'> <td width='20%' class='numeric-cell'>"+value['material']+"</td> <td class='actions-cell'> <a id='"+value['id']+"' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='"+value['id']+"' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
+        string2 += " <tr> <td> "+value['material']+"</td> <td><input id='material"+panjangMaterial+"' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='number' placeholder=''></td> </tr>";
+        panjangMaterial++;
+        });
+        string+="</tbody></table>";
+        string2+="</tbody></table>";
+        $("#record-material-select").html(string);
+        $("#showMaterialStd").html(string2);
+        
+      }
+  });
+}
+
+
+$('#record-material-select').on('click','.btn-delete',function(){
+  var id = $(this).attr("id");
+  app.dialog.confirm("Anda yakin ingin menghapus?","",function(){
+      $.ajax({
+          type: "POST",
+          url: api_admin+"material_delete.php",
+          data: ({
+              id: id
+          }),
+          cache: false,
+          success: function(html) {
+            $(".delete_material" + id).fadeOut('slow');
+          }
+      });
+  });
+});
+
+$('#record-material-select').on('click','.btn-edit',function() {
+  mode4 = 1;
+  var id = $(this).attr("id");
+  id4 = id;
+  $.ajax({
+    type: "POST",
+    url: api_admin+"material_edit.php",
+    data: ({
+          id: id
+    }),
+    cache: false,
+    success: function(data) {
+      var result = $.parseJSON(data);
+      $.each( result, function( key, value ) {
+        $("#material").val(value['material']);
+      });
+    }
+});
+app.popup.open("#popup-tambah-material",true);
+});
+
+$('#popup-tambah-material').on('popup:close', function (e, popup) {
+  id4 = 0;
+  mode4 = 0;
+  $("#material").val("");
+});
+
+
+tampilDataStd();
+function tampilDataStd(){
+  var tanggalStd = $("#tanggalStd").val();
+  $.ajax({
+    type: "POST",
+    url: api_admin+"std_show.php",
+    data: ({          
+          tanggal:tanggalStd
+    }),
+    cache: false,
+    success: function(data) {
+      var result = $.parseJSON(data);
+                $.each( result, function( key, value ) {
+                  var data = JSON.parse(value['dataset']);
+
+                  for(var i=0; i<data.length; i++){ 
+                    $("#material"+i).val(data[i]);
+                  }
+
+                });
+    }
+});
+}
+
+$("#outletStd").change(function(){
+  var selectedStd = $(this).children("option:selected").text();
+  var tanggalStd = $("#tanggalStd").val();
+  $.ajax({
+    type: "POST",
+    url: api_admin+"std_show2.php",
+    data: ({          
+          tanggal:tanggalStd,
+          outlet:selectedStd
+    }),
+    cache: false,
+    success: function(data) {
+      if(data=="[]"){
+        for(var i=0; i<100; i++){ 
+                    $("#material"+i).val("");
+                  }
+      }else{
+      var result = $.parseJSON(data);
+                $.each( result, function( key, value ) {
+                  var data = JSON.parse(value['dataset']);
+
+                  for(var i=0; i<data.length; i++){ 
+                    $("#material"+i).val(data[i]);
+                  }
+
+                });
+      }
+    }
+  });
+});
+
+$("#submitStd").click(function(){
+    var outlet = $("#outletStd").children("option:selected").text();
+    var tanggalStd = $("#tanggalStd").val();
+
+    var mate = [];
+
+    for(var i=0; i<panjangMaterial; i++){
+      mate[i] = $("#material"+i).val();
+    }
+
+    var data = [tanggalStd,outlet,panjangMaterial];
+    data = data.concat(mate);
+
+    var datas = {};        
+    for(var j=0; j<data.length; j++){
+      datas["dt"+j]=data[j];
+    }
+
+    $.ajax({
+          type: "POST",
+          url: api_admin+"std_submit.php",
+          data: datas,
+          cache: false,
+          success: function(html) {
+            console.log(html);
+            if(html=="200"){
+              app.dialog.alert("Data berhasil ditambah!","");
+              app.popup.close();
+            }else if(html=="201"){
+              app.dialog.alert("Data berhasil diupdate!","");
+              app.popup.close();
+            }else{
+              app.dialog.alert("Error","");
+            }
+         }
+      });
+   });
+
+</script>
+
+
+
+
+
+
+</body>
+</html>

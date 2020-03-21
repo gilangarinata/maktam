@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+        if (sessionStorage.getItem("login") == null) {
+            window.location.href = "index.html";
+        }
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#2196f3">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>My App</title>
+
+    <link rel="stylesheet" href="framework7/css/framework7.min.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/app.css">
+
+
+</head>
+
+<body class="color-theme-black">
+    <div id="app">
+        <div class="statusbar"></div>
+        <div class="panel panel-left panel-cover theme-dark">
+            <div class="view">
+                <div class="page">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="title">Left Panel</div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <div class="block">Left panel content goes here</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="views tabs ios-edges">
+            <div class="toolbar tabbar-labels toolbar-bottom-md">
+                <div class="toolbar-inner">
+                    <a href="#view-pendapatan" class="tab-link tab-link-active">
+                        <i class="icon f7-icons ios-only">attach_money</i>
+                        <i class="icon f7-icons ios-only icon-ios-fill">attach_money</i>
+                        <i class="icon material-icons md-only">attach_money</i>
+                        <span class="tabbar-label">Pendapatan</span>
+                    </a>
+                    <a href="#view-penjualan" class="tab-link">
+                        <i class="icon f7-icons ios-only">local_grocery_store</i>
+                        <i class="icon f7-icons ios-only icon-ios-fill">local_grocery_store</i>
+                        <i class="icon material-icons md-only">local_grocery_store</i>
+                        <span class="tabbar-label">Penjualan</span>
+                    </a>
+                    <a href="#view-stok" class="tab-link">
+                        <i class="icon f7-icons ios-only">business_center</i>
+                        <i class="icon f7-icons ios-only icon-ios-fill">business_center</i>
+                        <i class="icon material-icons md-only">business_center</i>
+                        <span class="tabbar-label">Material</span>
+                    </a>
+                    <a href="#view-produk-lain" class="tab-link">
+                        <i class="icon f7-icons ios-only">widgets</i>
+                        <i class="icon f7-icons ios-only icon-ios-fill">widgets</i>
+                        <i class="icon material-icons md-only">widgets</i>
+                        <span class="tabbar-label">Produk Lain</span>
+                    </a>
+
+                </div>
+            </div>
+            <div id="view-pendapatan" class="view view-main tab tab-active">
+                <div class="page" data-name="home">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="title sliding">
+                                <img src="ico/halocode.png" height="40" width="50">
+                            </div>
+                            <div class="right">
+                                <a id="toadmin" class="external link icon-only " data-panel="right">
+                                    <i class="icon f7-icons ios-only">reply</i>
+                                    <i class="icon material-icons md-only">reply</i>
+                                </a>
+
+                                <a href="index.html" class="external link icon-only " data-panel="right">
+                                    <i class="icon f7-icons ios-only">exit_to_app</i>
+                                    <i class="icon material-icons md-only">exit_to_app</i>
+                                </a>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <!----------------------------------PENDAPATAN--------------------------------------------->
+
+                        <div class="data-table data-table-init card">
+                            <div class="card-header">
+                                <div class="data-table-links">
+                                    <a class="link icon-only popup-open" data-popup="#popup-tambah">
+                                        <i class="icon f7-icons ios-only">add_circle_outline</i>
+                                        <i class="icon material-icons md-only">add_circle_outline</i>
+                                    </a>
+                                </div>
+                                <div class="data-table-actions">
+                                    <a class="link icon-only">
+                                        <i class="icon f7-icons ios-only">sort</i>
+                                        <i class="icon material-icons md-only">sort</i>
+                                    </a>
+                                    <a class="link icon-only">
+                                        <i class="icon f7-icons ios-only">more_vertical_round</i>
+                                        <i class="icon material-icons md-only">more_vert</i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="records" class="card-content">
+
+
+                            </div>
+                        </div>
+
+                        <!---------------------------------POPUP TAMBAH----------------------------------------->
+                        <div class="popup" id="popup-tambah">
+                            <div class="view">
+                                <div class="page">
+                                    <div class="navbar">
+                                        <div class="navbar-inner">
+                                            <div class="title">Tambah Pendapatan</div>
+                                            <div class="right">
+                                                <a id="popup-close" href="#" class="link popup-close">Close</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="page-content">
+                                        <form method="post">
+                                            <div id="records2" class="data-table">
+                                            </div>
+
+
+
+                                            <div class="data-table card">
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><b>Pendapatan</b></td>
+                                                            <td><input name="pendapatan" id="pendapatan" style="text-align:center; border: 1px solid green; height:25px; width:150px; background-color:#dddddd" type="text" disabled></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b>Tanggal</b></td>
+                                                            <td><input name="tanggals" id="tanggals" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text" value=""></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b id="namaError">Nama</b></td>
+                                                            <td><input name="karyawan" id="karyawan" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b>Shift</b></td>
+                                                            <td>
+                                                                <select class="shift" style="text-align-last:center; border: 1px solid green; height:25px; width:150px;" name="shift" id="shift">                                  
+                              <option value="1">1</option> 
+                              <option value="2">2</option>
+                            </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="height:70px;">
+                                                            <td><b>Catatan</b></td>
+                                                            <td>
+                                                                <input type="text" name="catatan" id="catatan" style="border: 1px solid green; height:50px; width:150px;">
+                                                            </td>
+                                                        </tr>
+                                                        <tr id="modal-tr">
+                                                            <td><b id="modalError">Modal</b></td>
+                                                            <td><input name="modal" id="modal" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="number"></td>
+                                                        </tr>
+                                                        <tr id="pengeluaran-tr">
+                                                            <td><b id="pengeluaranError">Pengeluaran</b></td>
+                                                            <td><input name="pengeluaran" id="pengeluaran" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                                                        </tr>
+                                                        <tr id="saldo-tr">
+                                                            <td><b id="saldoError">Saldo</b></td>
+                                                            <td><input name="saldo" id="saldo" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </form>
+
+                                        <button id="submitFormData" class="btn-submit col button button-raised button-round">Simpan</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!---------------------------------------------------------------------------------------->
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="view-penjualan" class="view view-main tab">
+                <div class="page" data-name="home">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="title sliding">
+                                <img src="ico/halocode.png" height="40" width="50">
+                            </div>
+                            <div class="right">
+                                <a href="index.html" class="external link icon-only " data-panel="right">
+                                    <i class="icon f7-icons ios-only">exit_to_app</i>
+                                    <i class="icon material-icons md-only">exit_to_app</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <!----------------------------------PENJUALAN--------------------------------------------->
+                        <div class="data-table data-table-init card">
+                            <div class="card-header">
+                                <div class="data-table-links">
+                                    <a class="link icon-only popup-open" data-popup="#popup-tambah-penjualan">
+                                        <i class="icon f7-icons ios-only">add_circle_outline</i>
+                                        <i class="icon material-icons md-only">add_circle_outline</i>
+                                    </a>
+                                </div>
+                                <div class="data-table-actions">
+                                    <a class="link icon-only">
+                                        <i class="icon f7-icons ios-only">sort</i>
+                                        <i class="icon material-icons md-only">sort</i>
+                                    </a>
+                                    <a class="link icon-only">
+                                        <i class="icon f7-icons ios-only">more_vertical_round</i>
+                                        <i class="icon material-icons md-only">more_vert</i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="record-penjualan" class="card-content">
+                            </div>
+                        </div>
+
+
+                        <div class="popup" id="popup-tambah-penjualan">
+                            <div class="view">
+                                <div class="page">
+                                    <div class="navbar">
+                                        <div class="navbar-inner">
+                                            <div class="title">Tambah Penjualan</div>
+                                            <div class="right">
+                                                <a id="popup-close" href="#" class="link popup-close">Close</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="page-content">
+                                        <!--=====================POPUP CONTENT PENJUALAN=========================-->
+                                        <div class="list">
+                                            <ul>
+                                                <li class="accordion-item">
+                                                    <a href="#" class="item-content item-link">
+                                                        <div class="item-inner">
+                                                            <div class="item-title">Susu</div>
+                                                        </div>
+                                                    </a>
+                                                    <form id="formPenjualan">
+                                                        <div class="accordion-item-content">
+                                                            <div class="block">
+                                                                <div class="data-table card">
+                                                                    <table>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>Susu Datang</td>
+                                                                                <td><input id="susu-datang" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Sisa Kemarin Mentah</td>
+                                                                                <td><input id="sisa-kemarin-mentah" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Sisa Kemarin Matang</td>
+                                                                                <td><input id="sisa-kemarin-matang" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Sisa Matang</td>
+                                                                                <td><input id="sisa-matang" onKeyUp='penjualan()' onKeyPress='penjualan()' onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;"
+                                                                                        type="number"></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Sisa Mentah</td>
+                                                                                <td><input id="sisa-mentah" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number"></td>
+                                                                            </tr>
+                                                                            <br>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+
+                                                                <div class="block-title">Stock Dari</div>
+                                                                <div class="data-table card">
+                                                                    <table id="tbls">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td><input id="t1" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="text" placeholder="Tempat 1"></td>
+                                                                                <td><input id="stock1" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            </tr>
+
+
+                                                                            <br>
+                                                                        </tbody>
+                                                                        <button type="button" id="add-row" class="col button color-black"><i class="icon material-icons md-only">add_circle_outline</i></button>
+                                                                    </table>
+                                                                </div>
+
+                                                                <div class="block-title">Stock Diambil</div>
+                                                                <div class="data-table card">
+                                                                    <table id="tbls2">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td><input id="td1" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="text" placeholder="Tempat 1"></td>
+                                                                                <td><input id="sd1" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            </tr>
+
+
+                                                                            <br>
+                                                                        </tbody>
+                                                                        <button type="button" id="add-row2" class="col button color-black"><i class="icon material-icons md-only">add_circle_outline</i></button>
+                                                                    </table>
+                                                                </div>
+
+                                                                <div class="block-title">Total Terjual</div>
+                                                                <div class="data-table card">
+                                                                    <table>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td><input disabled id="total-penjualan" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:80px;" type="text">
+                                                                                    <td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </li>
+                                                <li class="accordion-item">
+                                                    <a href="#" class="item-content item-link">
+                                                        <div class="item-inner">
+                                                            <div class="item-title">Bumbu</div>
+                                                        </div>
+                                                    </a>
+                                                    <div class="accordion-item-content">
+                                                        <div class="block">
+
+                                                            <div class="data-table card">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <td rowspan="2" style="text-align:center"><br>Produk</br>
+                                                                            </td>
+                                                                            <td colspan="2" style="text-align:center"><br>Stock</br>
+                                                                            </td>
+                                                                            <td colspan="2" style="text-align:center"><br>Terjual</br>
+                                                                            </td>
+                                                                            <td colspan="2" style="text-align:center"><br>Sisa</br>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><br>Dingin</br>
+                                                                            </td>
+                                                                            <td><br>Hangat</br>
+                                                                            </td>
+                                                                            <td><br>Dingin</br>
+                                                                            </td>
+                                                                            <td><br>Hangat</br>
+                                                                            </td>
+                                                                            <td><br>Dingin</br>
+                                                                            </td>
+                                                                            <td><br>Hangat</br>
+                                                                            </td>
+
+                                                                        </tr>
+                                                                    </thead>
+
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Original</td>
+                                                                            <td><input id="original0" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="original1" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="original2" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="original3" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input disabled id="original4" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input disabled id="original5" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Cappucino</td>
+                                                                            <td><input id="cappucino0" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="cappucino1" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="cappucino2" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="cappucino3" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input disabled id="cappucino4" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input disabled id="cappucino5" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Coklat</td>
+                                                                            <td><input id="coklat0" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="coklat1" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="coklat2" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="coklat3" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input disabled id="coklat4" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input disabled id="coklat5" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Oreo</td>
+                                                                            <td><input id="oreo0" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="oreo1" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="oreo2" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="oreo3" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input disabled id="oreo4" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input disabled id="oreo5" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                        </tr>
+
+
+                                                                        <br>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="accordion-item">
+                                                    <a href="#" class="item-content item-link">
+                                                        <div class="item-inner">
+                                                            <div class="item-title">Cup</div>
+                                                        </div>
+                                                    </a>
+                                                    <div class="accordion-item-content">
+                                                        <div class="block">
+                                                            <div class="data-table card">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <td>Produk</td>
+                                                                            <td>Dingin</td>
+                                                                            <td>Hangat</td>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Stock Cup</td>
+                                                                            <td><input id="sc_dingin" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="sc_hangat" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Terjual</td>
+                                                                            <td><input id="tj_dingin" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="tj_hangat" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Sisa</td>
+                                                                            <td><input disabled id="ss_dingin" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input disabled id="ss_hangat" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                        </tr>
+
+
+                                                                        <br>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                        <div class="data-table card">
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><b>Tanggal</b></td>
+                                                        <td><input id="tanggal2" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text" value=""></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b id="namaError">Nama</b></td>
+                                                        <td><input id="karyawan2" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                                                    </tr>
+
+                                                    <tr style="height:70px;">
+                                                        <td><b>Catatan</b></td>
+                                                        <td>
+                                                            <input type="text" id="catatan2" style="border: 1px solid green; height:50px; width:150px;">
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+
+
+                                        </form>
+
+                                        <button id="submitPenjualan" class="btn-submit col button button-raised button-round">Simpan</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!---------------------------------------------------------------------------------------->
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="view-stok" class="view view-main tab">
+                <div class="page" data-name="home">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="title sliding">
+                                <img src="ico/halocode.png" height="40" width="50">
+                            </div>
+                            <div class="right">
+                                <a href="index.html" class="external link icon-only " data-panel="right">
+                                    <i class="icon f7-icons ios-only">exit_to_app</i>
+                                    <i class="icon material-icons md-only">exit_to_app</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <!----------------------------------MATERIAL--------------------------------------------->
+                        <div class="data-table data-table-init card">
+                            <div class="card-header">
+                                <div class="data-table-links">
+                                    <a class="link icon-only popup-open" data-popup="#popup-tambah-material">
+                                        <i class="icon f7-icons ios-only">add_circle_outline</i>
+                                        <i class="icon material-icons md-only">add_circle_outline</i>
+                                    </a>
+                                </div>
+                                <div class="data-table-actions">
+                                    <a class="link icon-only">
+                                        <i class="icon f7-icons ios-only">sort</i>
+                                        <i class="icon material-icons md-only">sort</i>
+                                    </a>
+                                    <a class="link icon-only">
+                                        <i class="icon f7-icons ios-only">more_vertical_round</i>
+                                        <i class="icon material-icons md-only">more_vert</i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="record-material-select" class="card-content">
+                            </div>
+                        </div>
+
+
+                        <div class="popup" id="popup-tambah-material">
+                            <div class="view">
+                                <div class="page">
+                                    <div class="navbar">
+                                        <div class="navbar-inner">
+                                            <div class="title">Tambah Material</div>
+                                            <div class="right">
+                                                <a id="popup-close" href="#" class="link popup-close">Close</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="page-content">
+
+                                        <!--=====================POPUP CONTENT MATERIAL=========================-->
+                                        <form id="formMaterial">
+                                            <div id="record-material" class="data-table">
+                                            </div>
+
+
+                                            <div class="data-table card">
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><b>Tanggal</b></td>
+                                                            <td><input id="tanggal3" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text" value=""></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b id="namaError">Nama</b></td>
+                                                            <td><input id="karyawan3" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                                                        </tr>
+
+                                                        <tr style="height:70px;">
+                                                            <td><b>Catatan</b></td>
+                                                            <td>
+                                                                <input type="text" id="catatan3" style="border: 1px solid green; height:50px; width:150px;">
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </form>
+
+
+
+                                        <button id="submitMaterial" class="btn-submit-material col button button-raised button-round">Simpan</button>
+                                        <!-- page content--- -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!------------------------------------------------------------------------------------>
+
+            <div id="view-produk-lain" class="view view-main tab">
+                <div class="page" data-name="home">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="title sliding">
+                                <img src="ico/halocode.png" height="40" width="50">
+                            </div>
+                            <div class="right">
+                                <a href="index.html" class="external link icon-only " data-panel="right">
+                                    <i class="icon f7-icons ios-only">exit_to_app</i>
+                                    <i class="icon material-icons md-only">exit_to_app</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+                        <!----------------------------------PRODUK LAIN--------------------------------------------->
+                        <div class="data-table data-table-init card">
+                            <div class="card-header">
+                                <div class="data-table-links">
+                                    <a id="btn-tambah-produk" class="link icon-only popup-open" data-popup="#popup-tambah-produk">
+                                        <i class="icon f7-icons ios-only">add_circle_outline</i>
+                                        <i class="icon material-icons md-only">add_circle_outline</i>
+                                    </a>
+                                </div>
+                                <div class="data-table-actions">
+                                    <a class="link icon-only">
+                                        <i class="icon f7-icons ios-only">sort</i>
+                                        <i class="icon material-icons md-only">sort</i>
+                                    </a>
+                                    <a class="link icon-only">
+                                        <i class="icon f7-icons ios-only">more_vertical_round</i>
+                                        <i class="icon material-icons md-only">more_vert</i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="record-produk-select" class="card-content">
+                            </div>
+                        </div>
+
+
+                        <div class="popup" id="popup-tambah-produk">
+                            <div class="view">
+                                <div class="page">
+                                    <div class="navbar">
+                                        <div class="navbar-inner">
+                                            <div class="title">Tambah Produk Lain</div>
+                                            <div class="right">
+                                                <a id="popup-close" href="#" class="link popup-close">Close</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="page-content">
+                                        <br>
+                                        <div class="data-table card">
+                                            <table>
+                                                <tbody>
+                                                    <form id="formProduk">
+                                                        <tr>
+                                                            <td><b>Shift</b></td>
+                                                            <td>
+                                                                <select class="shift2" onKeyUp='shiftChange()' onKeyPress='shiftChange()' style="text-align-last:center; border: 1px solid green; height:25px; width:150px;" id="shift2">                                  
+                        <option value="1">1</option> 
+                        <option value="2">2</option>
+                      </select>
+                                                            </td>
+                                                        </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+
+
+                                        <!--=====================POPUP CONTENT PRODUK LAIN=========================-->
+                                        <div class="list">
+                                            <ul>
+                                                <li id="recordProdukLain"></li>
+
+                                                <!-- <li class='accordion-item'><a href='#' class='item-content item-link'>
+                      <div class='item-inner'>
+                        <div class='item-title'>Susu</div>
+                      </div></a>
+                      <div class='accordion-item-content'>
+                          <div class='block'>
+                            <div class='data-table'>
+                            <table style='table-layout:fixed;'>
+                              <tr>
+                                <th class='label-cell'>Produk</th>
+                                <th class='label-cell'>Tambah Barang</th>
+                                <th class='label-cell'>Terjual</th>
+                                <th class='label-cell'>Sisa</th>
+                              </tr>
+                              <tr>
+                                <td class='label-cell'>Prd1</td>
+                                <td class='label-cell'><input min='0' id='tambahBarang' type='number' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress()' onKeyPress='OgKeyPress()'></td>
+                                <td class='label-cell'><input min='0' id='terjual' type='number' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress()' onKeyPress='OgKeyPress()'></td>
+                                <td class='label-cell'><input min='0' id='sisa' type='number' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress()' onKeyPress='OgKeyPress()'></td>
+                              </tr>
+                            </table>
+                            </div>
+                          </div> 
+                      </div>                
+                  </li> -->
+
+                                                </li>
+                                            </ul>
+                                        </div>
+
+
+
+
+
+
+                                        <div id="record-produk" class="data-table">
+                                        </div>
+
+
+                                        <div class="data-table card">
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><b>Tanggal</b></td>
+                                                        <td><input id="tanggal4" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text" value=""></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b id="namaError">Nama</b></td>
+                                                        <td><input id="karyawan4" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                                                    </tr>
+
+                                                    <tr style="height:70px;">
+                                                        <td><b>Catatan</b></td>
+                                                        <td>
+                                                            <input type="text" id="catatan4" style="border: 1px solid green; height:50px; width:150px;">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b id="namaError">Pendapatan</b></td>
+                                                        <td><input disabled id="pendapatan4" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        </form>
+
+
+
+                                        <button id="submitProduk" class="btn-submit-material col button button-raised button-round">Simpan</button>
+                                        <!-- page content--- -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!------------------------------------------------------------------------------------------>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+    </div>
+    <script src="framework7/js/framework7.min.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/jquery-latest.js"></script>
+
+    <script src="js/penjualan.js"></script>
+    <script type="text/javascript">
+        var nm = Number(sessionStorage.getItem("fromadmin"));
+
+
+        if (nm == 1) {
+            document.getElementById("toadmin").style.display = 'none';
+        }
+
+        $('a[id="toadmin"]').click(function() {
+            window.location.href = "admin.html";
+            sessionStorage.setItem("outlet", 0);
+            sessionStorage.setItem("login", true);
+
+        });
+
+
+        var outlet = sessionStorage.getItem("outlet");
+        outlet = outlet.replace(/\s/g, '');
+
+
+        var api = "http://susumaktam.com/maktam2/maktam/maktam/api/pendapatan/";
+        var count = 0;
+        var harga_dingin = [];
+        var harga_hangat = [];
+        var totalDgn = 0;
+        var totalHgt = 0;
+        var totalBns = 0;
+        var mode = 0;
+        var idx = 0;
+        var status_pendapatan = 0;
+
+        select_pendapatan_rasa();
+
+        var dgn = [];
+        var hgt = [];
+        var bns = [];
+        var total_dingin = 0;
+        var total_hangat = 0;
+        var total_bonus = 0;
+
+        $("#tanggals").val(getDate());
+
+        for (var y = 0; y <= 100; y++) {
+            dgn[y] = "";
+            hgt[y] = "";
+            bns[y] = "";
+        }
+
+
+        $(document).ready(function() {
+            document.getElementById('modal-tr').style.visibility = 'hidden';
+            document.getElementById('pengeluaran-tr').style.visibility = 'hidden';
+            document.getElementById('saldo-tr').style.visibility = 'hidden';
+
+            $("select.shift").change(function() {
+                var selectedCountry = $(this).children("option:selected").val();
+                if (selectedCountry == 2) {
+                    //console.log(status_pendapatan);
+
+                    //if (status_pendapatan == 1) {
+                    document.getElementById('modal-tr').style.visibility = 'visible';
+                    document.getElementById('pengeluaran-tr').style.visibility = 'visible';
+                    $("#modal-tr").fadeIn("slow");
+                    $("#pengeluaran-tr").fadeIn("slow");
+                    //} else {
+                    //app.dialog.alert("Shift 1 harap diisi terlebih dahulu");
+                    //}
+                } else {
+                    document.getElementById('modal-tr').style.visibility = 'hidden';
+                    document.getElementById('pengeluaran-tr').style.visibility = 'hidden';
+
+
+                }
+            });
+        });
+
+        $('#karyawan').on('input', function() {
+            if ($("karyawan").val != "") {
+                $("#namaError").css("color", "black");
+                $("#karyawan").css("border", "1px solid green");
+            }
+        });
+        $('#modal').on('input', function() {
+            if ($("modal").val != "") {
+                $("#modalError").css("color", "black");
+                $("#modal").css("border", "1px solid green");
+            }
+        });
+        $('#pengeluaran').on('input', function() {
+            if ($("pengeluaran").val != "") {
+                $("#pengeluaranError").css("color", "black");
+                $("#pengeluaran").css("border", "1px solid green");
+            }
+        });
+
+
+
+        //========================Array PHP ke Javascript=======================
+
+        //=========================Perhitungan Pendapatan=======================
+
+        function OgKeyPress() {
+            var coun = 0;
+            var harga_total = 0;
+            total_dingin = 0;
+            total_hangat = 0;
+            total_bonus = 0;
+            for (var h = 0; h < count; h++) {
+                coun = h + 1;
+                harga_total = harga_total + (Number($("#dingin" + coun).val()) * harga_dingin[h] + Number($("#hangat" + coun).val()) * harga_hangat[h]);
+                total_dingin = total_dingin + Number($("#dingin" + coun).val());
+                total_hangat = total_hangat + Number($("#hangat" + coun).val());
+                total_bonus = total_bonus + Number($("#bonus" + coun).val());
+            }
+
+
+            document.getElementById("pendapatan").value = harga_total;
+            document.getElementById("total-dingin").value = total_dingin;
+            document.getElementById("total-hangat").value = total_hangat;
+            document.getElementById("total-bonus").value = total_bonus;
+
+        }
+
+
+
+        $('.btn-submit').click(function() {
+            var dingin = [];
+            var hangat = [];
+            var bonus = [];
+            var pls = 0;
+
+            for (var i = 0; i < count; i++) {
+                pls = i + 1;
+                dingin[i] = $("#dingin" + pls).val();
+                hangat[i] = $("#hangat" + pls).val();
+                bonus[i] = $("#bonus" + pls).val();
+            }
+            var tanggal = $("#tanggals").val();
+            var karyawan = $("#karyawan").val();
+            var shift = $("#shift").val();
+            var catatan = $("#catatan").val();
+            var modal = $("#modal").val();
+            var pengeluaran = $("#pengeluaran").val();
+            var pendapatan = $("#pendapatan").val();
+
+            catatan = catatan.replace(/(\r\n|\n|\r)/gm, " ");
+
+            var stateNama;
+            var stateModal = statePengeluaran = 1;
+
+            //=============================FORM VALIDATION===============================
+            if (karyawan == "") {
+                $("#namaError").css("color", "red");
+                $("#karyawan").css("border", "1px solid red");
+                stateNama = 0;
+            } else {
+                stateNama = 1;
+            }
+
+            if (shift == 2) {
+                if (modal == "") {
+                    $("#modalError").css("color", "red");
+                    $("#modal").css("border", "1px solid red");
+                    stateModal = 0;
+                } else {
+                    stateModal = 1;
+                }
+                if (pengeluaran == "") {
+                    $("#pengeluaranError").css("color", "red");
+                    $("#pengeluaran").css("border", "1px solid red");
+                    statePengeluaran = 0;
+                } else {
+                    statePengeluaran = 1;
+                }
+            }
+
+            //==============================SUBMIT PENDAPATAN=======================================
+            var info = [tanggal, karyawan, shift, catatan, modal, pengeluaran, pendapatan, outlet, mode, idx];
+            var data = dingin.concat(hangat);
+            var data = data.concat(bonus);
+            var data = data.concat(info);
+
+            var datas = {};
+            var maxLength = count * 3 + 10;
+            for (var j = 0; j < maxLength; j++) {
+                datas["dt" + j] = data[j];
+            }
+
+
+            if (stateNama && stateModal && statePengeluaran) {
+                $.ajax({
+                    type: "POST",
+                    url: api + "pendapatan_submit.php",
+                    data: datas,
+                    cache: false,
+                    success: function(html) {
+                        if (html == "200") {
+                            clearForm();
+                            app.popup.close();
+                            select_pendapatan();
+                        } else {
+                            app.dialog.alert("Data Sudah Ada!", "");
+                        }
+                    }
+                });
+            }
+        });
+        //===============================SELECT PENDAPATAN====================================================
+        function select_pendapatan() {
+            $.ajax({
+                type: "POST",
+                url: api + "pendapatan_select.php",
+                data: ({
+                    outlet: outlet
+                }),
+                cache: false,
+                success: function(data) {
+                    var string = "<table> <thead> <tr> <th class='numeric-cell'><b>Tanggal</b></th> <th class='numeric-cell'><b>Shift</b></th> <th class='numeric-cell'><b>Karyawan</b></th> <th></th> </tr> </thead> <tbody>";
+                    var result = $.parseJSON(data);
+                    var d = 0;
+                    $.each(result, function(key, value) {
+                        if (d == 0) {
+                            if (value['shift'] == 1) status_pendapatan = 1;
+                            else status_pendapatan = 0;
+                        }
+                        string += "<tr class='delete_mem" + value['id'] + "'> <td width='20%' class='numeric-cell'>" + value['date'] + "</td> <td class='numeric-cell'>" + value['shift'] + "</td> <td class='numeric-cell'>" + value['employee'] + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
+                        d++;
+                    });
+                    string += "</tbody></table>";
+                    $("#records").html(string);
+                }
+            });
+        }
+
+        //============================Edit Pendapatan==========================================
+        $('#records').on('click', '.btn-edit', function() {
+            mode = 1;
+            var id = $(this).attr("id");
+            $.ajax({
+                type: "POST",
+                url: api + "pendapatan_select_edit.php",
+                data: ({
+                    id: id
+                }),
+                cache: false,
+                success: function(data) {
+                    var result = $.parseJSON(data);
+                    $.each(result, function(key, row) {
+                        dgn = JSON.parse(row['coldcup']);
+                        hgt = JSON.parse(row['warmcup']);
+                        bns = JSON.parse(row['bonus']);
+                        $("#pendapatan").val(row['income']);
+                        $("#tanggals").val(row['date']);
+                        $("#karyawan").val(row['employee']);
+                        $("#shift").val(row['shift']);
+                        $("#catatan").val(row['note']);
+                        $("#modal").val(row['modals']);
+                        $("#pengeluaran").val(row['expenditure']);
+                        $("#saldo").val(row['saldo2']);
+
+
+                        for (var i = 0; i < dgn.length; i++) {
+                            total_dingin = total_dingin + Number(dgn[i]);
+                            total_hangat = total_hangat + Number(hgt[i]);
+                            total_bonus = total_bonus + Number(bns[i]);
+                        }
+
+                        idx = row['id'];
+                        if (row['shift'] == 2) {
+                            document.getElementById('modal-tr').style.visibility = 'visible';
+                            document.getElementById('pengeluaran-tr').style.visibility = 'visible';
+                            document.getElementById('saldo-tr').style.visibility = 'visible';
+                        }
+                        select_pendapatan_rasa();
+                    });
+                }
+            });
+            app.popup.open("#popup-tambah", true);
+        });
+
+
+
+
+
+        function select_pendapatan_rasa() {
+            $.ajax({
+                type: "POST",
+                url: api + "pendapatan_rasa.php",
+                data: ({
+                    outlet: outlet
+                }),
+                cache: false,
+                success: function(data) {
+                    var string = "<table style='table-layout:fixed;'> <thead> <tr> <th class='label-cell'><b>Rasa</b></th> <th class='label-cell'><b>Dingin</b></th> <th class='label-cell'><b>Hangat</b></th> <th class='label-cell'><b>Bonus</b></th> </tr> </thead> <tbody>";
+                    var result = $.parseJSON(data);
+                    count = 0;
+                    var cnt = 0;
+
+                    $.each(result, function(key, row) {
+                        harga_dingin[count] = row['harga_dingin'];
+                        harga_hangat[count] = row['harga_hangat'];
+                        count++;
+                        string += "<tr> <td class='label-cell'><b>" + row['rasa'] + "</b></td> <td class='label-cell'> <input value='" + dgn[cnt] + "' min='0' name='dingin" + count + "' id='dingin" + count + "' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress()' onKeyPress='OgKeyPress()'></td> <td class='label-cell'> <input value='" + hgt[cnt] + "' min='0' name='hangat" + count + "' id='hangat" + count + "' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress()' onKeyPress='OgKeyPress()'></td> <td class='label-cell'> <input value='" + bns[cnt] + "' min='0' name='bonus'" + count + " id='bonus" + count + "' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress()' onKeyPress='OgKeyPress()'></td> </tr>";
+                        cnt++;
+                    });
+                    string += "<tr> <td class='label-cell'><b>Total</b></td> <td class='label-cell'> <input  value='" + total_dingin + "' min='0' id='total-dingin' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid blue;' onKeyUp='OgKeyPress()' onKeyPress='OgKeyPress()'></td> <td class='label-cell'> <input  value='" + total_hangat + "' min='0' id='total-hangat' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid blue;' onKeyUp='OgKeyPress()' onKeyPress='OgKeyPress()'></td> <td class='label-cell'> <input  value='" + total_bonus + "' min='0' id='total-bonus' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid blue;' onKeyUp='OgKeyPress()' onKeyPress='OgKeyPress()'></td> </tr>";
+                    string += "</table>";
+                    $("#records2").html(string);
+                }
+            });
+        }
+
+
+        $(document).ready(function() {
+            select_pendapatan();
+
+            //===================================DELETE PENDAPATAN===============================================================
+            $('#records').on('click', '.btn-delete', function() {
+                var id = $(this).attr("id");
+
+                app.dialog.confirm('Anda yakin ingin menghapus?', 'Peringatan!', function() {
+                    $.ajax({
+                        type: "POST",
+                        url: api + "pendapatan_delete.php",
+                        data: ({
+                            id: id
+                        }),
+                        cache: false,
+                        success: function(html) {
+                            $(".delete_mem" + id).fadeOut('slow');
+                        }
+                    });
+                });
+
+            });
+
+
+
+        });
+
+        //==============================Clear Forms==============================
+
+        function clearForm() {
+            for (var i = 0; i < count; i++) {
+                pls = i + 1;
+                $("#dingin" + pls).val("");
+                $("#hangat" + pls).val("");
+                $("#bonus" + pls).val("");
+            }
+            $("#karyawan").val("");
+            $("#catatan").val("");
+            $("#modal").val("");
+            $("#pengeluaran").val("");
+            $("#pendapatan").val("");
+            document.getElementById('modal-tr').style.visibility = 'hidden';
+            document.getElementById('pengeluaran-tr').style.visibility = 'hidden';
+            document.getElementById('saldo-tr').style.visibility = 'hidden';
+            $("#shift").val("1");
+
+            total_dingin = 0;
+            total_hangat = 0;
+            total_bonus = 0;
+        }
+
+        $$('#popup-tambah').on('popup:close', function(e, popup) {
+            clearForm();
+            mode = 0;
+        });
+
+
+        $('a[href="#logout"]').click(function() {
+            sessionStorage.clear();
+            window.location.href = "index.html";
+        });
+
+
+        function getDate() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+
+            today = dd + '/' + mm + '/' + yyyy;
+            return today;
+        }
+
+        //==========================PENJUALAN===============================================================
+        var api_penjualan = "http://susumaktam.com/maktam2/maktam/maktam/api/penjualan/";
+        var id = 1;
+        var id2 = 1;
+        var total_penjualan = 0;
+        var stock = diambil = 0;
+        var stock_dari_stock = [];
+        var stock_dari_tempat = [];
+        var diambil_dari_tempat = [];
+        var diambil_dari_stock = [];
+        var mode2 = 0;
+        var idx2 = 0;
+
+        select_penjualan()
+
+        $("#tanggal2").val(getDate());
+        $("#add-row").click(function() {
+            id++;
+            var markup = "<tr id='tr-delete" + id + "'> <td><input id='t" + id + "' onKeyUp='penjualan()' onKeyPress='penjualan()' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='text' placeholder='Tempat " + id + "'</td> <td><input id='stock" + id + "' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;' type='number'></td> </tr> <tr>";
+            $("#tbls tbody").append(markup);
+        });
+
+        $("#add-row2").click(function() {
+            id2++;
+            var markup = "<tr id='tr-delete2" + id2 + "'> <td><input id='td" + id2 + "' onKeyUp='penjualan()' onKeyPress='penjualan()' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='text' placeholder='Tempat " + id2 + "'</td> <td><input id='sd" + id2 + "' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;' type='number'></td> </tr> <tr>";
+            $("#tbls2 tbody").append(markup);
+        });
+
+
+        for (var p = 1; p <= 10; p++) {
+            var stck = "#stock" + p;
+            $("table").on("keypress", stck, function() {
+                penjualan();
+            });
+            $("table").on("keyup", stck, function() {
+                penjualan();
+            });
+        }
+
+        for (var p = 1; p <= 10; p++) {
+            var stck = "#sd" + p;
+            $("table").on("keypress", stck, function() {
+                penjualan();
+            });
+            $("table").on("keyup", stck, function() {
+                penjualan();
+            });
+        }
+
+        $('#karyawan2').on('input', function() {
+            if ($("#karyawan2").val != "") {
+                $("#karyawan2").css("border", "1px solid green");
+            }
+        });
+
+
+        function penjualan() {
+            stock = 0;
+            diambil = 0;
+            for (var i = 1; i <= id; i++) {
+                stock_dari_stock[i] = $("#stock" + i).val();
+                stock = stock + Number(stock_dari_stock[i]);
+            }
+            for (var i = 1; i <= id2; i++) {
+                diambil_dari_stock[i] = $("#sd" + i).val();
+                diambil = diambil + Number(diambil_dari_stock[i]);
+            }
+
+            total_penjualan = Number($("#susu-datang").val()) + Number($("#sisa-kemarin-mentah").val()) + Number($("#sisa-kemarin-matang").val()) - Number($("#sisa-matang").val()) - Number($("#sisa-mentah").val()) + Number(stock) - Number(diambil);
+            $("#total-penjualan").val(total_penjualan);
+
+            $("#original4").val(Number($("#original0").val()) - Number($("#original2").val()));
+            $("#original5").val(Number($("#original1").val()) - Number($("#original3").val()));
+            $("#cappucino4").val(Number($("#cappucino0").val()) - Number($("#cappucino2").val()));
+            $("#cappucino5").val(Number($("#cappucino1").val()) - Number($("#cappucino3").val()));
+            $("#coklat4").val(Number($("#coklat0").val()) - Number($("#coklat2").val()));
+            $("#coklat5").val(Number($("#coklat1").val()) - Number($("#coklat3").val()));
+            $("#oreo4").val(Number($("#oreo0").val()) - Number($("#oreo2").val()));
+            $("#oreo5").val(Number($("#oreo1").val()) - Number($("#oreo3").val()));
+
+            $("#ss_dingin").val(Number($("#sc_dingin").val()) - Number($("#tj_dingin").val()));
+            $("#ss_hangat").val(Number($("#sc_hangat").val()) - Number($("#tj_hangat").val()));
+
+        }
+
+
+        $("#submitPenjualan").click(function() {
+            stock_dari_stock = [];
+            diambil_dari_stock = [];
+            var susu_datang = $("#susu-datang").val();
+            var sisa_kemarin_mentah = $("#sisa-kemarin-mentah").val();
+            var sisa_kemarin_matang = $("#sisa-kemarin-matang").val();
+            var sisa_matang = $("#sisa-matang").val();
+            var sisa_mentah = $("#sisa-mentah").val();
+
+            for (var i = 0; i < id; i++) {
+                stock_dari_tempat[i] = $("#t" + Number(i + 1)).val();
+                stock_dari_stock[i] = $("#stock" + Number(i + 1)).val();
+            }
+            for (var i = 0; i < id2; i++) {
+                diambil_dari_tempat[i] = $("#td" + Number(i + 1)).val();
+                diambil_dari_stock[i] = $("#sd" + Number(i + 1)).val();
+            }
+
+            var total = $("#total-penjualan").val();
+            var original = [];
+            var cappucino = [];
+            var coklat = [];
+            var oreo = [];
+            for (var j = 0; j < 6; j++) {
+                original[j] = $("#original" + j).val();
+                cappucino[j] = $("#cappucino" + j).val();
+                coklat[j] = $("#coklat" + j).val();
+                oreo[j] = $("#oreo" + j).val();
+            }
+            var sc_dingin = $("#sc_dingin").val();
+            var sc_hangat = $("#sc_hangat").val();
+            var tj_dingin = $("#tj_dingin").val();
+            var tj_hangat = $("#tj_hangat").val();
+            var ss_dingin = $("#ss_dingin").val();
+            var ss_hangat = $("#ss_hangat").val();
+
+            var tanggal = $("#tanggal2").val();
+            var karyawan = $("#karyawan2").val();
+            var catatan = $("#catatan2").val();
+
+            catatan = catatan.replace(/(\r\n|\n|\r)/gm, " ");
+
+            var data = [tanggal, outlet, susu_datang, sisa_kemarin_mentah, sisa_kemarin_matang, sisa_matang, sisa_mentah];
+            data = data.concat(total);
+            data = data.concat(original);
+            data = data.concat(cappucino);
+            data = data.concat(coklat);
+            data = data.concat(oreo);
+            data = data.concat(sc_dingin);
+            data = data.concat(sc_hangat);
+            data = data.concat(tj_dingin);
+            data = data.concat(tj_hangat);
+            data = data.concat(ss_dingin);
+            data = data.concat(ss_hangat);
+            data = data.concat(mode2);
+            data = data.concat(idx2);
+            data = data.concat(karyawan);
+            data = data.concat(catatan);
+            data = data.concat(id);
+            data = data.concat(id2);
+            data = data.concat(stock_dari_tempat);
+            data = data.concat(stock_dari_stock);
+            data = data.concat(diambil_dari_tempat);
+            data = data.concat(diambil_dari_stock);
+
+
+            var datas = {};
+            for (var j = 0; j < data.length; j++) {
+                datas["dt" + j] = data[j];
+            }
+
+            var stateName;
+            if (karyawan == "") {
+                $("#karyawan2").css("border", "1px solid red");
+                stateNama = 0;
+            } else {
+                stateNama = 1;
+            }
+
+            if (stateNama == 1) {
+                $.ajax({
+                    type: "POST",
+                    url: api_penjualan + "penjualan_submit.php",
+                    data: datas,
+                    cache: false,
+                    success: function(html) {
+                        if (html == "200") {
+                            $("#formPenjualan").trigger("reset");
+                            $("#tanggal2").val(getDate());
+                            select_penjualan();
+                            app.popup.close();
+                        } else {
+                            //alert("Data tanggal "+tanggal+" sudah ada!")
+                            app.dialog.alert("Data sudah ada!", "");
+                        }
+                    }
+                });
+            }
+
+
+        });
+
+        function select_penjualan() {
+            $.ajax({
+                type: "POST",
+                url: api_penjualan + "penjualan_select.php",
+                data: ({
+                    outlet: outlet
+                }),
+                cache: false,
+                success: function(data) {
+
+                    var string = "<table> <thead> <tr> <th class='numeric-cell'><b>Tanggal</b></th> <th class='numeric-cell'><b>Karyawan</b></th> <th></th> </tr> </thead> <tbody>";
+                    var result = $.parseJSON(data);
+                    var data = [];
+                    var c = 0;
+
+
+                    $.each(result, function(key, value) {
+                        data = JSON.parse(value['tempat']);
+
+                        c++;
+                        var employee = data[40];
+                        string += "<tr class='delete_penjualan" + value['id'] + "'> <td width='20%' class='numeric-cell'>" + value['date'] + "</td> <td class='numeric-cell'>" + employee + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
+
+                    });
+                    string += "</tbody></table>";
+                    $("#record-penjualan").html(string);
+                }
+            });
+        }
+
+        $('#record-penjualan').on('click', '.btn-edit', function() {
+            mode2 = 1;
+            var id = $(this).attr("id");
+            idx2 = id;
+            $.ajax({
+                type: "POST",
+                url: api_penjualan + "penjualan_select_edit.php",
+                data: ({
+                    id: id
+                }),
+                cache: false,
+                success: function(data) {
+                    data_penjualan = JSON.parse(data);
+
+                    $("#susu-datang").val(data_penjualan[2]);
+                    $("#sisa-kemarin-mentah").val(data_penjualan[3]);
+                    $("#sisa-kemarin-matang").val(data_penjualan[4]);
+                    $("#sisa-matang").val(data_penjualan[5]);
+                    $("#sisa-mentah").val(data_penjualan[6]);
+
+                    var l1 = data_penjualan[42];
+                    var l2 = data_penjualan[43];
+
+                    for (var i = 0; i < 20; i++) $("#tr-delete" + i).remove();
+                    for (var i = 0; i < 20; i++) $("#tr-delete2" + i).remove();
+
+                    for (var i = 0; i < Number(l1 - 1); i++) {
+                        var markup = "<tr id='tr-delete" + i + "'> <td><input id='t" + Number(i + 2) + "' onKeyUp='penjualan()' onKeyPress='penjualan()' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='text' placeholder='Tempat " + Number(i + 2) + "'</td> <td><input id='stock" + Number(i + 2) + "' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;' type='number'></td> </tr> <tr>";
+                        $("#tbls tbody").append(markup);
+                    }
+                    for (var i = 0; i < Number(l2 - 1); i++) {
+                        var markup = "<tr id='tr-delete2" + i + "'> <td><input id='td" + Number(i + 2) + "' onKeyUp='penjualan()' onKeyPress='penjualan()' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='text' placeholder='Tempat " + Number(i + 2) + "'</td> <td><input id='sd" + Number(i + 2) + "' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;' type='number'></td> </tr> <tr>";
+                        $("#tbls2 tbody").append(markup);
+                    }
+                    for (var i = 0; i < l1; i++) {
+                        $("#t" + Number(i + 1)).val(data_penjualan[44 + i]);
+                        $("#stock" + Number(i + 1)).val(data_penjualan[44 + Number(l1) + i]);
+                    }
+
+                    for (var i = 0; i < l2; i++) {
+                        $("#td" + Number(i + 1)).val(data_penjualan[44 + Number(2 * l1) + i]);
+                        $("#sd" + Number(i + 1)).val(data_penjualan[44 + Number(2 * l1) + Number(l2) + i]);
+                    }
+
+                    $("#total-penjualan").val(data_penjualan[7]);
+
+                    for (var j = 0; j < 6; j++) {
+                        $("#original" + j).val(data_penjualan[8 + j]);
+                        $("#cappucino" + j).val(data_penjualan[14 + j]);
+                        $("#coklat" + j).val(data_penjualan[20 + j]);
+                        $("#oreo" + j).val(data_penjualan[26 + j]);
+                    }
+
+                    $("#sc_dingin").val(data_penjualan[32]);
+                    $("#sc_hangat").val(data_penjualan[33]);
+                    $("#tj_dingin").val(data_penjualan[34]);
+                    $("#tj_hangat").val(data_penjualan[35]);
+                    $("#ss_dingin").val(data_penjualan[36]);
+                    $("#ss_hangat").val(data_penjualan[37]);
+
+                    $("#tanggal2").val(data_penjualan[0]);
+                    $("#karyawan2").val(data_penjualan[40]);
+                    $("#catatan2").val(data_penjualan[41]);
+
+
+                }
+            });
+            app.popup.open("#popup-tambah-penjualan", true);
+        });
+
+
+        $('#record-penjualan').on('click', '.btn-delete', function() {
+            var id = $(this).attr("id");
+            app.dialog.confirm("Anda yakin ingin menghapus?", "Peringatan!", function() {
+                $.ajax({
+                    type: "POST",
+                    url: api_penjualan + "penjualan_delete.php",
+                    data: ({
+                        id: id
+                    }),
+                    cache: false,
+                    success: function(html) {
+                        $(".delete_penjualan" + id).fadeOut('slow');
+                    }
+                });
+            });
+        });
+
+        $$('#popup-tambah-penjualan').on('popup:close', function(e, popup) {
+            $("#formPenjualan").trigger("reset");
+            $("#tanggal2").val(getDate());
+            for (var i = 0; i < 20; i++) $("#tr-delete" + i).remove();
+            for (var i = 0; i < 20; i++) $("#tr-delete2" + i).remove();
+            mode2 = 0;
+            idx2 = 0;
+        });
+
+        //============================================MATERIAL===========================================================
+        var api_material = "http://susumaktam.com/maktam2/maktam/maktam/api/material/";
+        var mode3 = 0;
+        var idx3 = 0;
+        var count_material = 0;
+        var std_val = [];
+
+        $("#tanggal3").val(getDate());
+        select_std();
+        show_material();
+        select_material();
+
+        $('#tanggal3').keyup(function() {
+            select_std();
+            select_material();
+        });
+
+        $('#tanggal3').keypress(function() {
+            select_std();
+            select_material();
+        });
+
+
+        //=================Select STD=======================================
+        function select_std() {
+            var tanggal = $("#tanggal3").val();
+            $.ajax({
+                type: "POST",
+                url: api_material + "material_std.php",
+                data: ({
+                    outlet: outlet,
+                    tanggal: tanggal
+                }),
+                cache: false,
+                success: function(data) {
+                    console.log(data);
+                    try {
+                        std_val = JSON.parse(data);
+                    } catch (err) {
+                        std_val = [];
+                    }
+                }
+            });
+        }
+        //==================Select Material di Popup===========================
+        function select_material() {
+            $.ajax({
+                type: "POST",
+                url: api_material + "material_select.php",
+                data: ({
+                    outlet: outlet
+                }),
+                cache: false,
+                success: function(data) {
+                    var string = "<table style='table-layout:fixed;'> <thead> <tr> <th class='label-cell'><b>Barang</b></th> <th class='label-cell'><b>Jumlah</b></th> <th class='label-cell'><b>Tambah</b></th> <th class='label-cell'><b>Std</b></th> </tr> </thead> <tbody>";
+                    var result = $.parseJSON(data);
+                    count_material = 0;
+
+                    $.each(result, function(key, row) {
+                        if (typeof std_val[count_material] == 'undefined') std_val[count_material] = 0;
+                        string += "<tr> <td class='label-cell'><b>" + row['material'] + "</b></td> <td class='label-cell'> <input value='' min='0' id='jumlah" + count_material + "' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress2()' onKeyPress='OgKeyPress2()'></td> <td class='label-cell'> <input disabled value='' min='0' id='tambah" + count_material + "' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress2()' onKeyPress='OgKeyPress2()'></td> <td class='label-cell'> <input disabled value='" + std_val[count_material] + "' min='0' id='std" + count_material + "' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress2()' onKeyPress='OgKeyPress2()'></td> </tr>";
+                        count_material++;
+                    });
+                    string += "<tr> <td class='label-cell'><b>Total</b></td> <td class='label-cell'> <input id='total-jumlah' min='0' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid blue;' onKeyUp='OgKeyPress2()' onKeyPress='OgKeyPress2()'></td> <td class='label-cell'> <input min='0' id='total-tambah' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid blue;' onKeyUp='OgKeyPress2()' onKeyPress='OgKeyPress2()'></td> <td class='label-cell'> <input min='0' id='total-std' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid blue;' onKeyUp='OgKeyPress2()' onKeyPress='OgKeyPress2()'></td> </tr>";
+                    string += "</table>";
+                    $("#record-material").html(string);
+                }
+            });
+        }
+
+
+        //============================Ketika Key Pres Hitung Otomatis==================
+        function OgKeyPress2() {
+            var total_jumlah = 0;
+            var total_tambah = 0;
+            var total_std = 0;
+
+            for (i = 0; i < count_material; i++) {
+                $("#tambah" + i).val(Number($("#std" + i).val() - $("#jumlah" + i).val()));
+                total_jumlah = total_jumlah + Number($("#jumlah" + i).val());
+                total_tambah = total_tambah + Number($("#tambah" + i).val());
+                total_std = total_std + Number($("#std" + i).val());
+            }
+            $("#total-jumlah").val(total_jumlah);
+            $("#total-tambah").val(total_tambah);
+            $("#total-std").val(total_std);
+
+        }
+
+        //===============Submit Material=============================
+        $("#submitMaterial").click(function() {
+            var jumlah = [];
+            var tambah = [];
+            var std = [];
+
+            for (i = 0; i < count_material; i++) {
+                jumlah[i] = $("#jumlah" + i).val();
+                tambah[i] = $("#tambah" + i).val();
+                std[i] = $("#std" + i).val();
+            }
+
+            var tanggal = $("#tanggal3").val();
+            var karyawan = $("#karyawan3").val();
+            var catatan = $("#catatan3").val();
+            catatan = catatan.replace(/(\r\n|\n|\r)/gm, " ");
+
+            var totalJumlah = $("#total-jumlah").val();
+            var totalTambah = $("#total-tambah").val();
+            var totalStd = $("#total-std").val();
+
+            var data = [tanggal, outlet, karyawan, catatan, count_material, mode3, idx3];
+            data = data.concat(jumlah);
+            data = data.concat(tambah);
+            data = data.concat(std);
+            data = data.concat(totalJumlah);
+            data = data.concat(totalTambah);
+            data = data.concat(totalStd);
+
+            var datas = {};
+            for (var j = 0; j < data.length; j++) {
+                datas["dt" + j] = data[j];
+            }
+
+            var stateNama;
+            if (karyawan == "") {
+                $("#karyawan3").css("border", "1px solid red");
+                stateNama = 0;
+            } else {
+                stateNama = 1;
+            }
+
+            if (stateNama == 1) {
+                $.ajax({
+                    type: "POST",
+                    url: api_material + "material_submit.php",
+                    data: datas,
+                    cache: false,
+                    success: function(html) {
+                        if (html == "200") {
+                            $("#formMaterial").trigger("reset");
+                            $("#tanggal3").val(getDate());
+                            show_material();
+                            app.popup.close();
+                        } else {
+                            app.dialog.alert("Data tanggal " + tanggal + " sudah ada!", "");
+                        }
+                    }
+                });
+            }
+        });
+
+
+        //========================Show Material============================
+        function show_material() {
+            $.ajax({
+                type: "POST",
+                url: api_material + "material_show.php",
+                data: ({
+                    outlet: outlet
+                }),
+                cache: false,
+                success: function(data) {
+                    var string = "<table> <thead> <tr> <th class='numeric-cell'><b>Tanggal</b></th> <th class='numeric-cell'><b>Karyawan</b></th> <th></th> </tr> </thead> <tbody>";
+                    var result = $.parseJSON(data);
+                    var dataMaterial = [];
+
+                    $.each(result, function(key, value) {
+                        dataMaterial = JSON.parse(value['total']);
+                        string += "<tr class='delete_material" + value['id'] + "'> <td width='20%' class='numeric-cell'>" + value['date'] + "</td> <td class='numeric-cell'>" + value['employee'] + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' class='btn-download link icon-only'> <i class='icon f7-icons ios-only'>get_app</i> <i class='icon material-icons md-only'>get_app</i> </a> <a id='" + value['id'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
+                    });
+                    string += "</tbody></table>";
+                    $("#record-material-select").html(string);
+                }
+            });
+        }
+
+        $('#record-material-select').on('click', '.btn-delete', function() {
+            var id = $(this).attr("id");
+            app.dialog.confirm("Anda yakin ingin menghapus?", "", function() {
+                $.ajax({
+                    type: "POST",
+                    url: api_material + "material_delete.php",
+                    data: ({
+                        id: id
+                    }),
+                    cache: false,
+                    success: function(html) {
+                        $(".delete_material" + id).fadeOut('slow');
+                    }
+                });
+            });
+        });
+
+
+        $('#record-material-select').on('click', '.btn-download', function() {
+            var id = $(this).attr("id");
+            idx3 = id;
+
+            var api_print_pendapatan = "http://susumaktam.com/api/print_material_outlet.php?id=" + idx3 + "&outlet=" + outlet;
+
+            window.location.href = api_print_pendapatan;
+
+
+        });
+
+
+
+        $('#record-material-select').on('click', '.btn-edit', function() {
+            mode3 = 1;
+            var id = $(this).attr("id");
+            idx3 = id;
+            $.ajax({
+                type: "POST",
+                url: api_material + "material_edit.php",
+                data: ({
+                    id: id
+                }),
+                cache: false,
+                success: function(data) {
+                    dataMaterialEdit = JSON.parse(data);
+                    lengthMaterial = dataMaterialEdit[4];
+                    for (i = 0; i < lengthMaterial; i++) {
+                        $("#jumlah" + i).val(dataMaterialEdit[7 + i]);
+                        $("#tambah" + i).val(dataMaterialEdit[7 + Number(lengthMaterial) + i]);
+                        $("#std" + i).val(dataMaterialEdit[7 + Number(lengthMaterial) * 2 + i]);
+                    }
+                    $("#tanggal3").val(dataMaterialEdit[0]);
+                    $("#karyawan3").val(dataMaterialEdit[2]);
+                    $("#catatan3").val(dataMaterialEdit[3]);
+
+                    $("#total-jumlah").val(dataMaterialEdit[dataMaterialEdit.length - 3]);
+                    $("#total-tambah").val(dataMaterialEdit[dataMaterialEdit.length - 2]);
+                    $("#total-std").val(dataMaterialEdit[dataMaterialEdit.length - 1]);
+
+                }
+            });
+            app.popup.open("#popup-tambah-material", true);
+        });
+
+        $$('#popup-tambah-material').on('popup:close', function(e, popup) {
+            $("#formMaterial").trigger("reset");
+            $("#tanggal3").val(getDate());
+            mode3 = 0;
+            idx3 = 0;
+        });
+
+        //==================================PRODUK LAIN ===========================================
+        var api_produk = "http://susumaktam.com/maktam2/maktam/maktam/api/produk/";
+        var count_rasa = [];
+        var count_produk = 0;
+        var mode4 = 0;
+        var idx4 = 0;
+        var rasaProduk = [];
+        var hargaProduk = [];
+        var hargaAllProduk = [];
+        var dataProdukEdit = [];
+
+        show_produk();
+        select_produk_lain();
+        $("#tanggal4").val(getDate());
+        selectYesterday();
+
+        $(".shift2").change(function() {
+            if (Number($(".shift2").val()) == 1) {
+                selectYesterday();
+            } else {
+                selectShift1();
+            }
+        });
+
+        $("#btn-tambah-produk").click(function() {
+            selectYesterday();
+        });
+
+        function selectYesterday() {
+            var errM = 0;
+            $.ajax({
+                type: "POST",
+                url: api_produk + "produk_yesterday.php",
+                data: ({
+                    outlet: outlet
+                }),
+                cache: false,
+                success: function(data) {
+                    try {
+                        dataProduk = JSON.parse(data);
+                    } catch (err) {
+                        errM = 1;
+                    }
+                    if (errM == 0) {
+                        lengthProduk = dataProduk[8];
+                        lengthRasa = dataProduk[9];
+                        lengthDataProduk = lengthRasa.reduce(getSum) + lengthRasa.length;
+                        var o = 0;
+                        for (i = 0; i < lengthProduk; i++) {
+                            for (j = 0; j <= lengthRasa[i]; j++) {
+                                $("#tambahBarang" + i + "-" + j).val(dataProduk[o + (lengthDataProduk * 2) + 10]);
+                                o++;
+                            }
+                            $("#totalTambahBarang" + i).val(dataProduk[10 + lengthDataProduk * 3 + Number(lengthProduk * 2) + i]);
+                        }
+                    } else {
+                        $("#catatan4").val("");
+                        $("#karyawan").val("");
+                        $("#pendapatan2").val("");
+
+                        for (i = 0; i < count_produk; i++) {
+                            for (j = 0; j <= count_rasa[i]; j++) {
+                                $("#tambahBarang" + i + "-" + j).val("");
+                                $("#terjual" + i + "-" + j).val("");
+                                $("#sisa" + i + "-" + j).val("");
+                            }
+                            $("#totalTambahBarang" + i).val("");
+                            $("#totalTerjual" + i).val("");
+                            $("#totalSisa" + i).val("");
+                        }
+                    }
+
+
+                }
+            });
+        }
+
+
+        function selectShift1() {
+            var dateToday = $("#tanggal4").val();
+            var errM = 0;
+            $.ajax({
+                type: "POST",
+                url: api_produk + "produk_sisa.php",
+                data: ({
+                    tanggal: dateToday,
+                    outlet: outlet
+                }),
+                cache: false,
+                success: function(data) {
+                    try {
+                        dataProduk = JSON.parse(data);
+                    } catch (err) {
+                        errM = 1;
+                    }
+                    if (errM == 0) {
+                        lengthProduk = dataProduk[8];
+                        lengthRasa = dataProduk[9];
+                        lengthDataProduk = lengthRasa.reduce(getSum) + lengthRasa.length;
+                        var o = 0;
+                        for (i = 0; i < lengthProduk; i++) {
+                            for (j = 0; j <= lengthRasa[i]; j++) {
+                                $("#tambahBarang" + i + "-" + j).val(dataProduk[o + (lengthDataProduk * 2) + 10]);
+                                o++;
+                            }
+                            $("#totalTambahBarang" + i).val(dataProduk[10 + lengthDataProduk * 3 + Number(lengthProduk * 2) + i]);
+                        }
+                    } else {
+                        $("#catatan4").val("");
+                        $("#karyawan").val("");
+                        $("#pendapatan2").val("");
+                        for (i = 0; i < count_produk; i++) {
+                            for (j = 0; j <= count_rasa[i]; j++) {
+                                $("#tambahBarang" + i + "-" + j).val("");
+                                $("#terjual" + i + "-" + j).val("");
+                                $("#sisa" + i + "-" + j).val("");
+                            }
+                            $("#totalTambahBarang" + i).val("");
+                            $("#totalTerjual" + i).val("");
+                            $("#totalSisa" + i).val("");
+                        }
+
+                    }
+
+                }
+            });
+        }
+
+        function select_produk_lain() {
+            $.ajax({
+                type: "POST",
+                url: api_produk + "produk_select.php",
+                data: ({
+                    outlet: outlet
+                }),
+                cache: false,
+                success: function(data) {
+                    var string = "";
+                    var result = $.parseJSON(data);
+                    var cr = 0;
+                    var g = 0;
+
+                    $.each(result, function(key, row) {
+
+                        string += "<li class='accordion-item'><a href='#' class='item-content item-link'> <div class='item-inner'> <div class='item-title'>" + row['produk'] + "</div> </div></a> <div class='accordion-item-content'> <div class='block'> <div class='data-table'> <table style='table-layout:fixed;'> <tr> <th class='label-cell'>Produk</th> <th class='label-cell'>Tambah Barang</th> <th class='label-cell'>Terjual</th> <th class='label-cell'>Sisa</th></tr>";
+                        rasaProduk = JSON.parse(row['rasa1']);
+                        hargaProduk = JSON.parse(row['harga1']);
+                        var rp = rasaProduk.length;
+
+
+                        hargaAllProduk[count_produk] = [];
+
+                        for (i = 0; i < rp; i++) {
+                            string += "<tr> <td class='label-cell'>" + rasaProduk[i] + "</td> <td class='label-cell'><input min='0' id='tambahBarang" + count_produk + "-" + i + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress3()' onKeyPress='OgKeyPress3()'></td> <td class='label-cell'><input min='0' id='terjual" + count_produk + "-" + i + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress3()' onKeyPress='OgKeyPress3()'></td> <td class='label-cell'><input disabled min='0' id='sisa" + count_produk + "-" + i + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid blue;'></td> </tr>";
+                            hargaAllProduk[count_produk][g] = hargaProduk[g];
+                            g++;
+                            count_rasa[count_produk] = cr++;
+                        }
+
+
+                        string += " <tr> <td class='label-cell'>Total</td> <td class='label-cell'><input disabled min='0' id='totalTambahBarang" + count_produk + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid blue;'></td> <td class='label-cell'><input disabled min='0' id='totalTerjual" + count_produk + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid blue;'></td> <td class='label-cell'><input disabled min='0' id='totalSisa" + count_produk + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid blue;'></td></tr>";
+                        string += "</table> </div> </div> </div> </li>";
+                        count_produk++;
+                        cr = 0;
+                        g = 0;
+                    });
+                    $("#recordProdukLain").html(string);
+                }
+            });
+        }
+
+        function OgKeyPress3() {
+            var totalTambah = 0;
+            var totalTerjual = 0;
+            var totalSisa = 0;
+            var f = 0;
+            pendapatan = 0;
+            for (i = 0; i < count_produk; i++) {
+                for (j = 0; j <= count_rasa[i]; j++) {
+                    $("#sisa" + i + "-" + j).val(Number($("#tambahBarang" + i + "-" + j).val()) - Number($("#terjual" + i + "-" + j).val()));
+                    totalTambah = totalTambah + Number($("#tambahBarang" + i + "-" + j).val());
+                    totalTerjual = totalTerjual + Number($("#terjual" + i + "-" + j).val());
+                    totalSisa = totalSisa + Number($("#sisa" + i + "-" + j).val());
+                    pendapatan = pendapatan + Number($("#terjual" + i + "-" + j).val()) * hargaAllProduk[i][j];
+                    f++;
+                }
+                $("#totalTambahBarang" + i).val(totalTambah);
+                $("#totalTerjual" + i).val(totalTerjual);
+                $("#totalSisa" + i).val(totalSisa);
+                $("#pendapatan4").val(pendapatan);
+                totalTambah = totalTerjual = totalSisa = 0;
+            }
+        }
+
+        $("#submitProduk").click(function() {
+            var tambahBarang = [];
+            var terjual = [];
+            var sisa = [];
+            var f = 0;
+            var totalTambah = [];
+            var totalTerjual = [];
+            var totalSisa = [];
+
+            for (i = 0; i < count_produk; i++) {
+                for (j = 0; j <= count_rasa[i]; j++) {
+                    tambahBarang[f] = $("#tambahBarang" + i + "-" + j).val();
+                    terjual[f] = $("#terjual" + i + "-" + j).val();
+                    sisa[f] = $("#sisa" + i + "-" + j).val();
+                    f++;
+                }
+                totalTambah[i] = $("#totalTambahBarang" + i).val();
+                totalTerjual[i] = $("#totalTerjual" + i).val();
+                totalSisa[i] = $("#totalSisa" + i).val();
+            }
+
+            var tanggal4 = $("#tanggal4").val();
+            var karyawan4 = $("#karyawan4").val();
+            var shift2 = $("#shift2").val();
+            var catatan4 = $("#catatan4").val();
+            var pendapatan = $("#pendapatan4").val();
+            catatan4 = catatan4.replace(/(\r\n|\n|\r)/gm, " ");
+
+            var data = [tanggal4, outlet, karyawan4, shift2, catatan4, pendapatan, mode4, idx4, count_produk, count_rasa];
+            data = data.concat(tambahBarang);
+            data = data.concat(terjual);
+            data = data.concat(sisa);
+            data = data.concat(totalTambah);
+            data = data.concat(totalTerjual);
+            data = data.concat(totalSisa);
+
+
+            var state_length = 0;
+            if (data.length < 20) {
+                state_length = 0;
+            } else {
+                state_length = 1;
+            }
+
+            var datas = {};
+            for (var j = 0; j < data.length; j++) {
+                datas["dt" + j] = data[j];
+            }
+
+            var stateNama;
+            if (karyawan4 == "") {
+                $("#karyawan4").css("border", "1px solid red");
+                stateNama = 0;
+            } else {
+                stateNama = 1;
+            }
+
+            if (stateNama == 1 && state_length == 1) {
+                $.ajax({
+                    type: "POST",
+                    url: api_produk + "produk_submit.php",
+                    data: datas,
+                    cache: false,
+                    success: function(html) {
+                        if (html == "200") {
+                            $("#formProduk").trigger("reset");
+                            $("#tanggal4").val(getDate());
+                            show_produk();
+                            app.popup.close();
+                        } else {
+                            app.dialog.alert("Data tanggal " + tanggal4 + " sudah ada!", "");
+                        }
+
+                    }
+                });
+            } else {
+                if (state_length == 0 && stateNama == 1) {
+                    app.dialog.alert("Gagal menambahkan data, silahkan isi kembali!", " ", function() {
+                        location.href = "dashboard.html";
+                    });
+                }
+            }
+        });
+
+        function show_produk() {
+            $.ajax({
+                type: "POST",
+                url: api_produk + "produk_show.php",
+                data: ({
+                    outlet: outlet
+                }),
+                cache: false,
+                success: function(data) {
+                    var string = "<table> <thead> <tr> <th class='numeric-cell'><b>Tanggal</b></th> <th class='numeric-cell'><b>Shift</b></th> <th class='numeric-cell'><b>Karyawan</b></th> <th></th> </tr> </thead> <tbody>";
+                    var result = $.parseJSON(data);
+                    var dataProduk = [];
+                    $.each(result, function(key, value) {
+                        dataProduk = JSON.parse(value['icecream']);
+                        string += "<tr class='delete_produk" + value['id'] + "'> <td width='20%' class='numeric-cell'>" + value['date'] + "</td> <td class='numeric-cell'>" + dataProduk[3] + "</td> <td class='numeric-cell'>" + value['employee'] + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
+                    });
+                    string += "</tbody></table>";
+                    $("#record-produk-select").html(string);
+                }
+            });
+        }
+
+        $('#record-produk-select').on('click', '.btn-delete', function() {
+            var id = $(this).attr("id");
+            app.dialog.confirm("Apa anda yakin ingin mengapus?", "", function() {
+                $.ajax({
+                    type: "POST",
+                    url: api_produk + "produk_delete.php",
+                    data: ({
+                        id: id
+                    }),
+                    cache: false,
+                    success: function(html) {
+                        $(".delete_produk" + id).fadeOut('slow');
+                    }
+                });
+            });
+        });
+
+        $('#record-produk-select').on('click', '.btn-edit', function() {
+            mode4 = 1;
+            var id = $(this).attr("id");
+            idx4 = id;
+            var o = 0;
+            var lengthDataProduk = 0;
+            var p = 0;
+
+
+            $.ajax({
+                type: "POST",
+                url: api_produk + "produk_edit.php",
+                data: ({
+                    id: id
+                }),
+                cache: false,
+                success: function(data) {
+                    dataProdukEdit = JSON.parse(data);
+
+                    lengthProduk = dataProdukEdit[8];
+                    lengthRasa = dataProdukEdit[9];
+
+                    lengthDataProduk = lengthRasa.reduce(getSum) + lengthRasa.length;
+                    for (i = 0; i < lengthProduk; i++) {
+                        for (j = 0; j <= lengthRasa[i]; j++) {
+                            $("#tambahBarang" + i + "-" + j).val(dataProdukEdit[o + 10]);
+                            $("#terjual" + i + "-" + j).val(dataProdukEdit[o + lengthDataProduk + 10]);
+                            $("#sisa" + i + "-" + j).val(dataProdukEdit[o + (lengthDataProduk * 2) + 10]);
+                            o++;
+                        }
+                        $("#totalTambahBarang" + i).val(dataProdukEdit[10 + lengthDataProduk * 3 + p]);
+                        $("#totalTerjual" + i).val(dataProdukEdit[10 + lengthDataProduk * 3 + Number(lengthProduk) + p]);
+                        $("#totalSisa" + i).val(dataProdukEdit[10 + lengthDataProduk * 3 + Number(lengthProduk * 2) + p]);
+                        p++;
+                    }
+
+                    $("#tanggal4").val(dataProdukEdit[0]);
+                    $("#karyawan4").val(dataProdukEdit[2]);
+                    $("#shift2").val(dataProdukEdit[3]);
+                    $("#catatan4").val(dataProdukEdit[4]);
+                    $("#pendapatan4").val(dataProdukEdit[5]);
+
+                }
+            });
+
+            app.popup.open("#popup-tambah-produk", true);
+        });
+
+
+        $('#popup-tambah-produk').on('popup:close', function(e, popup) {
+            $("#formProduk").trigger("reset");
+
+            console.log("reset")
+            for (i = 0; i < count_produk; i++) {
+                for (j = 0; j <= count_rasa[i]; j++) {
+                    $("#tambahBarang" + i + "-" + j).val("");
+                    $("#terjual" + i + "-" + j).val("");
+                    $("#sisa" + i + "-" + j).val("");
+                }
+                $("#totalTambahBarang" + i).val("");
+                $("#totalTerjual" + i).val("");
+                $("#totalSisa" + i).val("");
+            }
+            $("#tanggal4").val(getDate());
+            $("#shift4").val("1");
+            mode4 = 0;
+            idx4 = 0;
+        });
+
+        function getSum(total, num) {
+            return Number(total) + Number(num);
+        }
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
