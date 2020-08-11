@@ -226,7 +226,7 @@
                         <div class="data-table data-table-init card">
                             <div class="card-header">
                                 <div class="data-table-links">
-                                    <a class="link icon-only popup-open" data-popup="#popup-tambah-penjualan">
+                                    <a id="tambah_penjualan" class="link icon-only popup-open" data-popup="#popup-tambah-penjualan">
                                         <i class="icon f7-icons ios-only">add_circle_outline</i>
                                         <i class="icon material-icons md-only">add_circle_outline</i>
                                     </a>
@@ -355,6 +355,10 @@
                                                     <div class="accordion-item-content">
                                                         <div class="block">
 
+
+
+
+
                                                             <div class="data-table card">
                                                                 <table>
                                                                     <thead>
@@ -426,9 +430,18 @@
                                                                         </tr>
 
 
+
+
                                                                         <br>
                                                                     </tbody>
+
                                                                 </table>
+
+                                                                <div id="add_bumbu">
+
+                                                                </div>
+
+
                                                             </div>
 
 
@@ -816,8 +829,11 @@
         var outlet = sessionStorage.getItem("outlet");
         outlet = outlet.replace(/\s/g, '');
 
+        var base_url = "http://susumaktam.com/"
 
-        var api = "http://susumaktam.com/maktam2/maktam/maktam/api/pendapatan/";
+        var api = base_url + "maktam_api_new/api/pendapatan/";
+
+
         var count = 0;
         var harga_dingin = [];
         var harga_hangat = [];
@@ -1184,7 +1200,7 @@
         }
 
         //==========================PENJUALAN===============================================================
-        var api_penjualan = "http://susumaktam.com/maktam2/maktam/maktam/api/penjualan/";
+        var api_penjualan = base_url + "maktam_api_new/api/penjualan/";
         var id = 1;
         var id2 = 1;
         var total_penjualan = 0;
@@ -1193,16 +1209,24 @@
         var stock_dari_tempat = [];
         var diambil_dari_tempat = [];
         var diambil_dari_stock = [];
+        var bumbu;
+        var bumbu2;
         var mode2 = 0;
         var idx2 = 0;
+        var state_bumbu;
 
         select_penjualan()
+        select_bumbu_all();
 
         $("#tanggal2").val(getDate());
         $("#add-row").click(function() {
             id++;
             var markup = "<tr id='tr-delete" + id + "'> <td><input id='t" + id + "' onKeyUp='penjualan()' onKeyPress='penjualan()' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='text' placeholder='Tempat " + id + "'</td> <td><input id='stock" + id + "' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;' type='number'></td> </tr> <tr>";
             $("#tbls tbody").append(markup);
+        });
+
+        $("#tambah_penjualan").click(function() {
+            state_bumbu = 0;
         });
 
         $("#add-row2").click(function() {
@@ -1266,6 +1290,10 @@
             $("#ss_dingin").val(Number($("#sc_dingin").val()) - Number($("#tj_dingin").val()));
             $("#ss_hangat").val(Number($("#sc_hangat").val()) - Number($("#tj_hangat").val()));
 
+            $.each(bumbu, function(key, value) {
+                $("#" + value['bumbu'] + "4").val(Number($("#" + value['bumbu'] + "0").val()) - Number($("#" + value['bumbu'] + "2").val()));
+                $("#" + value['bumbu'] + "5").val(Number($("#" + value['bumbu'] + "1").val()) - Number($("#" + value['bumbu'] + "3").val()));
+            });
         }
 
 
@@ -1359,6 +1387,7 @@
                             $("#formPenjualan").trigger("reset");
                             $("#tanggal2").val(getDate());
                             select_penjualan();
+                            submit_bumbu();
                             app.popup.close();
                         } else {
                             //alert("Data tanggal "+tanggal+" sudah ada!")
@@ -1369,7 +1398,119 @@
             }
 
 
+
         });
+
+
+        function select_bumbu_outlet(tanggal) {
+            $.ajax({
+                type: "POST",
+                url: base_url + "maktam_api_new/bumbu.php",
+                data: ({
+                    outlet: outlet,
+                    tanggal: tanggal
+                }),
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                    bumbu2 = data.result;
+
+                    if (data.num > 0) {
+                        $.each(bumbu2, function(key, value) {
+                            $("#" + value['bumbu'] + "0").val(value['stock_dingin']);
+                            $("#" + value['bumbu'] + "1").val(value['stock_hangat']);
+                            $("#" + value['bumbu'] + "2").val(value['terjual_dingin']);
+                            $("#" + value['bumbu'] + "3").val(value['terjual_hangat']);
+                            $("#" + value['bumbu'] + "4").val(value['sisa_dingin']);
+                            $("#" + value['bumbu'] + "5").val(value['sisa_hangat']);
+                        });
+                    } else {
+                        $.each(bumbu, function(key, value) {
+                            $("#" + value['bumbu'] + "0").val("");
+                            $("#" + value['bumbu'] + "1").val("");
+                            $("#" + value['bumbu'] + "2").val("");
+                            $("#" + value['bumbu'] + "3").val("");
+                            $("#" + value['bumbu'] + "4").val("");
+                            $("#" + value['bumbu'] + "5").val("");
+                        });
+                    }
+
+                }
+            });
+        }
+
+
+
+        function select_bumbu_all() {
+            $.ajax({
+                type: "POST",
+                url: base_url + "maktam_api_new/get_bumbu_all.php",
+                data: ({
+                    outlet: outlet
+                }),
+                cache: false,
+                success: function(data) {
+                    var string = "";
+                    var result = data.result;
+                    bumbu = data.result;
+                    $.each(result, function(key, value) {
+                        string += "<tr> <td>" + value['bumbu'] + "</td> <td><input id='" + value['bumbu'] + "0' onKeyUp='penjualan()' onKeyPress='penjualan()' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;' type='number'></td> <td><input id='" + value['bumbu'] + "1' onKeyUp='penjualan()' onKeyPress='penjualan()' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;' type='number'></td> <td><input id='" + value['bumbu'] + "2' onKeyUp='penjualan()' onKeyPress='penjualan()' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;' type='number'></td> <td><input id='" + value['bumbu'] + "3' onKeyUp='penjualan()' onKeyPress='penjualan()' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;' type='number'></td> <td><input disabled id='" + value['bumbu'] + "4' onKeyUp='penjualan()' onKeyPress='penjualan()' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;' type='number'></td> <td><input disabled id='" + value['bumbu'] + "5' onKeyUp='penjualan()' onKeyPress='penjualan()' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;' type='number'></td> </tr>";
+                    });
+                    string += "</tbody></table>";
+                    $("#add_bumbu").html(string);
+                }
+            });
+        }
+
+        function deleteBumbuOutlet(tanggal) {
+            console.log("tan" + tanggal)
+            $.ajax({
+                type: "POST",
+                url: base_url + "maktam_api_new/delete_bumbu_outlet.php",
+                data: ({
+                    tanggal: tanggal,
+                    outlet: outlet
+                }),
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                }
+            });
+        }
+
+        function submit_bumbu() {
+            $.each(bumbu, function(key, value) {
+                var tanggal = $("#tanggal2").val();
+                var bumbu = value['bumbu'];
+                var stock_dingin = $("#" + bumbu + "0").val();
+                var stock_hangat = $("#" + bumbu + "1").val();
+                var terjual_dingin = $("#" + bumbu + "2").val();
+                var terjual_hangat = $("#" + bumbu + "3").val();
+                var sisa_dingin = $("#" + bumbu + "4").val();
+                var sisa_hangat = $("#" + bumbu + "5").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: base_url + "maktam_api_new/post_bumbu.php",
+                    data: ({
+                        tanggal: tanggal,
+                        bumbu: bumbu,
+                        stock_dingin: stock_dingin,
+                        stock_hangat: stock_hangat,
+                        terjual_dingin: terjual_dingin,
+                        terjual_hangat: terjual_hangat,
+                        sisa_dingin: sisa_dingin,
+                        sisa_hangat: sisa_hangat,
+                        outlet: outlet,
+                        state: state_bumbu
+                    }),
+                    cache: false,
+                    success: function(data) {
+                        console.log(data);
+                    }
+                });
+            });
+        }
 
         function select_penjualan() {
             $.ajax({
@@ -1392,7 +1533,7 @@
 
                         c++;
                         var employee = data[40];
-                        string += "<tr class='delete_penjualan" + value['id'] + "'> <td width='20%' class='numeric-cell'>" + value['date'] + "</td> <td class='numeric-cell'>" + employee + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
+                        string += "<tr class='delete_penjualan" + value['id'] + "'> <td width='20%' class='numeric-cell'>" + value['date'] + "</td> <td class='numeric-cell'>" + employee + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' tanggal='" + value['date'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' tanggal='" + value['date'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
 
                     });
                     string += "</tbody></table>";
@@ -1402,8 +1543,10 @@
         }
 
         $('#record-penjualan').on('click', '.btn-edit', function() {
+            state_bumbu = 1;
             mode2 = 1;
             var id = $(this).attr("id");
+            var tanggal = $(this).attr("tanggal");
             idx2 = id;
             $.ajax({
                 type: "POST",
@@ -1413,6 +1556,8 @@
                 }),
                 cache: false,
                 success: function(data) {
+                    select_bumbu_outlet(tanggal);
+
                     data_penjualan = JSON.parse(data);
 
                     $("#susu-datang").val(data_penjualan[2]);
@@ -1474,6 +1619,7 @@
 
         $('#record-penjualan').on('click', '.btn-delete', function() {
             var id = $(this).attr("id");
+            var tanggal = $(this).attr("tanggal");
             app.dialog.confirm("Anda yakin ingin menghapus?", "Peringatan!", function() {
                 $.ajax({
                     type: "POST",
@@ -1484,6 +1630,7 @@
                     cache: false,
                     success: function(html) {
                         $(".delete_penjualan" + id).fadeOut('slow');
+                        deleteBumbuOutlet(tanggal)
                     }
                 });
             });
@@ -1499,7 +1646,7 @@
         });
 
         //============================================MATERIAL===========================================================
-        var api_material = "http://susumaktam.com/maktam2/maktam/maktam/api/material/";
+        var api_material = base_url + "maktam_api_new/api/material/";
         var mode3 = 0;
         var idx3 = 0;
         var count_material = 0;
@@ -1745,7 +1892,7 @@
         });
 
         //==================================PRODUK LAIN ===========================================
-        var api_produk = "http://susumaktam.com/maktam2/maktam/maktam/api/produk/";
+        var api_produk = base_url + "maktam_api_new/api/produk/";
         var count_rasa = [];
         var count_produk = 0;
         var mode4 = 0;

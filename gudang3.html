@@ -76,12 +76,6 @@
                         <i class="icon material-icons md-only">delete_sweep</i>
                         <span class="tabbar-label">Material</span>
                     </a>
-                    <a href="#view-bumbu" class="tab-link">
-                        <i class="icon f7-icons ios-only">delete_sweep</i>
-                        <i class="icon f7-icons ios-only icon-ios-fill">delete_sweep</i>
-                        <i class="icon material-icons md-only">delete_sweep</i>
-                        <span class="tabbar-label">Bumbu</span>
-                    </a>
 
                 </div>
             </div>
@@ -92,8 +86,6 @@
                             <div class="title sliding">
                                 <img src="ico/halocode.png" height="40" width="50">
                             </div>
-
-
                             <div class="right">
                                 <a href="index.html" class="external link icon-only " data-panel="right">
                                     <i class="icon f7-icons ios-only">exit_to_app</i>
@@ -104,6 +96,29 @@
                     </div>
                     <div class="page-content">
                         <!----------------------------------LAPORAN--------------------------------------------->
+
+                        <div class="data-table data-table-init card">
+                            <div class="card-header">
+                                <div class="data-table-links">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class='numeric-cell'><input id="tanggal" style="text-align:center; border: 1px solid black; height:25px; width:150px;" placeholder="Atur Tanggal" onfocus="(this.type='date')" onblur="(this.type='text')" class="textbox-n" type="text"></th>
+                                                <th class='numeric-cell'><button id="submitTanggal">Go</button></th>
+                                                <th class='numeric-cell'><button id="print">Print</button></th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-content">
+
+                            </div>
+
+
+
+                        </div>
+
 
                         <div class="data-table data-table-init card">
                             <div class="card-content">
@@ -161,8 +176,8 @@
             <table>
                 <tbody>
                   <tr>
-                    <td style="background-color: rgb(208, 245, 237); font-size: 15px" ><b>Stock Susu</b> </td>
-                                                <td style="background-color: rgb(208, 245, 237)"><button id="print_stock">Print</button></td>
+                    <td style="background-color: rgb(208, 245, 237); font-size: 15px" ><b>Stock Susu</b></td>
+                                                <td style="background-color: rgb(208, 245, 237)"></td>
                                             </tr>
                                             <tr>
                                                 <td><b>Total Susu Datang Semua Outlet</b></td>
@@ -197,11 +212,77 @@
 
                                 </div>
 
-                                <div id="bumbu_tabel">
+
+                                <div class="data-table data-table-init card">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td style="background-color: rgb(208, 245, 237); font-size: 15px"><b>Stock Bumbu</b></td>
+                                                <td style="background-color: rgb(208, 245, 237)"></td>
+                                                <td style="background-color: rgb(208, 245, 237)"></td>
+                                                <td style="background-color: rgb(208, 245, 237)"></td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td><b>Bumbu</b></td>
+                                                <td><b>Stock</b></td>
+                                                <td><b>Terjual</b></td>
+                                                <td><b>Sisa</b></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Original</td>
+                                                <td id="stock0"></td>
+                                                <td id="terjual0"></td>
+                                                <td id="sisa0"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cappucino</td>
+                                                <td id="stock1"></td>
+                                                <td id="terjual1"></td>
+                                                <td id="sisa1"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Coklat</td>
+                                                <td id="stock2"></td>
+                                                <td id="terjual2"></td>
+                                                <td id="sisa2"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Oreo</td>
+                                                <td id="stock3"></td>
+                                                <td id="terjual3"></td>
+                                                <td id="sisa3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Total</td>
+                                                <td id="total_stock"></td>
+                                                <td id="total_terjual"></td>
+                                                <td id="total_sisa"></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Rincian Bumbu Terjual dan Sisa</b></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                    <div class="card-content">
+                                        <div id="record-rincian-bumbu" class="card-content">
+                                        </div>
+                                    </div>
 
                                 </div>
-
-
 
 
 
@@ -212,7 +293,7 @@
                                                 <td style="background-color: rgb(208, 245, 237); font-size: 15px"><b>Stock Cup</b></td>
                                                 <td style="background-color: rgb(208, 245, 237)"></td>
                                                 <td style="background-color: rgb(208, 245, 237)"></td>
-                                                <td style="background-color: rgb(208, 245, 237)"><button id="print_stock_cup">Print Cup</button></td>
+                                                <td style="background-color: rgb(208, 245, 237)"></td>
                                             </tr>
 
                                             <tr>
@@ -261,7 +342,7 @@
                                             <tr>
                                                 <td style="background-color: rgb(208, 245, 237); font-size: 15px"><b>Material</b></td>
                                                 <td style="background-color: rgb(208, 245, 237)"></td>
-                                                <td style="background-color: rgb(208, 245, 237)"><button id="print_material">Print Material</button></td>
+                                                <td style="background-color: rgb(208, 245, 237)"></td>
 
                                             </tr>
 
@@ -286,7 +367,8 @@
                                             <tr>
                                                 <td style="background-color: rgb(208, 245, 237); font-size: 15px"><b>Gudang</b></td>
                                                 <td style="background-color: rgb(208, 245, 237)"></td>
-                                                <td style="background-color: rgb(208, 245, 237)"><button id="print_gudang">Print Gudang</button></td>
+                                                <td style="background-color: rgb(208, 245, 237)"></td>
+
                                             </tr>
 
 
@@ -308,7 +390,7 @@
                                             <tr>
                                                 <td style="background-color: rgb(208, 245, 237); font-size: 15px"><b>Produk Lainnya</b></td>
                                                 <td style="background-color: rgb(208, 245, 237)"></td>
-                                                <td style="background-color: rgb(208, 245, 237)"><button id="print_lain">Print Produk Lain</button></td>
+                                                <td style="background-color: rgb(208, 245, 237)"></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -596,49 +678,6 @@
                                     </div>
                                 </div>
 
-
-
-
-                                <div class="popup" id="popup-ganti-password">
-                                    <div class="view">
-                                        <div class="page">
-                                            <div class="navbar">
-                                                <div class="navbar-inner">
-                                                    <div class="title">Ganti Password</div>
-                                                    <div class="right">
-                                                        <a id="popup-close" href="#" class="link popup-close">Close</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="page-content">
-                                                <form id="formLain">
-                                                    <div class="data-table card">
-                                                        <table id="tbls-lain">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td><b id="rasaError">Password Lama</b></td>
-                                                                    <td><input type="password" id="password_lama" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b id="rasaError">Password Baru</b></td>
-                                                                    <td><input type="password" id="password_baru" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td><b id="rasaError">Ulangi Password Baru</b></td>
-                                                                    <td><input type="password" id="password_baru2" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
-                                                                </tr>
-                                                            </tbody>
-
-                                                        </table>
-                                                    </div>
-                                                </form>
-                                                <button id="submitPassword" class="btn-submit-material col button button-raised button-round">Simpan</button>
-                                                <!-- page content--- -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <!------------------------------------------------------------------------------------------>
                             </div>
                         </div>
@@ -796,103 +835,6 @@
                         </div>
                     </div>
 
-                    <div id="view-bumbu" class="view view-main tab">
-                        <div class="page" data-name="home">
-                            <div class="navbar">
-                                <div class="navbar-inner">
-                                    <div class="title sliding">
-                                        <img src="ico/halocode.png" height="40" width="50">
-                                    </div>
-                                    <div class="right">
-                                        <a href="index.html" class="external link icon-only " data-panel="right">
-                                            <i class="icon f7-icons ios-only">exit_to_app</i>
-                                            <i class="icon material-icons md-only">exit_to_app</i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="page-content">
-                                <!----------------------------------BUMBU--------------------------------------------->
-                                <div class="data-table data-table-init card">
-                                    <div class="card-header">
-                                        <div class="data-table-links">
-                                            <a id="btn-tambah-bumbu" class="link icon-only popup-open" data-popup="#popup-tambah-bumbu">
-                                                <i class="icon f7-icons ios-only">add_circle_outline</i>
-                                                <i class="icon material-icons md-only">add_circle_outline</i>
-                                            </a>
-                                        </div>
-                                        <div class="data-table-actions">
-                                            <a class="link icon-only">
-                                                <i class="icon f7-icons ios-only">sort</i>
-                                                <i class="icon material-icons md-only">sort</i>
-                                            </a>
-                                            <a class="link icon-only popover-open" href="#" data-popover=".popover-links">
-                                                <i class="icon f7-icons ios-only">more_vertical_round</i>
-                                                <i class="icon material-icons md-only">more_vert</i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div id="record-bumbu-select" class="card-content">
-                                    </div>
-                                </div>
-
-
-                                <div class="popup" id="popup-tambah-bumbu">
-                                    <div class="view">
-                                        <div class="page">
-                                            <div class="navbar">
-                                                <div class="navbar-inner">
-                                                    <div class="title">Tambah Bumbu</div>
-                                                    <div class="right">
-                                                        <a id="popup-close" href="#" class="link popup-close">Close</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="page-content">
-                                                <form id="formMaterial">
-                                                    <div class="data-table card">
-                                                        <table id="tbls">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td><b id="materialError">Bumbu</b></td>
-                                                                    <td><input id="bumbu" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
-                                                                </tr>
-
-                                                        </table>
-                                                    </div>
-                                                </form>
-                                                <button id="submitBumbu" class="btn-submit-material col button button-raised button-round">Simpan</button>
-                                                <!-- page content--- -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-
-
-
-
-                                <div class="popover popover-links">
-                                    <div class="popover-inner">
-                                        <div class="list">
-                                            <ul>
-                                                <li><a class="list-button item-link popup-open" data-popup="#popup-tambah-std">Atur Std Outlet</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <!------------------------------------------------------------------------------------------>
-                            </div>
-                        </div>
-                    </div>
-
                     <script src="jspdf/dist/jspdf.min.js"></script>
 
 
@@ -903,38 +845,7 @@
 
                     <script src="js/penjualan.js"></script>
                     <script type="text/javascript">
-                        var base_url = "http://susumaktam.com/"
-                        var api_admin = base_url + "maktam_api_new/api/admin/";
-
-
-
-
-                        var arrBumbu;
-                        var total_stock_bumbu = 0;
-                        var total_terjual_bumbu = 0;
-                        var total_sisa_bumbu = 0;
-                        select_bumbu_all();
-
-                        function select_bumbu_all() {
-                            $.ajax({
-                                type: "POST",
-                                url: base_url + "maktam_api_new/get_bumbu_all.php",
-                                cache: false,
-                                success: function(data) {
-                                    arrBumbu = data.result;
-
-                                    var string = "<div class='data-table data-table-init card'> <table> <tbody> <tr> <td style='background-color: rgb(208, 245, 237); font-size: 15px'><b>Stock Bumbu</b></td> <td style='background-color: rgb(208, 245, 237)'></td> <td style='background-color: rgb(208, 245, 237)'></td> <td style='background-color: rgb(208, 245, 237)'><button id='print_bumbu'>Print Bumbu</button></td> <!-- <th class='numeric-cell'><button id='print'>Print</button></th> --> </tr> <tr> <td><b>Bumbu</b></td> <td><b>Stock</b></td> <td><b>Terjual</b></td> <td><b>Sisa</b></td> </tr> <tr> <td>Original</td> <td id='stock0'></td> <td id='terjual0'></td> <td id='sisa0'></td> </tr> <tr> <td>Cappucino</td> <td id='stock1'></td> <td id='terjual1'></td> <td id='sisa1'></td> </tr> <tr> <td>Coklat</td> <td id='stock2'></td> <td id='terjual2'></td> <td id='sisa2'></td> </tr> <tr> <td>Oreo</td> <td id='stock3'></td> <td id='terjual3'></td> <td id='sisa3'></td> </tr>";
-                                    var result = data.result;
-                                    bumbu = data.result;
-                                    $.each(result, function(key, value) {
-                                        string += "<tr> <td>" + value['bumbu'] + "</td> <td id='" + value['bumbu'] + "0'></td> <td id='" + value['bumbu'] + "1'></td> <td id='" + value['bumbu'] + "2'></td> </tr>";
-                                    });
-                                    string += "<tr> <td>Total</td> <td id='total_stock'></td> <td id='total_terjual'></td> <td id='total_sisa'></td> </tr> <tr> <td></td> <td></td> <td></td> <td></td> </tr> <tr> <td><b>Rincian Bumbu Terjual dan Sisa</b></td> <td></td> <td></td> <td></td> </tr> </tbody> </table> <div class='card-content'> <div id='record-rincian-bumbu' class='card-content'> </div> </div> </div>";
-                                    $("#bumbu_tabel").html(string);
-                                }
-                            });
-                        }
-
+                        var api_admin = "http://susumaktam.com/maktam2/maktam/maktam/api/admin/";
 
 
 
@@ -997,7 +908,6 @@
                         show_laporan_produk_lain();
                         show_laporan_produk_lain2();
                         show_peringkat_penjualan();
-                        selelect_bumbu_date();
 
                         $("#submitTanggal").click(function() {
                             var date = String($("#tanggal").val());
@@ -1021,70 +931,7 @@
                             show_laporan_produk_lain();
                             show_laporan_produk_lain2();
                             show_peringkat_penjualan();
-                            selelect_bumbu_date()
                         });
-
-                        function selelect_bumbu_date() {
-                            var stock = [];
-                            var terjual = [];
-                            var sisa = [];
-
-
-
-                            $.ajax({
-                                type: "POST",
-                                data: ({
-                                    tanggal: tanggal
-                                }),
-                                url: base_url + "maktam_api_new/bumbu_date.php",
-                                cache: false,
-                                success: function(data) {
-                                    var tbs = 0;
-                                    var ttb = 0;
-                                    var tsb = 0;
-                                    console.log("asds")
-                                    var i = 0;
-                                    $.each(arrBumbu, function(key, value) {
-                                        stock[i] = 0;
-                                        terjual[i] = 0;
-                                        sisa[i] = 0;
-                                        $.each(data.result, function(key2, value2) {
-                                            if (value['bumbu'] === value2['bumbu']) {
-                                                stock[i] = stock[i] + (Number(value2['stock_dingin']) + Number(value2['stock_hangat']));
-                                                terjual[i] = terjual[i] + (Number(value2['terjual_dingin']) + Number(value2['terjual_hangat']));
-                                                sisa[i] = sisa[i] + (Number(value2['sisa_dingin']) + Number(value2['sisa_hangat']));
-                                            }
-                                        });
-                                        $("#" + value['bumbu'] + "0").html(stock[i]);
-                                        $("#" + value['bumbu'] + "1").html(terjual[i]);
-                                        $("#" + value['bumbu'] + "2").html(terjual[i]);
-
-                                        tbs = tbs + stock[i];
-                                        ttb = ttb + terjual[i];
-                                        tsb = tsb + Number(sisa[i]);
-
-
-
-                                        i++;
-                                    });
-
-                                    total_stock_bumbu = tbs;
-                                    total_sisa_bumbu = tsb;
-                                    total_terjual_bumbu = ttb;
-
-                                    show_stock_susu()
-                                },
-                                error: function(err) {
-                                    console.log(err)
-                                }
-                            });
-
-
-
-
-                        }
-
-
 
 
 
@@ -1175,42 +1022,6 @@
                             $("#tabel-pengeluaran-gudang tbody").append(markup);
                         });
 
-
-                        $("#submitPassword").click(function() {
-
-                            var password_lama = $("#password_lama").val();
-                            var password_baru = $("#password_baru").val();
-                            var password_baru2 = $("#password_baru2").val();
-
-                            if (password_baru == password_baru2) {
-
-                                $.ajax({
-                                    type: "POST",
-                                    data: ({
-                                        password_lama: password_lama,
-                                        password_baru: password_baru,
-                                        password_baru2: password_baru2
-                                    }),
-                                    url: api_admin + "ganti_password.php",
-                                    cache: false,
-                                    success: function(data) {
-
-                                        if (data == 200) {
-                                            app.dialog.alert('Berhasil Ganti Passowrd', '');
-                                            app.popup.close();
-
-                                        } else if (data == 504) {
-                                            app.dialog.alert('Password Lama Salah', '');
-                                        }
-
-                                    }
-                                });
-                            } else {
-                                app.dialog.alert('Password baru Salah', '');
-                            }
-
-                        });
-
                         $('#tabel-pengeluaran-gudang tbody').on('click', '.btn-delete', function() {
                             var id = $(this).attr("id");
                             $("#tr-delete-pgd" + id).fadeOut('slow');
@@ -1218,57 +1029,20 @@
 
 
 
-
+                        var api_print_pendapatan = "http://susumaktam.com/api/print_pendapatan.php?tanggal=" + tanggal;
+                        var api_print_penjualan = "http://susumaktam.com/api/print_penjualan.php?tanggal=" + tanggal;
 
                         $("#print").click(function() {
-                            var api_print_pendapatan = "http://susumaktam.com/api/print_pendapatan.php?tanggal=" + tanggal;
-
                             window.location.href = api_print_pendapatan;
                         });
 
-
-
                         $("#print_penjualan").click(function() {
-                            var api_print_penjualan = "http://susumaktam.com/api/print_penjualan.php?tanggal=" + tanggal;
-
                             window.location.href = api_print_penjualan;
                         });
 
-                        $("#print_stock").click(function() {
-                            var api_print_stock = "http://susumaktam.com/api/print_stock.php?tanggal=" + tanggal;
 
-                            window.location.href = api_print_stock;
-                        });
 
-                        $("#print_bumbu").click(function() {
-                            var api_print_pendapatan = "http://susumaktam.com/api/print_stock_bumbu.php?tanggal=" + tanggal;
 
-                            window.location.href = api_print_pendapatan;
-                        });
-
-                        $("#print_stock_cup").click(function() {
-                            var api_print_pendapatan = "http://susumaktam.com/api/print_stock_cup.php?tanggal=" + tanggal;
-
-                            window.location.href = api_print_pendapatan;
-                        });
-
-                        $("#print_material").click(function() {
-                            var api_print_pendapatan = "http://susumaktam.com/api/print_material.php?tanggal=" + tanggal;
-
-                            window.location.href = api_print_pendapatan;
-                        });
-
-                        $("#print_gudang").click(function() {
-                            var api_print_pendapatan = "http://susumaktam.com/api/print_gudang.php?tanggal=" + tanggal;
-
-                            window.location.href = api_print_pendapatan;
-                        });
-
-                        $("#print_lain").click(function() {
-                            var api_print_pendapatan = "http://susumaktam.com/api/print_produk_lain.php?tanggal=" + tanggal;
-
-                            window.location.href = api_print_pendapatan;
-                        });
 
                         $("#submitPengeluaranGudang").click(function() {
                             var c = 0;
@@ -1691,6 +1465,11 @@
                                         var sisa_cup = [];
                                         var total_bumbu = total_cup = 0;
                                         var cup_stock0 = cup_stock1 = cup_terjual0 = cup_terjual1 = cup_sisa0 = cup_sisa1 = cup_total_stock = cup_total_terjual = cup_total_sisa = 0;
+
+
+
+
+
 
                                         string += "<tr><td>" + stock_susu[i] + "</td>";
                                         $.each(result, function(key, value) {
@@ -2129,9 +1908,10 @@
                                       $("#sisa"+i).html(sisa[i]);
                                     }
                                     */
-                                    $("#total_stock").html(Number(total_stock) + Number(total_stock_bumbu));
-                                    $("#total_terjual").html(Number(total_terjual) + Number(total_terjual_bumbu));
-                                    $("#total_sisa").html(Number(total_sisa) + Number(total_sisa_bumbu));
+                                    $("#total_stock").html(total_stock);
+                                    $("#total_terjual").html(total_terjual);
+                                    $("#total_sisa").html(total_sisa);
+
 
 
                                     string += "</tbody></table>";
@@ -2184,21 +1964,10 @@
                                             diambilOutlet[i] = diambilOutlet[i] + Number(value[j][7 + materialLength + i]);
                                         }
                                         sisaBarang[i] = Number(stock[i]) - Number(diambilOutlet[i]);
-                                        string += "<tr> <td><b>" + material[i] + "</b></td> <td><input value='' class='gdg' id='inputGudang" + i + "' style='text-align:center; border: 1px solid black; height:25px; width:50px;' type='text'></td> <td id='stockGudang" + i + "'>" + stock[i] + "</td> <td id='diambilOutlet" + i + "'>" + diambilOutlet[i] + "</td> <td id='sisaGudang" + i + "'>" + sisaBarang[i] + "</td>  </tr>";
+                                        string += "<tr> <td><b>" + material[i] + "</b></td> <td><input value='' id='inputGudang" + i + "' style='text-align:center; border: 1px solid black; height:25px; width:50px;' type='text'></td> <td id='stockGudang" + i + "'>" + stock[i] + "</td> <td id='diambilOutlet" + i + "'>" + diambilOutlet[i] + "</td> <td id='sisaGudang" + i + "'>" + sisaBarang[i] + "</td>  </tr>";
                                     }
-
-                                    console.log(diambilOutlet)
 
                                     $("#record-laporan-gudang").html(string);
-
-
-                                    for (var i = 0; i < material.length; i++) {
-                                        document.getElementById("inputGudang" + i).onkeypress = function(e) {
-                                            var chr = String.fromCharCode(e.which);
-                                            if ("-".indexOf(chr) >= 0)
-                                                return false;
-                                        };
-                                    }
                                 }
                             });
                         }
@@ -2219,11 +1988,7 @@
                                 if (inputGudang[i] == "") inputGudang[i] = 0;
                                 if (stockGudang[i] == "") stockGudang[i] = 0;
 
-                                if (Number(inputGudang[i]) >= 0) {
-                                    stockGudangBaru[i] = Number(inputGudang[i]) + Number(stockGudang[i]);
-                                } else {
-                                    stockGudangBaru[i] = 0 + Number(stockGudang[i]);
-                                }
+                                stockGudangBaru[i] = Number(inputGudang[i]) + Number(stockGudang[i]);
                             }
 
                             var data = [tanggal, materialLength];
@@ -2283,13 +2048,12 @@
 
                                     $.each(result, function(key, value) {
                                         datas = JSON.parse(value['total']);
+
                                         for (var i = 0; i < datas[4]; i++) {
                                             jumlah[i] = jumlah[i] + Number(datas[7 + i]);
                                             tambah[i] = tambah[i] + Number(datas[7 + Number(datas[4]) + i]);
                                         }
                                     });
-
-
 
                                     for (var i = 0; i < materialLength; i++) {
                                         if (typeof jumlah[i] == 'undefined') jumlah[i] = 0;
@@ -2325,7 +2089,6 @@
                                     var terjual = [];
                                     var sisa = [];
 
-
                                     for (var i = 0; i < produk.length; i++) {
                                         stock[i] = 0;
                                         terjual[i] = 0;
@@ -2333,15 +2096,10 @@
                                         for (var j = 0; j < datas.length; j++) {
 
                                             if (datas[j][3] == "1") stock[i] = stock[i] + Number(datas[j][11 + Number(datas[j][9].reduce(getSum) + 1) * 3 + produk.length + i]);
-
-                                            console.log(stock[i])
-
                                             terjual[i] = terjual[i] + Number(datas[j][11 + Number(datas[j][9].reduce(getSum) + 1) * 3 + produk.length * 2 + i]);
-                                            if (datas[j][3] == "2")
-                                                sisa[i] = sisa[i] + Number(datas[j][11 + Number(datas[j][9].reduce(getSum) + 1) * 3 + produk.length * 3 + i]);
+                                            if (datas[j][3] == "2") sisa[i] = sisa[i] + Number(datas[j][11 + Number(datas[j][9].reduce(getSum) + 1) * 3 + produk.length * 3 + i]);
                                         }
                                     }
-
 
                                     for (var i = 0; i < produk.length; i++) {
                                         string += " <tr> <td><b>" + produk[i] + "</b></td> <td>" + stock[i] + "</td> <td>" + terjual[i] + "</td> <td>" + sisa[i] + "</></tr>";
@@ -2488,9 +2246,7 @@
 
                                     $.each(result, function(key, value) {
                                         string += "<tr class='delete_outlet" + value['id'] + "'> <td >" + value['username'] + "</td> <td>" + value['password'] + "</td> <td>" + value['outlet'] + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> <a id='" + value['outlet'] + "' class='btn-go link icon-only'> <i class='icon f7-icons ios-only'>arrow_forward</i> <i class='icon material-icons md-only'>arrow_forward</i> </a> </td> </tr>";
-                                        var res = value['outlet'].replace(" ", "");
-
-                                        $('#outletStd').append($("<option></option>").attr("value", key).text(res));
+                                        $('#outletStd').append($("<option></option>").attr("value", key).text(value['outlet']));
                                         t++;
                                     });
                                     string += "</tbody></table>";
@@ -3004,65 +2760,6 @@
                                 }
                             });
                         });
-
-
-                        //=====================Bumbu=====================
-
-                        show_bumbu();
-
-                        $("#submitBumbu").click(function() {
-                            var bumbu = $("#bumbu").val();
-                            $.ajax({
-                                type: "POST",
-                                url: base_url + "maktam_api_new/add_bumbu.php",
-                                data: ({
-                                    bumbu: bumbu
-                                }),
-                                cache: false,
-                                success: function(html) {
-                                    show_bumbu();
-                                    app.popup.close();
-                                }
-                            });
-                        });
-
-
-                        function show_bumbu() {
-                            $.ajax({
-                                type: "POST",
-                                url: base_url + "maktam_api_new/get_bumbu_all.php",
-                                cache: false,
-                                success: function(data) {
-                                    var string = "<table> <thead> <tr> <th class='numeric-cell'><b>Material</b></th> </tr> </thead> <tbody>";
-                                    var result = data.result;
-                                    var dataProduk = [];
-                                    $.each(result, function(key, value) {
-                                        string += "<tr class='delete_material" + value['id'] + "'> <td width='20%' class='numeric-cell'>" + value['bumbu'] + "</td> <td class='actions-cell'>  <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
-                                        panjangMaterial++;
-                                    });
-                                    string += "</tbody></table>";
-                                    $("#record-bumbu-select").html(string);
-
-                                }
-                            });
-                        }
-
-                        $('#record-bumbu-select').on('click', '.btn-delete', function() {
-                            var id = $(this).attr("id");
-                            app.dialog.confirm("Anda yakin ingin menghapus?", "", function() {
-                                $.ajax({
-                                    type: "POST",
-                                    url: base_url + "maktam_api_new/delete_bumbu.php",
-                                    data: ({
-                                        id: id
-                                    }),
-                                    cache: false,
-                                    success: function(html) {
-                                        $(".delete_material" + id).fadeOut('slow');
-                                    }
-                                });
-                            });
-                        });
                     </script>
 
 
@@ -3072,4 +2769,4 @@
 
 </body>
 
-</html
+</html>

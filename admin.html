@@ -76,6 +76,12 @@
                         <i class="icon material-icons md-only">delete_sweep</i>
                         <span class="tabbar-label">Material</span>
                     </a>
+                    <a href="#view-bumbu" class="tab-link">
+                        <i class="icon f7-icons ios-only">delete_sweep</i>
+                        <i class="icon f7-icons ios-only icon-ios-fill">delete_sweep</i>
+                        <i class="icon material-icons md-only">delete_sweep</i>
+                        <span class="tabbar-label">Bumbu</span>
+                    </a>
 
                 </div>
             </div>
@@ -266,79 +272,11 @@
 
                                 </div>
 
-
-                                <div class="data-table data-table-init card">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td style="background-color: rgb(208, 245, 237); font-size: 15px"><b>Stock Bumbu</b></td>
-                                                <td style="background-color: rgb(208, 245, 237)"></td>
-                                                <td style="background-color: rgb(208, 245, 237)"></td>
-                                                <td style="background-color: rgb(208, 245, 237)"><button id="print_bumbu">Print Bumbu</button></td>
-                                                <!-- <th class='numeric-cell'><button id="print">Print</button></th> -->
-
-
-                                            </tr>
-
-                                            <tr>
-                                                <td><b>Bumbu</b></td>
-                                                <td><b>Stock</b></td>
-                                                <td><b>Terjual</b></td>
-                                                <td><b>Sisa</b></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>Original</td>
-                                                <td id="stock0"></td>
-                                                <td id="terjual0"></td>
-                                                <td id="sisa0"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cappucino</td>
-                                                <td id="stock1"></td>
-                                                <td id="terjual1"></td>
-                                                <td id="sisa1"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Coklat</td>
-                                                <td id="stock2"></td>
-                                                <td id="terjual2"></td>
-                                                <td id="sisa2"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Oreo</td>
-                                                <td id="stock3"></td>
-                                                <td id="terjual3"></td>
-                                                <td id="sisa3"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Total</td>
-                                                <td id="total_stock"></td>
-                                                <td id="total_terjual"></td>
-                                                <td id="total_sisa"></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td><b>Rincian Bumbu Terjual dan Sisa</b></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-
-                                    <div class="card-content">
-                                        <div id="record-rincian-bumbu" class="card-content">
-                                        </div>
-                                    </div>
+                                <div id="bumbu_tabel">
 
                                 </div>
+
+
 
 
 
@@ -943,6 +881,103 @@
                         </div>
                     </div>
 
+                    <div id="view-bumbu" class="view view-main tab">
+                        <div class="page" data-name="home">
+                            <div class="navbar">
+                                <div class="navbar-inner">
+                                    <div class="title sliding">
+                                        <img src="ico/halocode.png" height="40" width="50">
+                                    </div>
+                                    <div class="right">
+                                        <a href="index.html" class="external link icon-only " data-panel="right">
+                                            <i class="icon f7-icons ios-only">exit_to_app</i>
+                                            <i class="icon material-icons md-only">exit_to_app</i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page-content">
+                                <!----------------------------------BUMBU--------------------------------------------->
+                                <div class="data-table data-table-init card">
+                                    <div class="card-header">
+                                        <div class="data-table-links">
+                                            <a id="btn-tambah-bumbu" class="link icon-only popup-open" data-popup="#popup-tambah-bumbu">
+                                                <i class="icon f7-icons ios-only">add_circle_outline</i>
+                                                <i class="icon material-icons md-only">add_circle_outline</i>
+                                            </a>
+                                        </div>
+                                        <div class="data-table-actions">
+                                            <a class="link icon-only">
+                                                <i class="icon f7-icons ios-only">sort</i>
+                                                <i class="icon material-icons md-only">sort</i>
+                                            </a>
+                                            <a class="link icon-only popover-open" href="#" data-popover=".popover-links">
+                                                <i class="icon f7-icons ios-only">more_vertical_round</i>
+                                                <i class="icon material-icons md-only">more_vert</i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div id="record-bumbu-select" class="card-content">
+                                    </div>
+                                </div>
+
+
+                                <div class="popup" id="popup-tambah-bumbu">
+                                    <div class="view">
+                                        <div class="page">
+                                            <div class="navbar">
+                                                <div class="navbar-inner">
+                                                    <div class="title">Tambah Bumbu</div>
+                                                    <div class="right">
+                                                        <a id="popup-close" href="#" class="link popup-close">Close</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="page-content">
+                                                <form id="formMaterial">
+                                                    <div class="data-table card">
+                                                        <table id="tbls">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td><b id="materialError">Bumbu</b></td>
+                                                                    <td><input id="bumbu" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                                                                </tr>
+
+                                                        </table>
+                                                    </div>
+                                                </form>
+                                                <button id="submitBumbu" class="btn-submit-material col button button-raised button-round">Simpan</button>
+                                                <!-- page content--- -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+                                <div class="popover popover-links">
+                                    <div class="popover-inner">
+                                        <div class="list">
+                                            <ul>
+                                                <li><a class="list-button item-link popup-open" data-popup="#popup-tambah-std">Atur Std Outlet</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <!------------------------------------------------------------------------------------------>
+                            </div>
+                        </div>
+                    </div>
+
                     <script src="jspdf/dist/jspdf.min.js"></script>
 
 
@@ -953,7 +988,38 @@
 
                     <script src="js/penjualan.js"></script>
                     <script type="text/javascript">
-                        var api_admin = "http://susumaktam.com/maktam2/maktam/maktam/api/admin/";
+                        var base_url = "http://susumaktam.com/"
+                        var api_admin = base_url + "maktam_api_new/api/admin/";
+
+
+
+
+                        var arrBumbu;
+                        var total_stock_bumbu = 0;
+                        var total_terjual_bumbu = 0;
+                        var total_sisa_bumbu = 0;
+                        select_bumbu_all();
+
+                        function select_bumbu_all() {
+                            $.ajax({
+                                type: "POST",
+                                url: base_url + "maktam_api_new/get_bumbu_all.php",
+                                cache: false,
+                                success: function(data) {
+                                    arrBumbu = data.result;
+
+                                    var string = "<div class='data-table data-table-init card'> <table> <tbody> <tr> <td style='background-color: rgb(208, 245, 237); font-size: 15px'><b>Stock Bumbu</b></td> <td style='background-color: rgb(208, 245, 237)'></td> <td style='background-color: rgb(208, 245, 237)'></td> <td style='background-color: rgb(208, 245, 237)'><button id='print_bumbu'>Print Bumbu</button></td> <!-- <th class='numeric-cell'><button id='print'>Print</button></th> --> </tr> <tr> <td><b>Bumbu</b></td> <td><b>Stock</b></td> <td><b>Terjual</b></td> <td><b>Sisa</b></td> </tr> <tr> <td>Original</td> <td id='stock0'></td> <td id='terjual0'></td> <td id='sisa0'></td> </tr> <tr> <td>Cappucino</td> <td id='stock1'></td> <td id='terjual1'></td> <td id='sisa1'></td> </tr> <tr> <td>Coklat</td> <td id='stock2'></td> <td id='terjual2'></td> <td id='sisa2'></td> </tr> <tr> <td>Oreo</td> <td id='stock3'></td> <td id='terjual3'></td> <td id='sisa3'></td> </tr>";
+                                    var result = data.result;
+                                    bumbu = data.result;
+                                    $.each(result, function(key, value) {
+                                        string += "<tr> <td>" + value['bumbu'] + "</td> <td id='" + value['bumbu'] + "0'></td> <td id='" + value['bumbu'] + "1'></td> <td id='" + value['bumbu'] + "2'></td> </tr>";
+                                    });
+                                    string += "<tr> <td>Total</td> <td id='total_stock'></td> <td id='total_terjual'></td> <td id='total_sisa'></td> </tr> <tr> <td></td> <td></td> <td></td> <td></td> </tr> <tr> <td><b>Rincian Bumbu Terjual dan Sisa</b></td> <td></td> <td></td> <td></td> </tr> </tbody> </table> <div class='card-content'> <div id='record-rincian-bumbu' class='card-content'> </div> </div> </div>";
+                                    $("#bumbu_tabel").html(string);
+                                }
+                            });
+                        }
+
 
 
 
@@ -1016,6 +1082,7 @@
                         show_laporan_produk_lain();
                         show_laporan_produk_lain2();
                         show_peringkat_penjualan();
+                        selelect_bumbu_date();
 
                         $("#submitTanggal").click(function() {
                             var date = String($("#tanggal").val());
@@ -1039,7 +1106,70 @@
                             show_laporan_produk_lain();
                             show_laporan_produk_lain2();
                             show_peringkat_penjualan();
+                            selelect_bumbu_date()
                         });
+
+                        function selelect_bumbu_date() {
+                            var stock = [];
+                            var terjual = [];
+                            var sisa = [];
+
+
+
+                            $.ajax({
+                                type: "POST",
+                                data: ({
+                                    tanggal: tanggal
+                                }),
+                                url: base_url + "maktam_api_new/bumbu_date.php",
+                                cache: false,
+                                success: function(data) {
+                                    var tbs = 0;
+                                    var ttb = 0;
+                                    var tsb = 0;
+                                    console.log("asds")
+                                    var i = 0;
+                                    $.each(arrBumbu, function(key, value) {
+                                        stock[i] = 0;
+                                        terjual[i] = 0;
+                                        sisa[i] = 0;
+                                        $.each(data.result, function(key2, value2) {
+                                            if (value['bumbu'] === value2['bumbu']) {
+                                                stock[i] = stock[i] + (Number(value2['stock_dingin']) + Number(value2['stock_hangat']));
+                                                terjual[i] = terjual[i] + (Number(value2['terjual_dingin']) + Number(value2['terjual_hangat']));
+                                                sisa[i] = sisa[i] + (Number(value2['sisa_dingin']) + Number(value2['sisa_hangat']));
+                                            }
+                                        });
+                                        $("#" + value['bumbu'] + "0").html(stock[i]);
+                                        $("#" + value['bumbu'] + "1").html(terjual[i]);
+                                        $("#" + value['bumbu'] + "2").html(terjual[i]);
+
+                                        tbs = tbs + stock[i];
+                                        ttb = ttb + terjual[i];
+                                        tsb = tsb + Number(sisa[i]);
+
+
+
+                                        i++;
+                                    });
+
+                                    total_stock_bumbu = tbs;
+                                    total_sisa_bumbu = tsb;
+                                    total_terjual_bumbu = ttb;
+
+                                    show_stock_susu()
+                                },
+                                error: function(err) {
+                                    console.log(err)
+                                }
+                            });
+
+
+
+
+                        }
+
+
 
 
 
@@ -2084,10 +2214,9 @@
                                       $("#sisa"+i).html(sisa[i]);
                                     }
                                     */
-                                    $("#total_stock").html(total_stock);
-                                    $("#total_terjual").html(total_terjual);
-                                    $("#total_sisa").html(total_sisa);
-
+                                    $("#total_stock").html(Number(total_stock) + Number(total_stock_bumbu));
+                                    $("#total_terjual").html(Number(total_terjual) + Number(total_terjual_bumbu));
+                                    $("#total_sisa").html(Number(total_sisa) + Number(total_sisa_bumbu));
 
 
                                     string += "</tbody></table>";
@@ -2142,6 +2271,8 @@
                                         sisaBarang[i] = Number(stock[i]) - Number(diambilOutlet[i]);
                                         string += "<tr> <td><b>" + material[i] + "</b></td> <td><input value='' id='inputGudang" + i + "' style='text-align:center; border: 1px solid black; height:25px; width:50px;' type='text'></td> <td id='stockGudang" + i + "'>" + stock[i] + "</td> <td id='diambilOutlet" + i + "'>" + diambilOutlet[i] + "</td> <td id='sisaGudang" + i + "'>" + sisaBarang[i] + "</td>  </tr>";
                                     }
+
+                                    console.log(diambilOutlet)
 
                                     $("#record-laporan-gudang").html(string);
                                 }
@@ -2429,7 +2560,9 @@
 
                                     $.each(result, function(key, value) {
                                         string += "<tr class='delete_outlet" + value['id'] + "'> <td >" + value['username'] + "</td> <td>" + value['password'] + "</td> <td>" + value['outlet'] + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> <a id='" + value['outlet'] + "' class='btn-go link icon-only'> <i class='icon f7-icons ios-only'>arrow_forward</i> <i class='icon material-icons md-only'>arrow_forward</i> </a> </td> </tr>";
-                                        $('#outletStd').append($("<option></option>").attr("value", key).text(value['outlet']));
+                                        var res = value['outlet'].replace(" ", "");
+
+                                        $('#outletStd').append($("<option></option>").attr("value", key).text(res));
                                         t++;
                                     });
                                     string += "</tbody></table>";
@@ -2943,6 +3076,65 @@
                                 }
                             });
                         });
+
+
+                        //=====================Bumbu=====================
+
+                        show_bumbu();
+
+                        $("#submitBumbu").click(function() {
+                            var bumbu = $("#bumbu").val();
+                            $.ajax({
+                                type: "POST",
+                                url: base_url + "maktam_api_new/add_bumbu.php",
+                                data: ({
+                                    bumbu: bumbu
+                                }),
+                                cache: false,
+                                success: function(html) {
+                                    show_bumbu();
+                                    app.popup.close();
+                                }
+                            });
+                        });
+
+
+                        function show_bumbu() {
+                            $.ajax({
+                                type: "POST",
+                                url: base_url + "maktam_api_new/get_bumbu_all.php",
+                                cache: false,
+                                success: function(data) {
+                                    var string = "<table> <thead> <tr> <th class='numeric-cell'><b>Material</b></th> </tr> </thead> <tbody>";
+                                    var result = data.result;
+                                    var dataProduk = [];
+                                    $.each(result, function(key, value) {
+                                        string += "<tr class='delete_material" + value['id'] + "'> <td width='20%' class='numeric-cell'>" + value['bumbu'] + "</td> <td class='actions-cell'>  <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
+                                        panjangMaterial++;
+                                    });
+                                    string += "</tbody></table>";
+                                    $("#record-bumbu-select").html(string);
+
+                                }
+                            });
+                        }
+
+                        $('#record-bumbu-select').on('click', '.btn-delete', function() {
+                            var id = $(this).attr("id");
+                            app.dialog.confirm("Anda yakin ingin menghapus?", "", function() {
+                                $.ajax({
+                                    type: "POST",
+                                    url: base_url + "maktam_api_new/delete_bumbu.php",
+                                    data: ({
+                                        id: id
+                                    }),
+                                    cache: false,
+                                    success: function(html) {
+                                        $(".delete_material" + id).fadeOut('slow');
+                                    }
+                                });
+                            });
+                        });
                     </script>
 
 
@@ -2952,4 +3144,4 @@
 
 </body>
 
-</html>
+</html
