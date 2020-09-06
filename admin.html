@@ -120,7 +120,7 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="card-content">
+                            <div id="gudang_hide_1" class="card-content">
                                 <table>
                                     <tbody>
                                         <tr>
@@ -152,7 +152,7 @@
                             <div id="record-pendapatan-select-1" class="card-content">
                             </div>
 
-                            <div class="data-table card">
+                            <div id="gudang_hide_2" class="data-table card">
                                 <table id="tabel-pengeluaran-gudang">
                                     <tbody>
                                         <tr>
@@ -165,7 +165,7 @@
                                 <button id="submitPengeluaranGudang" class="btn-submit col button button-raised button-round">Simpan</button>
                             </div>
 
-                            <div class="data-table card">
+                            <div id="gudang_hide_3" class="data-table card">
                                 <table>
                                     <tbody>
                                         <tr>
@@ -328,6 +328,54 @@
                                 </div>
 
 
+                                <div class="data-table data-table-init card">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td style="background-color: rgb(208, 245, 237); font-size: 15px"><b>Stock Cup Besar</b></td>
+                                                <td style="background-color: rgb(208, 245, 237)"></td>
+                                                <td style="background-color: rgb(208, 245, 237)"></td>
+                                                <!-- <td style="background-color: rgb(208, 245, 237)"><button id="print_stock_cup"></button></td> -->
+                                            </tr>
+
+                                            <tr>
+                                                <td><b>Produk</b></td>
+                                                <td><b>Dingin</b></td>
+                                                <td><b>Hangat</b></td>
+                                                <td><b>Total</b></td>
+
+                                            </tr>
+
+                                            <tr>
+                                                <td>Stock</td>
+                                                <td id="cup_besar_stock0"></td>
+                                                <td id="cup_besar_stock1"></td>
+                                                <td id="cup_besar_total_stock"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Terjual</td>
+                                                <td id="cup_besar_terjual0"></td>
+                                                <td id="cup_besar_terjual1"></td>
+                                                <td id="cup_besar_total_terjual"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Sisa</td>
+                                                <td id="cup_besar_sisa0"></td>
+                                                <td id="cup_besar_sisa1"></td>
+                                                <td id="cup_besar_total_sisa"></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                    <div class="card-content">
+                                        <div id="record-rincian-cup-besar" class="card-content">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
 
                                 <!-- </div> -->
                                 <div class="data-table data-table-init card">
@@ -410,7 +458,7 @@
                                     </div>
 
 
-                                    <div class="data-table data-table-init card">
+                                    <div id="gudang_hide_4" class="data-table data-table-init card">
                                         <table>
                                             <tbody>
                                                 <tr>
@@ -668,8 +716,61 @@
                                                                     <td><input id="rasa0" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="text" placeholder="Rasa"></td>
                                                                     <td><input id="harga0" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number" placeholder="Harga"></td>
                                                                 </tr>
+
+
+                                                                <tr>
+                                                                    <td><input id="rasa1" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="text" placeholder="Rasa"></td>
+                                                                    <td><input id="harga1" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number" placeholder="Harga"></td>
+                                                                </tr>
+
+
+                                                                <tr>
+                                                                    <td><input id="rasa2" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="text" placeholder="Rasa"></td>
+                                                                    <td><input id="harga2" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number" placeholder="Harga"></td>
+                                                                </tr>
+
+
+                                                                <tr>
+                                                                    <td><input id="rasa3" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="text" placeholder="Rasa"></td>
+                                                                    <td><input id="harga3" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number" placeholder="Harga"></td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td><input id="rasa4" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="text" placeholder="Rasa"></td>
+                                                                    <td><input id="harga4" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number" placeholder="Harga"></td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td><input id="rasa5" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="text" placeholder="Rasa"></td>
+                                                                    <td><input id="harga5" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number" placeholder="Harga"></td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td><input id="rasa6" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="text" placeholder="Rasa"></td>
+                                                                    <td><input id="harga6" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number" placeholder="Harga"></td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td><input id="rasa7" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="text" placeholder="Rasa"></td>
+                                                                    <td><input id="harga7" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number" placeholder="Harga"></td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td><input id="rasa8" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="text" placeholder="Rasa"></td>
+                                                                    <td><input id="harga8" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number" placeholder="Harga"></td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td><input id="rasa9" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="text" placeholder="Rasa"></td>
+                                                                    <td><input id="harga9" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number" placeholder="Harga"></td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td><input id="rasa10" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="text" placeholder="Rasa"></td>
+                                                                    <td><input id="harga10" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;" type="number" placeholder="Harga"></td>
+                                                                </tr>
                                                             </tbody>
-                                                            <button type="button" id="add-row" class="col button color-black"><i class="icon material-icons md-only">add_circle_outline</i></button>
+                                                            <!-- <button type="button" id="add-row" class="col button color-black"><i class="icon material-icons md-only">add_circle_outline</i></button> -->
 
                                                         </table>
                                                     </div>
@@ -989,9 +1090,25 @@
                     <script src="js/penjualan.js"></script>
                     <script type="text/javascript">
                         var base_url = "http://susumaktam.com/"
+
+                        // var base_url = "http://localhost/"
                         var api_admin = base_url + "maktam_api_new/api/admin/";
 
+                        var usersk;
+                        setGudang()
 
+                        function setGudang() {
+                            var username = sessionStorage.getItem("outlet");
+                            usersk = username;
+                            if (username === "gudang") {
+
+                                $("#gudang_hide_1").hide();
+                                $("#gudang_hide_2").hide();
+                                $("#gudang_hide_3").hide();
+                                $("#gudang_hide_4").hide();
+                                $("#record-pendapatan-select-1").hide();
+                            }
+                        }
 
 
                         var arrBumbu;
@@ -999,6 +1116,9 @@
                         var total_terjual_bumbu = 0;
                         var total_sisa_bumbu = 0;
                         select_bumbu_all();
+
+
+
 
                         function select_bumbu_all() {
                             $.ajax({
@@ -1019,6 +1139,8 @@
                                 }
                             });
                         }
+
+
 
 
 
@@ -1084,6 +1206,7 @@
                         show_peringkat_penjualan();
                         selelect_bumbu_date();
 
+
                         $("#submitTanggal").click(function() {
                             var date = String($("#tanggal").val());
                             var dd = date.substring(8, 10);
@@ -1127,7 +1250,6 @@
                                     var tbs = 0;
                                     var ttb = 0;
                                     var tsb = 0;
-                                    console.log("asds")
                                     var i = 0;
                                     $.each(arrBumbu, function(key, value) {
                                         stock[i] = 0;
@@ -1170,7 +1292,205 @@
                         }
 
 
+                        var outletk = Array();
 
+                        selectOutletAll()
+                        selectCupBesarAll()
+
+
+                        function selectOutletAll() {
+                            $.ajax({
+                                type: "GET",
+                                url: base_url + "maktam_api_new/get_outlet_all.php",
+                                cache: false,
+                                success: function(data) {
+                                    var i = 0;
+                                    $.each(data.result, function(key, value) {
+                                        if (value['outlet'] != "0w") {
+                                            outletk[i] = value['outlet']
+                                            i++;
+                                        }
+                                    });
+
+                                }
+                            });
+                        }
+
+
+
+                        function selectCupBesarAll() {
+                            $.ajax({
+                                type: "POST",
+                                url: base_url + "maktam_api_new/get_cup_besar_all.php",
+                                cache: false,
+                                data: {
+                                    tanggal: tanggal
+                                },
+                                success: function(data) {
+                                    var totalStockDingin = 0;
+                                    var totalStockHangat = 0;
+                                    var totalTerjualDingin = 0;
+                                    var totalTerjualHangat = 0;
+                                    var totalSisaDingin = 0;
+                                    var totalSisaHangat = 0;
+
+                                    $.each(data.result, function(key, value) {
+                                        if (value['stock_dingin']) {
+                                            if (Number.isInteger(Number(value['stock_dingin']))) {
+                                                totalStockDingin = totalStockDingin + Number(value['stock_dingin']);
+                                            }
+                                        }
+
+                                        if (value['stock_hangat']) {
+                                            if (Number.isInteger(Number(value['stock_hangat']))) {
+                                                totalStockHangat = totalStockHangat + Number(value['stock_hangat']);
+                                            }
+                                        }
+
+                                        if (value['terjual_dingin']) {
+                                            if (Number.isInteger(Number(value['terjual_dingin']))) {
+                                                totalTerjualDingin = totalTerjualDingin + Number(value['terjual_dingin']);
+                                            }
+                                        }
+
+                                        if (value['terjual_hangat']) {
+                                            if (Number.isInteger(Number(value['terjual_hangat']))) {
+                                                totalTerjualHangat = totalTerjualHangat + Number(value['terjual_hangat']);
+                                            }
+                                        }
+
+                                        if (value['sisa_dingin']) {
+                                            if (Number.isInteger(Number(value['sisa_dingin']))) {
+                                                totalSisaDingin = totalSisaDingin + Number(value['sisa_dingin']);
+                                            }
+                                        }
+
+                                        if (value['sisa_hangat']) {
+                                            if (Number.isInteger(Number(value['sisa_hangat']))) {
+                                                totalSisaHangat = totalSisaHangat + Number(value['sisa_hangat']);
+                                            }
+                                        }
+                                    });
+
+                                    // console.log(totalStockDingin)
+                                    $("#cup_besar_stock0").text(totalStockDingin)
+                                    $("#cup_besar_stock1").text(totalStockHangat)
+                                    $("#cup_besar_total_stock").text(totalStockHangat + totalStockDingin)
+                                    $("#cup_besar_terjual0").text(totalTerjualDingin)
+                                    $("#cup_besar_terjual1").text(totalTerjualHangat)
+                                    $("#cup_besar_total_terjual").text(totalTerjualHangat + totalTerjualDingin)
+                                    $("#cup_besar_sisa0").text(totalSisaDingin)
+                                    $("#cup_besar_sisa1").text(totalSisaHangat)
+                                    $("#cup_besar_total_sisa").text(totalSisaHangat + totalSisaDingin)
+
+
+                                    buildTableCupBesar(data.result)
+                                }
+                            });
+                        }
+
+                        function buildTableCupBesar(data) {
+                            var htmlTableCupBesar = "<table> <thead> <tr> <th rowspan='2'>Outlet</th>";
+
+
+                            $.each(outletk, function(key, value) {
+                                htmlTableCupBesar += "<th colspan='2' style='text-align:center;'>" + value + "</th>"
+                            });
+
+                            htmlTableCupBesar += "</tr><tr>";
+
+                            $.each(outletk, function(key, value) {
+                                htmlTableCupBesar += "<th>Dingin</th><th>Hangat</th>";
+                            });
+
+                            htmlTableCupBesar += "</tr> </thead> <tbody>";
+
+                            htmlTableCupBesar += "<tr><td>Stock Cup Besar</td>";
+
+
+                            var hashCupBesar = new Map();
+                            $.each(data, function(key, value) {
+                                $.each(outletk, function(key, outlet) {
+                                    if (outlet == value["outlet"]) {
+                                        hashCupBesar.set(outlet, value);
+                                    }
+                                });
+                            });
+
+                            $.each(outletk, function(key, outlet) {
+                                var valCupBesar = hashCupBesar.get(outlet);
+                                if (valCupBesar) {
+                                    htmlTableCupBesar += "<td>" + valCupBesar["stock_dingin"] + "</td><td>" + valCupBesar["stock_hangat"] + "</td>";
+                                } else {
+                                    htmlTableCupBesar += "<td>0</td><td>0</td>";
+                                }
+
+                            });
+
+                            htmlTableCupBesar += "<tr><td>Terjual Cup Besar</td>";
+
+                            $.each(outletk, function(key, outlet) {
+                                var valCupBesar = hashCupBesar.get(outlet);
+                                if (valCupBesar) {
+                                    htmlTableCupBesar += "<td>" + valCupBesar["terjual_dingin"] + "</td><td>" + valCupBesar["terjual_hangat"] + "</td>";
+                                } else {
+                                    htmlTableCupBesar += "<td>0</td><td>0</td>";
+                                }
+
+                            });
+
+                            htmlTableCupBesar += "<tr><td>Sisa Cup Besar</td>";
+
+                            $.each(outletk, function(key, outlet) {
+                                var valCupBesar = hashCupBesar.get(outlet);
+                                if (valCupBesar) {
+                                    htmlTableCupBesar += "<td>" + valCupBesar["sisa_dingin"] + "</td><td>" + valCupBesar["sisa_hangat"] + "</td>";
+                                } else {
+                                    htmlTableCupBesar += "<td>0</td><td>0</td>";
+                                }
+
+                            });
+
+                            // $.each(outletk, function(key, outlet) {
+                            //     var notFound = false;
+                            //     $.each(data, function(key, value) {
+                            //         if (value["outlet"] == outlet) {
+
+                            //         } else {
+                            //             notFound = true;
+                            //         }
+
+                            //     });
+
+                            //     if (notFound) {
+                            //         htmlTableCupBesar += "<td>0</td><td>0</td>";
+                            //     }
+                            // });
+
+                            htmlTableCupBesar += "</tr>"
+
+                            // $.each(data, function(key, value) {
+
+                            //     console.log(value["stock_hangat"])
+
+                            // $.each(outletk, function(key, outlet) {
+                            //     if(outlet == value['outlet']){
+                            //         htmlTableCupBesar += "<tr><td>" + stock_cupss[i] + "</td><td>" + stock_cupss[i] + "</td>";
+                            //     }else{
+                            //         htmlTableCupBesar += "<tr><td>0</td><td>0</td>";
+                            //     }
+                            // });
+
+
+
+                            //                            });
+
+                            htmlTableCupBesar += "</tbody></table>";
+                            $("#record-rincian-cup-besar").html(htmlTableCupBesar);
+
+
+
+                        }
 
 
                         function show_laporan() {
@@ -2272,7 +2592,6 @@
                                         string += "<tr> <td><b>" + material[i] + "</b></td> <td><input value='' id='inputGudang" + i + "' style='text-align:center; border: 1px solid black; height:25px; width:50px;' type='text'></td> <td id='stockGudang" + i + "'>" + stock[i] + "</td> <td id='diambilOutlet" + i + "'>" + diambilOutlet[i] + "</td> <td id='sisaGudang" + i + "'>" + sisaBarang[i] + "</td>  </tr>";
                                     }
 
-                                    console.log(diambilOutlet)
 
                                     $("#record-laporan-gudang").html(string);
                                 }
@@ -2295,7 +2614,17 @@
                                 if (inputGudang[i] == "") inputGudang[i] = 0;
                                 if (stockGudang[i] == "") stockGudang[i] = 0;
 
-                                stockGudangBaru[i] = Number(inputGudang[i]) + Number(stockGudang[i]);
+                                if (usersk === "gudang") {
+                                    if (Number(inputGudang[i]) >= 0) {
+                                        stockGudangBaru[i] = Number(inputGudang[i]) + Number(stockGudang[i]);
+                                    } else {
+                                        stockGudangBaru[i] = 0 + Number(stockGudang[i]);
+                                    }
+                                } else {
+                                    stockGudangBaru[i] = Number(inputGudang[i]) + Number(stockGudang[i]);
+                                }
+
+
                             }
 
                             var data = [tanggal, materialLength];
@@ -2760,11 +3089,14 @@
                         });
 
                         $("#submitLain").click(function() {
+                            console.log($("#rasa1").val());
+
+
                             var produk = $("#produk").val();
                             rasa = [];
                             harga = [];
                             var c = 0;
-                            for (var i = 0; i <= idk; i++) {
+                            for (var i = 0; i <= 10; i++) {
                                 if ($("#rasa" + i).val() != "" || $("#harga" + i).val() != "") {
                                     rasa[c] = $("#rasa" + i).val();
                                     harga[c] = $("#harga" + i).val();
@@ -2781,6 +3113,10 @@
                                 datas["dt" + j] = data[j];
                             }
 
+                            console.log(rasa);
+
+
+
 
 
                             $.ajax({
@@ -2789,6 +3125,7 @@
                                 data: datas,
                                 cache: false,
                                 success: function(html) {
+
                                     if (html == "200") {
                                         $("#formLain").trigger("reset");
                                         show_lain();
@@ -2859,10 +3196,13 @@
                                         $("#rasa0").val(rasa[0]);
                                         $("#harga0").val(harga[0]);
 
-                                        for (var i = 1; i < rasa.length; i++) {
-                                            idk++;
-                                            var markup = "<tr id='tr-delete-other" + idk + "'> <td style='width:5px'><input value='" + rasa[idk] + "' id='rasa" + idk + "' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='text' placeholder='Rasa " + idk + "'</td> <td><input value='" + harga[idk] + "' id='harga" + idk + "' placeholder='Harga " + idk + "' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='number'></td> <td class='actions-cell'><a id='" + idk + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a></td> </tr>";
-                                            $("#tbls-lain tbody").append(markup);
+                                        for (var i = 0; i < rasa.length; i++) {
+
+                                            $("#rasa" + i).val(rasa[i]);
+                                            $("#harga" + i).val(harga[i]);
+                                            // idk++;
+                                            // var markup = "<tr id='tr-delete-other" + idk + "'> <td style='width:5px'><input value='" + rasa[idk] + "' id='rasa" + idk + "' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='text' placeholder='Rasa " + idk + "'</td> <td><input value='" + harga[idk] + "' id='harga" + idk + "' placeholder='Harga " + idk + "' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='number'></td> <td class='actions-cell'><a id='" + idk + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a></td> </tr>";
+                                            // $("#tbls-lain tbody").append(markup);
                                         }
 
                                     });

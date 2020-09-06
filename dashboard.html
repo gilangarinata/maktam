@@ -494,6 +494,52 @@
                                                     </div>
                                                 </li>
 
+
+                                                <li class="accordion-item">
+                                                    <a href="#" class="item-content item-link">
+                                                        <div class="item-inner">
+                                                            <div class="item-title">Cup Besar</div>
+                                                        </div>
+                                                    </a>
+                                                    <div class="accordion-item-content">
+                                                        <div class="block">
+                                                            <div class="data-table card">
+                                                                <table>
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <td>Produk</td>
+                                                                            <td>Dingin</td>
+                                                                            <td>Hangat</td>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>Stock Cup Besar</td>
+                                                                            <td><input id="scb_dingin" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="scb_hangat" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Terjual</td>
+                                                                            <td><input id="tjb_dingin" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input id="tjb_hangat" onKeyUp='penjualan()' onKeyPress='penjualan()' style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>Sisa</td>
+                                                                            <td><input disabled id="ssb_dingin" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                            <td><input disabled id="ssb_hangat" style="text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:40px;" type="number"></td>
+                                                                        </tr>
+
+
+                                                                        <br>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </li>
+
                                             </ul>
                                         </div>
 
@@ -830,6 +876,7 @@
         outlet = outlet.replace(/\s/g, '');
 
         var base_url = "http://susumaktam.com/"
+            // var base_url = "http://localhost/"
 
         var api = base_url + "maktam_api_new/api/pendapatan/";
 
@@ -1201,6 +1248,7 @@
 
         //==========================PENJUALAN===============================================================
         var api_penjualan = base_url + "maktam_api_new/api/penjualan/";
+        var api_cup_besar = base_url + "maktam_api_new/";
         var id = 1;
         var id2 = 1;
         var total_penjualan = 0;
@@ -1290,10 +1338,68 @@
             $("#ss_dingin").val(Number($("#sc_dingin").val()) - Number($("#tj_dingin").val()));
             $("#ss_hangat").val(Number($("#sc_hangat").val()) - Number($("#tj_hangat").val()));
 
+            $("#ssb_dingin").val(Number($("#scb_dingin").val()) - Number($("#tjb_dingin").val()));
+            $("#ssb_hangat").val(Number($("#scb_hangat").val()) - Number($("#tjb_hangat").val()));
+
             $.each(bumbu, function(key, value) {
                 $("#" + value['bumbu'] + "4").val(Number($("#" + value['bumbu'] + "0").val()) - Number($("#" + value['bumbu'] + "2").val()));
                 $("#" + value['bumbu'] + "5").val(Number($("#" + value['bumbu'] + "1").val()) - Number($("#" + value['bumbu'] + "3").val()));
             });
+        }
+
+        function processCupBesar() {
+            var scb_dingin = $("#scb_dingin").val();
+            var scb_hangat = $("#scb_hangat").val();
+            var tjb_dingin = $("#tjb_dingin").val();
+            var tjb_hangat = $("#tjb_hangat").val();
+            var ssb_dingin = $("#ssb_dingin").val();
+            var ssb_hangat = $("#ssb_hangat").val();
+
+            var tanggal = $("#tanggal2").val();
+
+            console.log(mode2)
+
+            if (mode2 == 1) {
+                $.ajax({
+                    type: "POST",
+                    url: api_cup_besar + "edit_cup_besar.php",
+                    data: {
+                        stock_dingin: scb_dingin,
+                        stock_hangat: scb_hangat,
+                        terjual_dingin: tjb_dingin,
+                        terjual_hangat: tjb_hangat,
+                        sisa_dingin: ssb_dingin,
+                        sisa_hangat: ssb_hangat,
+                        tanggal: tanggal,
+                        outlet: outlet
+                    },
+                    cache: false,
+                    success: function(html) {
+                        console.log(html)
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: api_cup_besar + "add_cup_besar.php",
+                    data: {
+                        stock_dingin: scb_dingin,
+                        stock_hangat: scb_hangat,
+                        terjual_dingin: tjb_dingin,
+                        terjual_hangat: tjb_hangat,
+                        sisa_dingin: ssb_dingin,
+                        sisa_hangat: ssb_hangat,
+                        tanggal: tanggal,
+                        outlet: outlet
+                    },
+                    cache: false,
+                    success: function(html) {
+                        console.log(html)
+                    }
+                });
+            }
+
+
         }
 
 
@@ -1377,6 +1483,7 @@
             }
 
             if (stateNama == 1) {
+                processCupBesar()
                 $.ajax({
                     type: "POST",
                     url: api_penjualan + "penjualan_submit.php",
@@ -1412,7 +1519,6 @@
                 }),
                 cache: false,
                 success: function(data) {
-                    console.log(data)
                     bumbu2 = data.result;
 
                     if (data.num > 0) {
@@ -1542,11 +1648,42 @@
             });
         }
 
+
+
+
+
+
+
+        function selectCupBesarAll(date, outlet) {
+            $.ajax({
+                type: "POST",
+                url: base_url + "maktam_api_new/get_cup_besar_by_outlet.php",
+                cache: false,
+                data: {
+                    tanggal: date,
+                    outlet: outlet
+                },
+                success: function(data) {
+                    $("#scb_dingin").val(data.result[0].stock_dingin);
+                    $("#scb_hangat").val(data.result[0].stock_hangat);
+                    $("#tjb_dingin").val(data.result[0].terjual_dingin);
+                    $("#tjb_hangat").val(data.result[0].terjual_hangat);
+                    $("#ssb_dingin").val(data.result[0].sisa_dingin);
+                    $("#ssb_hangat").val(data.result[0].sisa_hangat);
+                }
+            });
+        }
+
+
         $('#record-penjualan').on('click', '.btn-edit', function() {
             state_bumbu = 1;
             mode2 = 1;
+
             var id = $(this).attr("id");
             var tanggal = $(this).attr("tanggal");
+
+            selectCupBesarAll(tanggal, outlet)
+
             idx2 = id;
             $.ajax({
                 type: "POST",
@@ -1617,9 +1754,29 @@
         });
 
 
+        function deleteCupBesarOutlet(tanggal) {
+            console.log("tan" + tanggal)
+            $.ajax({
+                type: "POST",
+                url: base_url + "maktam_api_new/delete_cup_besar.php",
+                data: ({
+                    tanggal: tanggal,
+                    outlet: outlet
+                }),
+                cache: false,
+                success: function(data) {
+                    console.log(data)
+                }
+            });
+        }
+
+
         $('#record-penjualan').on('click', '.btn-delete', function() {
             var id = $(this).attr("id");
             var tanggal = $(this).attr("tanggal");
+
+            deleteCupBesarOutlet(tanggal)
+
             app.dialog.confirm("Anda yakin ingin menghapus?", "Peringatan!", function() {
                 $.ajax({
                     type: "POST",
