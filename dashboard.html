@@ -1655,6 +1655,7 @@
 
 
         function selectCupBesarAll(date, outlet) {
+            console.log(date + outlet)
             $.ajax({
                 type: "POST",
                 url: base_url + "maktam_api_new/get_cup_besar_by_outlet.php",
@@ -1664,6 +1665,7 @@
                     outlet: outlet
                 },
                 success: function(data) {
+
                     $("#scb_dingin").val(data.result[0].stock_dingin);
                     $("#scb_hangat").val(data.result[0].stock_hangat);
                     $("#tjb_dingin").val(data.result[0].terjual_dingin);
