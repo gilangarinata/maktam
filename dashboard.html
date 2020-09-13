@@ -1665,7 +1665,7 @@
                     outlet: outlet
                 },
                 success: function(data) {
-
+                    console.log(data)
                     $("#scb_dingin").val(data.result[0].stock_dingin);
                     $("#scb_hangat").val(data.result[0].stock_hangat);
                     $("#tjb_dingin").val(data.result[0].terjual_dingin);
