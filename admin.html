@@ -2728,20 +2728,27 @@
                                     var terjual = [];
                                     var sisa = [];
 
+                                    console.log(datas.length + " DL")
 
                                     for (var i = 0; i < produk.length; i++) {
                                         stock[i] = 0;
                                         terjual[i] = 0;
                                         sisa[i] = 0;
+
+
+
                                         for (var j = 0; j < datas.length; j++) {
+                                            if (datas[j][3] == "1") {
+                                                stock[i] = stock[i] + Number(datas[j][10 + Number(datas[j][9].reduce(getSum) + produk.length) * 3 + i]);
+                                            }
 
-                                            if (datas[j][3] == "1") stock[i] = stock[i] + Number(datas[j][11 + Number(datas[j][9].reduce(getSum) + 1) * 3 + produk.length + i]);
+                                            terjual[i] = terjual[i] + Number(datas[j][10 + Number(datas[j][9].reduce(getSum) + produk.length) * 3 + 3 + i]);
+                                            console.log(terjual[i])
 
-                                            console.log(stock[i])
+                                            if (datas[j][3] == "2") {
+                                                sisa[i] = sisa[i] + Number(datas[j][10 + Number(datas[j][9].reduce(getSum) + produk.length) * 3 + 6 + i]);
+                                            }
 
-                                            terjual[i] = terjual[i] + Number(datas[j][11 + Number(datas[j][9].reduce(getSum) + 1) * 3 + produk.length * 2 + i]);
-                                            if (datas[j][3] == "2")
-                                                sisa[i] = sisa[i] + Number(datas[j][11 + Number(datas[j][9].reduce(getSum) + 1) * 3 + produk.length * 3 + i]);
                                         }
                                     }
 
