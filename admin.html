@@ -2897,8 +2897,17 @@
                                     var t = 0;
 
                                     $.each(result, function(key, value) {
-                                        string += "<tr class='delete_outlet" + value['id'] + "'> <td >" + value['username'] + "</td> <td>" + value['password'] + "</td> <td>" + value['outlet'] + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> <a id='" + value['outlet'] + "' class='btn-go link icon-only'> <i class='icon f7-icons ios-only'>arrow_forward</i> <i class='icon material-icons md-only'>arrow_forward</i> </a> </td> </tr>";
-                                        var res = value['outlet'].replace(" ", "");
+                                        if (usersk === "gudang") {
+                                            if (value['username'] != "admin") {
+                                                string += "<tr class='delete_outlet" + value['id'] + "'> <td >" + value['username'] + "</td> <td>" + value['password'] + "</td> <td>" + value['outlet'] + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> <a id='" + value['outlet'] + "' class='btn-go link icon-only'> <i class='icon f7-icons ios-only'>arrow_forward</i> <i class='icon material-icons md-only'>arrow_forward</i> </a> </td> </tr>";
+                                                var res = value['outlet'].replace(" ", "");
+                                            }
+                                        } else {
+                                            string += "<tr class='delete_outlet" + value['id'] + "'> <td >" + value['username'] + "</td> <td>" + value['password'] + "</td> <td>" + value['outlet'] + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> <a id='" + value['outlet'] + "' class='btn-go link icon-only'> <i class='icon f7-icons ios-only'>arrow_forward</i> <i class='icon material-icons md-only'>arrow_forward</i> </a> </td> </tr>";
+                                            var res = value['outlet'].replace(" ", "");
+                                        }
+
+
 
                                         $('#outletStd').append($("<option></option>").attr("value", key).text(res));
                                         t++;
