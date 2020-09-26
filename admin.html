@@ -2728,7 +2728,7 @@
                                     var terjual = [];
                                     var sisa = [];
 
-                                    console.log(datas.length + " DL")
+                                    console.log(produk.length + " DL")
 
                                     for (var i = 0; i < produk.length; i++) {
                                         stock[i] = 0;
@@ -2739,17 +2739,20 @@
 
                                         for (var j = 0; j < datas.length; j++) {
                                             if (datas[j][3] == "1") {
+                                                console.log(Number(datas[j][9].reduce(getSum) + produk.length))
                                                 stock[i] = stock[i] + Number(datas[j][10 + Number(datas[j][9].reduce(getSum) + produk.length) * 3 + i]);
                                             }
 
                                             terjual[i] = terjual[i] + Number(datas[j][10 + Number(datas[j][9].reduce(getSum) + produk.length) * 3 + 3 + i]);
-                                            console.log(terjual[i])
 
-                                            if (datas[j][3] == "2") {
-                                                sisa[i] = sisa[i] + Number(datas[j][10 + Number(datas[j][9].reduce(getSum) + produk.length) * 3 + 6 + i]);
-                                            }
+                                            // if (datas[j][3] == "2") {
+                                            //     sisa[i] = sisa[i] + Number(datas[j][10 + Number(datas[j][9].reduce(getSum) + produk.length) * 3 + 6 + i]);
+                                            // }
+
 
                                         }
+
+                                        sisa[i] = stock[i] - terjual[i];
                                     }
 
 
