@@ -2402,19 +2402,19 @@
 
                                                 $.each(mBumbuDate, function(key, value) {
                                                     if (value['outlet'] === mOutlet[j] && value['bumbu'] === stock_bumbu[i]) {
-                                                        terjual_dingin = value['terjual_dingin'];
-                                                        terjual_hangat = value['terjual_hangat'];
+                                                        terjualDingin = value['terjual_dingin'];
+                                                        terjualHangat = value['terjual_hangat'];
                                                         sisaDingin = value['sisa_dingin'];
                                                         sisaHangat = value['sisa_hangat'];
                                                     }
                                                 });
 
-                                                if (terjual_dingin === "") terjual_dingin = "0";
-                                                if (terjual_hangat === "") terjual_hangat = "0";
+                                                if (terjualDingin === "") terjual_dingin = "0";
+                                                if (terjualHangat === "") terjual_hangat = "0";
                                                 if (sisaDingin === "") sisaDingin = "0";
                                                 if (sisaHangat === "") sisaHangat = "0";
 
-                                                string2 += "<td><b>" + terjual_dingin + "</b></td><td><b>" + terjual_hangat + "</b></td><td><b>" + sisaDingin + "</b></td><td><b>" + sisaHangat + "</b></td>";
+                                                string2 += "<td><b>" + terjualDingin + "</b></td><td><b>" + terjualHangat + "</b></td><td><b>" + sisaDingin + "</b></td><td><b>" + sisaHangat + "</b></td>";
                                             }
 
                                         }
