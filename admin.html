@@ -1111,6 +1111,11 @@
                         }
 
 
+                        var bumbus = [];
+                        var terjualDingins = [];
+                        var terjualHangats = [];
+                        var sisaDingins = [];
+                        var sisaHangats = [];
                         var arrBumbu;
                         var total_stock_bumbu = 0;
                         var total_terjual_bumbu = 0;
@@ -1132,12 +1137,16 @@
                                     var result = data.result;
                                     bumbu = data.result;
                                     $.each(result, function(key, value) {
+                                        bumbus.push(value['bumbu']);
                                         string += "<tr> <td>" + value['bumbu'] + "</td> <td id='" + value['bumbu'] + "0'></td> <td id='" + value['bumbu'] + "1'></td> <td id='" + value['bumbu'] + "2'></td> </tr>";
+
                                     });
                                     string += "<tr> <td>Total</td> <td id='total_stock'></td> <td id='total_terjual'></td> <td id='total_sisa'></td> </tr> <tr> <td></td> <td></td> <td></td> <td></td> </tr> <tr> <td><b>Rincian Bumbu Terjual dan Sisa</b></td> <td></td> <td></td> <td></td> </tr> </tbody> </table> <div class='card-content'> <div id='record-rincian-bumbu' class='card-content'> </div> </div> </div>";
                                     $("#bumbu_tabel").html(string);
                                 }
                             });
+
+                            console.log(bumbus);
                         }
 
 
@@ -1187,6 +1196,10 @@
                         var id_pgd = 0;
                         var materialLength = 0;
                         var material = [];
+                        var currentStock = [];
+                        var iDate = 1;
+
+                        var mDiambilOutlet = [];
 
                         $("#tanggalStd").val(tgl[1]);
                         $("#tanggal").val(tgl[0]);
@@ -1287,6 +1300,8 @@
                                     console.log(err)
                                 }
                             });
+
+
 
 
 
@@ -2561,6 +2576,7 @@
                         }
 
 
+
                         function show_laporan_gudang() {
                             $.ajax({
                                 type: "POST",
@@ -2581,6 +2597,12 @@
                                         stock = [];
                                     }
 
+                                    if (stock.length === 0) {
+                                        iDate = 1;
+                                        getStock(tanggal);
+                                    }
+
+
                                     var diambilOutlet = [];
                                     var sisaBarang = [];
                                     materialLength = material.length;
@@ -2590,12 +2612,63 @@
                                         for (var j = 0; j < value.length; j++) {
                                             diambilOutlet[i] = diambilOutlet[i] + Number(value[j][7 + materialLength + i]);
                                         }
+                                        mDiambilOutlet[i] = diambilOutlet[i];
                                         sisaBarang[i] = Number(stock[i]) - Number(diambilOutlet[i]);
+
                                         string += "<tr> <td><b>" + material[i] + "</b></td> <td><input value='' id='inputGudang" + i + "' style='text-align:center; border: 1px solid black; height:25px; width:50px;' type='text'></td> <td id='stockGudang" + i + "'>" + stock[i] + "</td> <td id='diambilOutlet" + i + "'>" + diambilOutlet[i] + "</td> <td id='sisaGudang" + i + "'>" + sisaBarang[i] + "</td>  </tr>";
                                     }
 
+                                    setTimeout(function() {
+                                        for (var i = 0; i < material.length; i++) {
+                                            var sisa = Number($("#stockGudang" + i).html()) - Number($("#diambilOutlet" + i).html());
+
+                                            console.log(sisa + "gg")
+                                            $("#sisaGudang" + i).html(sisa)
+                                        }
+
+                                    }, 5000);
 
                                     $("#record-laporan-gudang").html(string);
+                                }
+                            });
+                        }
+
+                        function getStock(date) {
+                            var st = date;
+                            var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
+                            var dt = new Date(st.replace(pattern, '$3-$2-$1'));
+                            var yesterday = new Date(dt.setDate(dt.getDate() - iDate));
+                            date = yesterday.getDate() + "/" + (yesterday.getMonth() + 1) + "/" + yesterday.getFullYear()
+                            $.ajax({
+                                type: "GET",
+                                data: ({
+                                    tanggal: date
+                                }),
+                                url: base_url + "maktam_api_new/get_stock.php?tanggal=" + date,
+                                cache: false,
+                                success: function(data) {
+                                    var result = data.result;
+                                    if (data.num === 0) {
+                                        iDate++;
+                                        getStock(st);
+                                    } else {
+                                        $.each(result, function(key, value) {
+                                            var stock = value['stock'];
+                                            var sisa = value['sisa'];
+                                            var tanggal = value['date'];
+
+                                            var sisas = JSON.parse(sisa);
+
+                                            for (var i = 0; i < sisas.length; i++) {
+                                                //gilang
+                                                $("#stockGudang" + i).html(sisas[i]);
+                                                var sisa = sisas[i] - Number($("#diambilOutlet" + i).html);
+                                                $("#sisaBarang" + i).html(sisa)
+                                            }
+
+
+                                        });
+                                    }
                                 }
                             });
                         }
@@ -2653,14 +2726,6 @@
                                 }
                             });
 
-                            $.ajax({
-                                type: "GET",
-                                url: "http://susumaktam.com/maktam2/maktam/maktam/api/admin/cron.php",
-                                cache: false,
-                                success: function(html) {
-
-                                }
-                            });
                         });
 
 
