@@ -1132,7 +1132,7 @@
                                 cache: false,
                                 success: function(data) {
                                     arrBumbu = data.result;
-
+                                    con(data);
                                     var string = "<div class='data-table data-table-init card'> <table> <tbody> <tr> <td style='background-color: rgb(208, 245, 237); font-size: 15px'><b>Stock Bumbu</b></td> <td style='background-color: rgb(208, 245, 237)'></td> <td style='background-color: rgb(208, 245, 237)'></td> <td style='background-color: rgb(208, 245, 237)'><button id='print_bumbu'>Print Bumbu</button></td> <!-- <th class='numeric-cell'><button id='print'>Print</button></th> --> </tr> <tr> <td><b>Bumbu</b></td> <td><b>Stock</b></td> <td><b>Terjual</b></td> <td><b>Sisa</b></td> </tr> <tr> <td>Original</td> <td id='stock0'></td> <td id='terjual0'></td> <td id='sisa0'></td> </tr> <tr> <td>Cappucino</td> <td id='stock1'></td> <td id='terjual1'></td> <td id='sisa1'></td> </tr> <tr> <td>Coklat</td> <td id='stock2'></td> <td id='terjual2'></td> <td id='sisa2'></td> </tr> <tr> <td>Oreo</td> <td id='stock3'></td> <td id='terjual3'></td> <td id='sisa3'></td> </tr>";
                                     var result = data.result;
                                     bumbu = data.result;
@@ -1146,13 +1146,14 @@
                                 }
                             });
 
-                            console.log(bumbus);
                         }
 
 
 
 
-
+                        function con(message) {
+                            console.log(message);
+                        }
 
 
                         function getDate() {
@@ -1198,6 +1199,7 @@
                         var material = [];
                         var currentStock = [];
                         var iDate = 1;
+                        var mBumbuDate;
 
                         var mDiambilOutlet = [];
 
@@ -1205,19 +1207,19 @@
                         $("#tanggal").val(tgl[0]);
                         $("#tanggal_show").html(tgl[1]);
 
+                        selelect_bumbu_date();
                         show_laporan();
                         show_total_all();
                         show_pengeluran_gudang();
                         show_omset();
                         show_rincian_penjualan();
-                        show_stock_susu();
                         show_laporan_gudang();
                         show_penjualan_susu();
                         show_laporan_material();
                         show_laporan_produk_lain();
                         show_laporan_produk_lain2();
                         show_peringkat_penjualan();
-                        selelect_bumbu_date();
+
 
 
                         $("#submitTanggal").click(function() {
@@ -1230,6 +1232,7 @@
                             $("#tanggal_show").html(tanggal);
 
                             id_pgd = 0;
+                            selelect_bumbu_date()
                             show_total_all();
                             show_laporan();
                             show_pengeluran_gudang()
@@ -1242,7 +1245,6 @@
                             show_laporan_produk_lain();
                             show_laporan_produk_lain2();
                             show_peringkat_penjualan();
-                            selelect_bumbu_date()
                             selectOutletAll()
                             selectCupBesarAll()
                         });
@@ -1251,8 +1253,6 @@
                             var stock = [];
                             var terjual = [];
                             var sisa = [];
-
-
 
                             $.ajax({
                                 type: "POST",
@@ -1266,10 +1266,12 @@
                                     var ttb = 0;
                                     var tsb = 0;
                                     var i = 0;
+                                    mBumbuDate = data.result;
                                     $.each(arrBumbu, function(key, value) {
                                         stock[i] = 0;
                                         terjual[i] = 0;
                                         sisa[i] = 0;
+
                                         $.each(data.result, function(key2, value2) {
                                             if (value['bumbu'] === value2['bumbu']) {
                                                 stock[i] = stock[i] + (Number(value2['stock_dingin']) + Number(value2['stock_hangat']));
@@ -2031,6 +2033,7 @@
                         }
 
                         function show_stock_susu() {
+                            var mOutlet = [];
                             $.ajax({
                                 type: "POST",
                                 data: ({
@@ -2051,7 +2054,10 @@
                                     var string2 = "<table> <thead> <tr> <th rowspan='3'>Outlet</th>";
                                     var string3 = "<table> <thead> <tr> <th rowspan='2'>Outlet</th>";
 
+                                    var i = 0;
                                     $.each(result, function(key, value) {
+                                        mOutlet[i] = value['outlet'];
+                                        i++;
                                         string += "<th>" + value['outlet'] + "</th>";
                                         string2 += "<th colspan='4' style='text-align:center;'>" + value['outlet'] + "</th>";
                                         string3 += "<th colspan='2' style='text-align:center;'>" + value['outlet'] + "</th>";
@@ -2077,7 +2083,14 @@
 
 
                                     var stock_susu = ["Susu Datang", "Susu Kemarin Mentah", "Sisa Kemarin Matang", "Sisa Matang", "Sisa Mentah", "Stock Dari", "Stock Diambil", "Total"];
-                                    var stock_bumbu = ["Original", "Cappucino", "Coklat", "Oreo", "Total"];
+                                    var stock_bumbu = ["Original", "Cappucino", "Coklat", "Oreo"];
+
+                                    for (var i = 0; i < bumbus.length; i++) {
+                                        stock_bumbu.push(bumbus[i]);
+                                    }
+
+
+
                                     var stock_cupss = ["Stock", "Terjual", "Sisa"];
 
                                     for (var i = 0; i < stock_susu.length; i++) {
@@ -2371,11 +2384,41 @@
                                             else if (i == 1) string2 += "<td><b>" + hasil[d][16] + "</b></td><td><b>" + hasil[d][17] + "</b></td><td><b>" + hasil[d][18] + "</b></td><td><b>" + hasil[d][19] + "</b></td>";
                                             else if (i == 2) string2 += "<td><b>" + hasil[d][22] + "</b></td><td><b>" + hasil[d][23] + "</b></td><td><b>" + hasil[d][24] + "</b></td><td><b>" + hasil[d][25] + "</b></td>";
                                             else if (i == 3) string2 += "<td><b>" + hasil[d][28] + "</b></td><td><b>" + hasil[d][29] + "</b></td><td><b>" + hasil[d][30] + "</b></td><td><b>" + hasil[d][31] + "</b></td>";
-                                            else if (i == 4) string2 += "<td><b>" + Number(Number(hasil[d][10]) + Number(hasil[d][16]) + Number(hasil[d][22]) + Number(hasil[d][28])) + "</b></td><td><b>" + Number(Number(hasil[d][11]) + Number(hasil[d][17]) + Number(hasil[d][23]) + Number(hasil[d][29])) + "</b></td><td><b>" + Number(Number(hasil[d][12]) + Number(hasil[d][18]) + Number(hasil[d][24]) + Number(hasil[d][30])) + "</b></td><td><b>" + Number(Number(hasil[d][13]) + Number(hasil[d][19]) + Number(hasil[d][25]) + Number(hasil[d][31])) + "</b></td>";
+
+
+                                            // else if (i == 4) string2 += "<td><b>" + Number(Number(hasil[d][10]) + Number(hasil[d][16]) + Number(hasil[d][22]) + Number(hasil[d][28])) + "</b></td><td><b>" + Number(Number(hasil[d][11]) + Number(hasil[d][17]) + Number(hasil[d][23]) + Number(hasil[d][29])) + "</b></td><td><b>" + Number(Number(hasil[d][12]) + Number(hasil[d][18]) + Number(hasil[d][24]) + Number(hasil[d][30])) + "</b></td><td><b>" + Number(Number(hasil[d][13]) + Number(hasil[d][19]) + Number(hasil[d][25]) + Number(hasil[d][31])) + "</b></td>";
                                             //string2 += "<tr> <td><b>"+value['outlet']+"</b></td> <td>"+tj1[d]+"</td> <td>"+ss1[d]+"</td> <td>"+tj2[d]+"</td> <td>"+ss2[d]+"</td> <td>"+tj3[d]+"</td> <td>"+ss3[d]+"</td> <td>"+tj4[d]+"</td> <td>"+ss4[d]+"</td> <td>"+total_bumbu+"</td> <td>"+total_ss_bumbu+"</td> </tr>";
                                             //string3 += "<tr> <td><b>"+value['outlet']+"</b></td> <td>"+stock_cup[d]+"</td> <td>"+terjual_cup[d]+"</td> <td>"+sisa_cup[d]+"</td></tr>";
                                             d++;
                                         });
+                                        con(mBumbuDate);
+                                        //gilang
+                                        if (i > 3) {
+                                            for (var j = 0; j < mOutlet.length; j++) {
+                                                var terjualDingin = 0;
+                                                var terjualHangat = 0;
+                                                var sisaDingin = 0;
+                                                var sisaHangat = 0;
+
+                                                $.each(mBumbuDate, function(key, value) {
+                                                    if (value['outlet'] === mOutlet[j] && value['bumbu'] === stock_bumbu[i]) {
+                                                        terjual_dingin = value['terjual_dingin'];
+                                                        terjual_hangat = value['terjual_hangat'];
+                                                        sisaDingin = value['sisa_dingin'];
+                                                        sisaHangat = value['sisa_hangat'];
+                                                    }
+                                                });
+
+                                                if (terjual_dingin === "") terjual_dingin = "0";
+                                                if (terjual_hangat === "") terjual_hangat = "0";
+                                                if (sisaDingin === "") sisaDingin = "0";
+                                                if (sisaHangat === "") sisaHangat = "0";
+
+                                                string2 += "<td><b>" + terjual_dingin + "</b></td><td><b>" + terjual_hangat + "</b></td><td><b>" + sisaDingin + "</b></td><td><b>" + sisaHangat + "</b></td>";
+                                            }
+
+                                        }
+
                                         string2 += "</tr>";
                                     }
 
@@ -2575,6 +2618,9 @@
                             });
                         }
 
+                        function isEmpty(str) {
+                            return (!str || 0 === str.length);
+                        }
 
 
                         function show_laporan_gudang() {
@@ -2612,7 +2658,6 @@
                                         for (var j = 0; j < value.length; j++) {
                                             diambilOutlet[i] = diambilOutlet[i] + Number(value[j][7 + materialLength + i]);
                                         }
-                                        mDiambilOutlet[i] = diambilOutlet[i];
                                         sisaBarang[i] = Number(stock[i]) - Number(diambilOutlet[i]);
 
                                         string += "<tr> <td><b>" + material[i] + "</b></td> <td><input value='' id='inputGudang" + i + "' style='text-align:center; border: 1px solid black; height:25px; width:50px;' type='text'></td> <td id='stockGudang" + i + "'>" + stock[i] + "</td> <td id='diambilOutlet" + i + "'>" + diambilOutlet[i] + "</td> <td id='sisaGudang" + i + "'>" + sisaBarang[i] + "</td>  </tr>";
@@ -2621,8 +2666,6 @@
                                     setTimeout(function() {
                                         for (var i = 0; i < material.length; i++) {
                                             var sisa = Number($("#stockGudang" + i).html()) - Number($("#diambilOutlet" + i).html());
-
-                                            console.log(sisa + "gg")
                                             $("#sisaGudang" + i).html(sisa)
                                         }
 
@@ -2793,7 +2836,6 @@
                                     var terjual = [];
                                     var sisa = [];
 
-                                    console.log(produk.length + " DL")
 
                                     for (var i = 0; i < produk.length; i++) {
                                         stock[i] = 0;
@@ -2804,7 +2846,6 @@
 
                                         for (var j = 0; j < datas.length; j++) {
                                             if (datas[j][3] == "1") {
-                                                console.log(Number(datas[j][9].reduce(getSum) + produk.length))
                                                 stock[i] = stock[i] + Number(datas[j][10 + Number(datas[j][9].reduce(getSum) + produk.length) * 3 + i]);
                                             }
 
@@ -3175,7 +3216,6 @@
                         });
 
                         $("#submitLain").click(function() {
-                            console.log($("#rasa1").val());
 
 
                             var produk = $("#produk").val();
@@ -3199,7 +3239,6 @@
                                 datas["dt" + j] = data[j];
                             }
 
-                            console.log(rasa);
 
 
 
