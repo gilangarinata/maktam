@@ -1132,7 +1132,6 @@
                                 cache: false,
                                 success: function(data) {
                                     arrBumbu = data.result;
-                                    con(data);
                                     var string = "<div class='data-table data-table-init card'> <table> <tbody> <tr> <td style='background-color: rgb(208, 245, 237); font-size: 15px'><b>Stock Bumbu</b></td> <td style='background-color: rgb(208, 245, 237)'></td> <td style='background-color: rgb(208, 245, 237)'></td> <td style='background-color: rgb(208, 245, 237)'><button id='print_bumbu'>Print Bumbu</button></td> <!-- <th class='numeric-cell'><button id='print'>Print</button></th> --> </tr> <tr> <td><b>Bumbu</b></td> <td><b>Stock</b></td> <td><b>Terjual</b></td> <td><b>Sisa</b></td> </tr> <tr> <td>Original</td> <td id='stock0'></td> <td id='terjual0'></td> <td id='sisa0'></td> </tr> <tr> <td>Cappucino</td> <td id='stock1'></td> <td id='terjual1'></td> <td id='sisa1'></td> </tr> <tr> <td>Coklat</td> <td id='stock2'></td> <td id='terjual2'></td> <td id='sisa2'></td> </tr> <tr> <td>Oreo</td> <td id='stock3'></td> <td id='terjual3'></td> <td id='sisa3'></td> </tr>";
                                     var result = data.result;
                                     bumbu = data.result;
@@ -2391,7 +2390,6 @@
                                             //string3 += "<tr> <td><b>"+value['outlet']+"</b></td> <td>"+stock_cup[d]+"</td> <td>"+terjual_cup[d]+"</td> <td>"+sisa_cup[d]+"</td></tr>";
                                             d++;
                                         });
-                                        con(mBumbuDate);
                                         //gilang
                                         if (i > 3) {
                                             for (var j = 0; j < mOutlet.length; j++) {
@@ -2652,15 +2650,21 @@
                                     var diambilOutlet = [];
                                     var sisaBarang = [];
                                     materialLength = material.length;
+
+
                                     for (var i = 0; i < material.length; i++) {
                                         diambilOutlet[i] = 0;
                                         if (typeof stock[i] == 'undefined') stock[i] = 0;
                                         for (var j = 0; j < value.length; j++) {
+                                            //gilang;;;;
                                             diambilOutlet[i] = diambilOutlet[i] + Number(value[j][7 + materialLength + i]);
+                                            // console.log(value[]);
                                         }
                                         sisaBarang[i] = Number(stock[i]) - Number(diambilOutlet[i]);
 
-                                        string += "<tr> <td><b>" + material[i] + "</b></td> <td><input value='' id='inputGudang" + i + "' style='text-align:center; border: 1px solid black; height:25px; width:50px;' type='text'></td> <td id='stockGudang" + i + "'>" + stock[i] + "</td> <td id='diambilOutlet" + i + "'>" + diambilOutlet[i] + "</td> <td id='sisaGudang" + i + "'>" + sisaBarang[i] + "</td>  </tr>";
+                                        if (material[i] != '0') {
+                                            string += "<tr> <td><b>" + material[i] + "</b></td> <td><input value='' id='inputGudang" + i + "' style='text-align:center; border: 1px solid black; height:25px; width:50px;' type='text'></td> <td id='stockGudang" + i + "'>" + stock[i] + "</td> <td id='diambilOutlet" + i + "'>" + diambilOutlet[i] + "</td> <td id='sisaGudang" + i + "'>" + sisaBarang[i] + "</td>  </tr>";
+                                        }
                                     }
 
                                     setTimeout(function() {
@@ -3390,8 +3394,10 @@
                                     var result = $.parseJSON(data);
                                     var dataProduk = [];
                                     $.each(result, function(key, value) {
-                                        string += "<tr class='delete_material" + value['id'] + "'> <td width='20%' class='numeric-cell'>" + value['material'] + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
-                                        string2 += " <tr> <td> " + value['material'] + "</td> <td><input id='material" + panjangMaterial + "' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='number' placeholder=''></td> </tr>";
+                                        if (value['material'] != '0') {
+                                            string += "<tr class='delete_material" + value['id'] + "'> <td width='20%' class='numeric-cell'>" + value['material'] + "</td> <td class='actions-cell'> <a id='" + value['id'] + "' class='btn-edit link icon-only'> <i class='icon f7-icons ios-only'>compose</i> <i class='icon material-icons md-only'>edit</i> </a> <a id='" + value['id'] + "' class='btn-delete link icon-only'> <i class='icon f7-icons ios-only'>trash</i> <i class='icon material-icons md-only'>delete</i> </a> </td> </tr>";
+                                            string2 += " <tr> <td> " + value['material'] + "</td> <td><input id='material" + panjangMaterial + "' style='text-align:center; border: 1px solid rgb(129, 128, 128); height:25px; width:150px;' type='number' placeholder=''></td> </tr>";
+                                        }
                                         panjangMaterial++;
                                     });
                                     string += "</tbody></table>";
