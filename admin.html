@@ -3519,8 +3519,15 @@
                             var mate = [];
 
                             for (var i = 0; i < panjangMaterial; i++) {
-                                mate[i] = $("#material" + i).val();
+                                var a = $("#material" + i).val();
+                                if (typeof a === 'undefined') {
+                                    mate.push("0");
+                                } else {
+                                    mate.push(a)
+                                }
+
                             }
+                            console.log(mate);
 
                             var data = [tanggalStd, outlet, panjangMaterial];
                             data = data.concat(mate);
