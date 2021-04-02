@@ -1839,9 +1839,9 @@
                 }),
                 cache: false,
                 success: function(data) {
-                    console.log(data);
                     try {
                         std_val = JSON.parse(data);
+                        select_material();
                     } catch (err) {
                         std_val = [];
                     }
@@ -1863,6 +1863,7 @@
                     count_material = 0;
 
                     $.each(result, function(key, row) {
+                        console.log(std_val[count_material]);
                         if (typeof std_val[count_material] == 'undefined') std_val[count_material] = 0;
                         if (row['material'] != '0') {
                             string += "<tr> <td class='label-cell'><b>" + row['material'] + "</b></td> <td class='label-cell'> <input value='' min='0' id='jumlah" + count_material + "' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress2()' onKeyPress='OgKeyPress2()'></td> <td class='label-cell'> <input disabled value='' min='0' id='tambah" + count_material + "' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress2()' onKeyPress='OgKeyPress2()'></td> <td class='label-cell'> <input disabled value='" + std_val[count_material] + "' min='0' id='std" + count_material + "' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress2()' onKeyPress='OgKeyPress2()'></td> </tr>";
@@ -2195,30 +2196,37 @@
                     var g = 0;
 
                     $.each(result, function(key, row) {
-
-                        string += "<li class='accordion-item'><a href='#' class='item-content item-link'> <div class='item-inner'> <div class='item-title'>" + row['produk'] + "</div> </div></a> <div class='accordion-item-content'> <div class='block'> <div class='data-table'> <table style='table-layout:fixed;'> <tr> <th class='label-cell'>Produk</th> <th class='label-cell'>Tambah Barang</th> <th class='label-cell'>Terjual</th> <th class='label-cell'>Sisa</th></tr>";
                         rasaProduk = JSON.parse(row['rasa1']);
-                        hargaProduk = JSON.parse(row['harga1']);
-                        var rp = rasaProduk.length;
+
+                        if (rasaProduk != null) {
+                            string += "<li class='accordion-item'><a href='#' class='item-content item-link'> <div class='item-inner'> <div class='item-title'>" + row['produk'] + "</div> </div></a> <div class='accordion-item-content'> <div class='block'> <div class='data-table'> <table style='table-layout:fixed;'> <tr> <th class='label-cell'>Produk</th> <th class='label-cell'>Tambah Barang</th> <th class='label-cell'>Terjual</th> <th class='label-cell'>Sisa</th></tr>";
+
+                            hargaProduk = JSON.parse(row['harga1']);
+
+                            var rp = rasaProduk.length;
 
 
-                        hargaAllProduk[count_produk] = [];
 
-                        for (i = 0; i < rp; i++) {
-                            string += "<tr> <td class='label-cell'>" + rasaProduk[i] + "</td> <td class='label-cell'><input min='0' id='tambahBarang" + count_produk + "-" + i + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress3()' onKeyPress='OgKeyPress3()'></td> <td class='label-cell'><input min='0' id='terjual" + count_produk + "-" + i + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress3()' onKeyPress='OgKeyPress3()'></td> <td class='label-cell'><input disabled min='0' id='sisa" + count_produk + "-" + i + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid blue;'></td> </tr>";
-                            hargaAllProduk[count_produk][g] = hargaProduk[g];
-                            g++;
-                            count_rasa[count_produk] = cr++;
+
+                            hargaAllProduk[count_produk] = [];
+
+                            for (i = 0; i < rp; i++) {
+                                string += "<tr> <td class='label-cell'>" + rasaProduk[i] + "</td> <td class='label-cell'><input min='0' id='tambahBarang" + count_produk + "-" + i + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress3()' onKeyPress='OgKeyPress3()'></td> <td class='label-cell'><input min='0' id='terjual" + count_produk + "-" + i + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress3()' onKeyPress='OgKeyPress3()'></td> <td class='label-cell'><input disabled min='0' id='sisa" + count_produk + "-" + i + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid blue;'></td> </tr>";
+                                hargaAllProduk[count_produk][g] = hargaProduk[g];
+                                g++;
+                                count_rasa[count_produk] = cr++;
+                            }
+
+
+                            string += " <tr> <td class='label-cell'>Total</td> <td class='label-cell'><input disabled min='0' id='totalTambahBarang" + count_produk + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid blue;'></td> <td class='label-cell'><input disabled min='0' id='totalTerjual" + count_produk + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid blue;'></td> <td class='label-cell'><input disabled min='0' id='totalSisa" + count_produk + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid blue;'></td></tr>";
+                            string += "</table> </div> </div> </div> </li>";
+                            count_produk++;
+                            cr = 0;
+                            g = 0;
                         }
-
-
-                        string += " <tr> <td class='label-cell'>Total</td> <td class='label-cell'><input disabled min='0' id='totalTambahBarang" + count_produk + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid blue;'></td> <td class='label-cell'><input disabled min='0' id='totalTerjual" + count_produk + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid blue;'></td> <td class='label-cell'><input disabled min='0' id='totalSisa" + count_produk + "' type='number' style='text-align:center; width:50px; height:25px; border: 1px solid blue;'></td></tr>";
-                        string += "</table> </div> </div> </div> </li>";
-                        count_produk++;
-                        cr = 0;
-                        g = 0;
                     });
                     $("#recordProdukLain").html(string);
+
                 }
             });
         }

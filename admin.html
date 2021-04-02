@@ -2799,18 +2799,27 @@
 
                                     $.each(result, function(key, value) {
                                         datas = JSON.parse(value['total']);
-                                        for (var i = 0; i < datas[4]; i++) {
+
+                                        for (var i = 0; i < Number(datas[4]); i++) {
+                                            var daty = datas[7 + Number(datas[4]) + i];
+                                            if (daty == undefined) {
+                                                daty = 0;
+                                            }
+
+
                                             jumlah[i] = jumlah[i] + Number(datas[7 + i]);
-                                            tambah[i] = tambah[i] + Number(datas[7 + Number(datas[4]) + i]);
+                                            tambah[i] = tambah[i] + Number(daty);
+
                                         }
                                     });
+
 
 
 
                                     for (var i = 0; i < materialLength; i++) {
                                         if (typeof jumlah[i] == 'undefined') jumlah[i] = 0;
                                         if (typeof tambah[i] == 'undefined') tambah[i] = 0;
-                                        string += " <tr> <td><b>" + material[i] + "</b></td> <td>" + jumlah[i] + "</td> <td>" + tambah[i] + "</td> </tr>";
+                                        if (material[i] != 0) string += " <tr> <td><b>" + material[i] + "</b></td> <td>" + jumlah[i] + "</td> <td>" + tambah[i] + "</td> </tr>";
                                     }
 
                                     string += "</tbody></table>";
@@ -2831,6 +2840,7 @@
                                 success: function(data) {
                                     var string = " <table> <thead> <tr> <td><b>Produk</b></td>  <td><b>Stock</b></td><td><b>Terjual</b></td> <td><b>Sisa</b></td> </tr> </thead> <tbody> ";
 
+
                                     var result = JSON.parse(data);
                                     var produk = JSON.parse(result['produk']);
                                     var rasa = JSON.parse(result['rasa']);
@@ -2841,7 +2851,7 @@
                                     var terjual = [];
                                     var sisa = [];
 
-
+                                    console.log(datas);
                                     for (var i = 0; i < produk.length; i++) {
                                         stock[i] = 0;
                                         terjual[i] = 0;
@@ -2851,10 +2861,18 @@
 
                                         for (var j = 0; j < datas.length; j++) {
                                             if (datas[j][3] == "1") {
-                                                stock[i] = stock[i] + Number(datas[j][10 + Number(datas[j][9].reduce(getSum) + produk.length) * 3 + i]);
+                                                var ar = datas[j][10 + Number(datas[j][9].reduce(getSum) + produk.length) * 3 + i];
+                                                if (typeof ar == 'undefined') ar = 0;
+
+                                                stock[i] = stock[i] + Number(ar);
+
                                             }
 
-                                            terjual[i] = terjual[i] + Number(datas[j][10 + Number(datas[j][9].reduce(getSum) + produk.length) * 3 + 3 + i]);
+                                            var ar = datas[j][10 + Number(datas[j][9].reduce(getSum) + produk.length) * 3 + 3 + i];
+
+                                            if (typeof ar == 'undefined') ar = 0;
+
+                                            terjual[i] = terjual[i] + Number(ar);
 
                                             // if (datas[j][3] == "2") {
                                             //     sisa[i] = sisa[i] + Number(datas[j][10 + Number(datas[j][9].reduce(getSum) + produk.length) * 3 + 6 + i]);
@@ -2905,24 +2923,35 @@
                                         }
                                     });
 
+
                                     for (var i = 0; i < rasa.length; i++) {
-                                        rasaLength = rasaLength + rasa[i].length;
+                                        if (rasa[i] != null) {
+                                            rasaLength = rasaLength + rasa[i].length;
+                                        }
                                     }
 
                                     var string = " <table border='1'> <thead> <tr> <th rowspan='3'><b>Outlet</b></th>";
                                     for (var i = 0; i < produk.length; i++) {
-                                        string += "<th align='center' colspan='" + 2 * (rasa[i].length) + "'><b>" + produk[i] + "</b></th>";
-                                    }
-                                    string += "</tr><tr>";
-                                    for (var i = 0; i < produk.length; i++) {
-                                        for (var j = 0; j < rasa[i].length; j++) {
-                                            string += "<th align='center' colspan='2'><b>" + rasa[i][j] + "</b></th>";
+                                        if (rasa[i] != null) {
+                                            string += "<th align='center' colspan='" + 2 * (rasa[i].length) + "'><b>" + produk[i] + "</b></th>";
                                         }
                                     }
                                     string += "</tr><tr>";
                                     for (var i = 0; i < produk.length; i++) {
-                                        for (var j = 0; j < rasa[i].length; j++) {
-                                            string += "<th><b>Terjual</b></th><th><b>Sisa</b></th>";
+                                        if (rasa[i] != null) {
+                                            for (var j = 0; j < rasa[i].length; j++) {
+                                                string += "<th align='center' colspan='2'><b>" + rasa[i][j] + "</b></th>";
+                                            }
+                                        }
+                                    }
+                                    string += "</tr><tr>";
+                                    for (var i = 0; i < produk.length; i++) {
+                                        if (rasa[i] != null) {
+                                            for (var j = 0; j < rasa[i].length; j++) {
+                                                if (rasa[i] != null) {
+                                                    string += "<th><b>Terjual</b></th><th><b>Sisa</b></th>";
+                                                }
+                                            }
                                         }
                                     }
                                     string += "</tr>";
@@ -2940,14 +2969,16 @@
 
                                         var t = 0;
                                         for (var i = 0; i < produk.length; i++) {
-                                            for (var j = 0; j < rasa[i].length; j++) {
-                                                if (typeof terjual[t] == 'undefined') terjual[t] = 0;
-                                                if (typeof sisa[t] == 'undefined') sisa[t] = 0;
-                                                string += "<td><b>" + terjual[t] + "</b></td><td><b>" + sisa[t] + "</b></td>";
-                                                t++;
+                                            if (rasa[i] != null) {
+                                                for (var j = 0; j < rasa[i].length; j++) {
+                                                    if (typeof terjual[t] == 'undefined') terjual[t] = 0;
+                                                    if (typeof sisa[t] == 'undefined') sisa[t] = 0;
+                                                    string += "<td><b>" + terjual[t] + "</b></td><td><b>" + sisa[t] + "</b></td>";
+                                                    t++;
 
-                                                // console.log(terjual[t]);
+                                                    // console.log(terjual[t]);
 
+                                                }
                                             }
                                         }
 
@@ -3599,20 +3630,20 @@
                         }
 
                         $('#record-bumbu-select').on('click', '.btn-delete', function() {
-                            var id = $(this).attr("id");
-                            app.dialog.confirm("Anda yakin ingin menghapus?", "", function() {
-                                $.ajax({
-                                    type: "POST",
-                                    url: base_url + "maktam_api_new/delete_bumbu.php",
-                                    data: ({
-                                        id: id
-                                    }),
-                                    cache: false,
-                                    success: function(html) {
-                                        $(".delete_material" + id).fadeOut('slow');
-                                    }
-                                });
-                            });
+                            // var id = $(this).attr("id");
+                            // app.dialog.confirm("Anda yakin ingin menghapus?", "", function() {
+                            //     $.ajax({
+                            //         type: "POST",
+                            //         url: base_url + "maktam_api_new/delete_bumbu.php",
+                            //         data: ({
+                            //             id: id
+                            //         }),
+                            //         cache: false,
+                            //         success: function(html) {
+                            //             $(".delete_material" + id).fadeOut('slow');
+                            //         }
+                            //     });
+                            // });
                         });
                     </script>
 
