@@ -1357,7 +1357,7 @@
 
             var tanggal = $("#tanggal2").val();
 
-            console.log(mode2)
+            // console.log(mode2)
 
             if (mode2 == 1) {
                 $.ajax({
@@ -1579,7 +1579,7 @@
                 }),
                 cache: false,
                 success: function(data) {
-                    console.log(data)
+                    // console.log(data)
                 }
             });
         }
@@ -1612,7 +1612,7 @@
                     }),
                     cache: false,
                     success: function(data) {
-                        console.log(data);
+                        // console.log(data);
                     }
                 });
             });
@@ -1655,7 +1655,7 @@
 
 
         function selectCupBesarAll(date, outlet) {
-            console.log(date + outlet)
+
             $.ajax({
                 type: "POST",
                 url: base_url + "maktam_api_new/get_cup_besar_by_outlet.php",
@@ -1757,7 +1757,7 @@
 
 
         function deleteCupBesarOutlet(tanggal) {
-            console.log("tan" + tanggal)
+
             $.ajax({
                 type: "POST",
                 url: base_url + "maktam_api_new/delete_cup_besar.php",
@@ -1863,7 +1863,7 @@
                     count_material = 0;
 
                     $.each(result, function(key, row) {
-                        console.log(std_val[count_material]);
+
                         if (typeof std_val[count_material] == 'undefined') std_val[count_material] = 0;
                         if (row['material'] != '0') {
                             string += "<tr> <td class='label-cell'><b>" + row['material'] + "</b></td> <td class='label-cell'> <input value='' min='0' id='jumlah" + count_material + "' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress2()' onKeyPress='OgKeyPress2()'></td> <td class='label-cell'> <input disabled value='' min='0' id='tambah" + count_material + "' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress2()' onKeyPress='OgKeyPress2()'></td> <td class='label-cell'> <input disabled value='" + std_val[count_material] + "' min='0' id='std" + count_material + "' type='number' placeholder='' style='text-align:center; width:40px; height:25px; border: 1px solid green;' onKeyUp='OgKeyPress2()' onKeyPress='OgKeyPress2()'></td> </tr>";
@@ -1905,7 +1905,12 @@
             for (i = 0; i < count_material; i++) {
                 jumlah[i] = $("#jumlah" + i).val();
                 tambah[i] = $("#tambah" + i).val();
-                std[i] = $("#std" + i).val();
+                var stdr = $("#std" + i).val();
+                if (typeof stdr == 'undefined') {
+                    std[i] = -1;
+                } else {
+                    std[i] = $("#std" + i).val();
+                }
             }
 
             var tanggal = $("#tanggal3").val();
@@ -2027,11 +2032,14 @@
                 cache: false,
                 success: function(data) {
                     dataMaterialEdit = JSON.parse(data);
+                    console.log(dataMaterialEdit);
                     lengthMaterial = dataMaterialEdit[4];
                     for (i = 0; i < lengthMaterial; i++) {
                         $("#jumlah" + i).val(dataMaterialEdit[7 + i]);
                         $("#tambah" + i).val(dataMaterialEdit[7 + Number(lengthMaterial) + i]);
                         $("#std" + i).val(dataMaterialEdit[7 + Number(lengthMaterial) * 2 + i]);
+
+                        console.log(dataMaterialEdit[7 + Number(lengthMaterial) * 2 + i]);
                     }
                     $("#tanggal3").val(dataMaterialEdit[0]);
                     $("#karyawan3").val(dataMaterialEdit[2]);
