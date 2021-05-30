@@ -2716,6 +2716,7 @@
                                     var dts = JSON.parse(data);
                                     material = JSON.parse(dts['material']);
                                     var value = JSON.parse(dts['data']);
+                                    var id = JSON.parse(dts['id']);
                                     try {
                                         var stock = JSON.parse(dts['stock']);
                                     } catch (err) {
@@ -2724,7 +2725,7 @@
 
                                     if (stock.length === 0) {
                                         iDate = 1;
-                                        getStock(tanggal);
+                                        getStock(id);
                                     }
 
 
@@ -2765,11 +2766,11 @@
 
 
                         function getStock(date) {
-                            var st = date;
-                            var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
-                            var dt = new Date(st.replace(pattern, '$3-$2-$1'));
-                            var yesterday = new Date(dt.setDate(dt.getDate() - iDate));
-                            date = ('0' + yesterday.getDate()).slice(-2) + "/" + ('0' + (yesterday.getMonth() + 1)).slice(-2) + "/" + yesterday.getFullYear()
+                            // var st = date;
+                            // var pattern = /(\d{2})\/(\d{2})\/(\d{4})/;
+                            // var dt = new Date(st.replace(pattern, '$3-$2-$1'));
+                            // var yesterday = new Date(dt.setDate(dt.getDate() - iDate));
+                            // date = ('0' + yesterday.getDate()).slice(-2) + "/" + ('0' + (yesterday.getMonth() + 1)).slice(-2) + "/" + yesterday.getFullYear()
 
                             $.ajax({
                                 type: "GET",
@@ -2790,14 +2791,14 @@
                                             var tanggal = value['date'];
 
                                             var sisas = JSON.parse(sisa);
+                                            var stocks = JSON.parse(stock);
 
                                             for (var i = 0; i < sisas.length; i++) {
                                                 //gilang
-                                                $("#stockGudang" + i).html(sisas[i]);
+                                                $("#stockGudang" + i).html(stocks[i]);
                                                 var sisa = sisas[i] - Number($("#diambilOutlet" + i).html);
                                                 $("#sisaBarang" + i).html(sisa)
                                             }
-
 
                                         });
                                     }
