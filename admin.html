@@ -1062,7 +1062,7 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td><b id="materialError">Bumbu</b></td>
-                                                                    <td><input id="bumbu" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
+                                                                    <td><input id="bumbuxxx" style="text-align:center; border: 1px solid green; height:25px; width:150px;" type="text"></td>
                                                                 </tr>
 
                                                         </table>
@@ -2811,8 +2811,6 @@
                             var stockGudang = [];
                             var sisaGudang = [];
 
-
-
                             var stockGudangBaru = [];
                             for (var i = 0; i < materialLength; i++) {
                                 stockGudangBaru[i] = 0;
@@ -3678,7 +3676,8 @@
                         show_bumbu();
 
                         $("#submitBumbu").click(function() {
-                            var bumbu = $("#bumbu").val();
+                            var bumbu = $("#bumbuxxx").val();
+                            console.log("bumbu:" + bumbu);
                             $.ajax({
                                 type: "POST",
                                 url: base_url + "maktam_api_new/add_bumbu.php",
@@ -3687,6 +3686,7 @@
                                 }),
                                 cache: false,
                                 success: function(html) {
+                                    console.log(html);
                                     show_bumbu();
                                     app.popup.close();
                                 }
@@ -3715,20 +3715,20 @@
                         }
 
                         $('#record-bumbu-select').on('click', '.btn-delete', function() {
-                            // var id = $(this).attr("id");
-                            // app.dialog.confirm("Anda yakin ingin menghapus?", "", function() {
-                            //     $.ajax({
-                            //         type: "POST",
-                            //         url: base_url + "maktam_api_new/delete_bumbu.php",
-                            //         data: ({
-                            //             id: id
-                            //         }),
-                            //         cache: false,
-                            //         success: function(html) {
-                            //             $(".delete_material" + id).fadeOut('slow');
-                            //         }
-                            //     });
-                            // });
+                            var id = $(this).attr("id");
+                            app.dialog.confirm("Anda yakin ingin menghapus?", "", function() {
+                                $.ajax({
+                                    type: "POST",
+                                    url: base_url + "maktam_api_new/delete_bumbu.php",
+                                    data: ({
+                                        id: id
+                                    }),
+                                    cache: false,
+                                    success: function(html) {
+                                        $(".delete_material" + id).fadeOut('slow');
+                                    }
+                                });
+                            });
                         });
                     </script>
 
